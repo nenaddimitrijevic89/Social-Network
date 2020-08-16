@@ -1,6 +1,7 @@
 import React from 'react';
 import { TextPost } from './TextPost';
 import { Container } from 'react-materialize';
+import { serviceUsers } from '../../services/fetch';
 
 class Feed extends React.Component{
     constructor(props){
@@ -8,6 +9,9 @@ class Feed extends React.Component{
         this.state={
 
         }
+    }
+    componentDidMount(){
+        serviceUsers.get()
     }
     render(){
         return(
