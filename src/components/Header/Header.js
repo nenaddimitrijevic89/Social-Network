@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 const Header =()=>{
     return(
         <Navbar
+        className={style.header}
   alignLinks="right"
   brand={<a className="brand-logo" href="#">Social Network</a>}
   centerChildren
