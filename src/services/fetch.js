@@ -2,7 +2,7 @@ const { baseApi } = require("../shared/baseApi");
 
 class ServiceUsers{
     get(){
-        return baseApi.get('/users')
+        return baseApi.get('users')
         .then(response=>console.log(response))
     }
 }
