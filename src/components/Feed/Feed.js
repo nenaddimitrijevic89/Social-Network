@@ -2,6 +2,7 @@ import React from 'react';
 import { TextPost } from './TextPost';
 import { Container } from 'react-materialize';
 import { serviceUsers } from '../../services/fetch';
+import { ImagePost } from './ImagePost';
 
 class Feed extends React.Component{
     constructor(props){
@@ -17,6 +18,7 @@ class Feed extends React.Component{
         return(
             <Container>
             <TextPost/>
+            <ImagePost/>
             </Container>
         )
     }
