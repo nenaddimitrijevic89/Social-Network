@@ -30,9 +30,9 @@ const Header =()=>{
   <NavItem href="">
     People
   </NavItem>
-  <NavItem href="">
+  <Link to='/profile'><NavItem href="">
     Profile
-  </NavItem>
+  </NavItem></Link>
 </Navbar>
     )
 }
