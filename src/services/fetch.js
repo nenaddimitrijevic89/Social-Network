@@ -1,4 +1,4 @@
-const { baseURL } = require("../shared/baseApi");
+const { baseURL } = require("../shared/baseURL");
 
 class ServiceUsers{
     get(){
