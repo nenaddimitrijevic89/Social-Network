@@ -1,8 +1,8 @@
-const { baseApi } = require("../shared/baseApi");
+const { baseURL } = require("../shared/baseApi");
 
 class ServiceUsers{
     get(){
-        return baseApi.get('users')
+        return baseURL.get('users')
         .then(response=>console.log(response))
     }
 }
