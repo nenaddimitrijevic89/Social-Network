@@ -1,7 +1,7 @@
 import React from 'react';
 import { TextPost } from './TextPost';
 import { Container } from 'react-materialize';
-import { serviceUsers } from '../../services/fetch';
+import { authentication } from '../../services/fetch';
 import { ImagePost } from './ImagePost';
 import { VideoPost } from './VideoPost';
 
@@ -13,7 +13,7 @@ class Feed extends React.Component{
         }
     }
     componentDidMount(){
-        serviceUsers.get()
+        authentication.register()
     }
     render(){
         return(
