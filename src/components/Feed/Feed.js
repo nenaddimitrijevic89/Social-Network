@@ -9,11 +9,14 @@ class Feed extends React.Component{
     constructor(props){
         super(props)
         this.state={
-
+            token:null
         }
     }
     componentDidMount(){
         authentication.register()
+        .then(response=>{
+            this.setState({token:response.data.token})
+        })
     }
     render(){
         return(
