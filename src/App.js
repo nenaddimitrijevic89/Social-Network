@@ -7,6 +7,7 @@ import { Footer } from './components/Footer/Footer';
 import {Switch, Route} from 'react-router-dom';
 import { Feed } from './components/Feed/Feed';
 import { Profile } from './components/Profile/Profile';
+import { Login } from './components/Login/Login';
 
 function App() {
   return (
@@ -14,8 +15,9 @@ function App() {
       <div className='content'>
       <Header/>
       <Switch>
-        <Route path='/feed' component={Feed}/>
-        <Route path='/profile' component={Profile}/>
+        <Route exact path='/' component={Login}/>
+        <Route exact path='/feed' component={Feed}/>
+        <Route exact path='/profile' component={Profile}/>
       </Switch>
       </div>
       <Footer/>
