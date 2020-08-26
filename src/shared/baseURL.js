@@ -1,6 +1,6 @@
-import Axios from 'axios';
+import axios from 'axios';
 
-const baseURL=Axios.create({
+const baseURL=axios.create({
     baseURL:'https://backend-social-network.herokuapp.com',
 })
 

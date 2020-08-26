@@ -13,10 +13,10 @@ class Feed extends React.Component{
         }
     }
     componentDidMount(){
-        authentication.register()
-        .then(response=>{
-            this.setState({token:response.data.token})
-        })
+        // authentication.register()
+        // .then(response=>{
+        //     this.setState({token:response.data.token})
+        // })
     }
     render(){
         return(
@@ -29,4 +29,4 @@ class Feed extends React.Component{
     }
 }
 
-export {Feed}
+export { Feed };
