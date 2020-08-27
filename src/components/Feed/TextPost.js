@@ -1,5 +1,5 @@
 import React from 'react';
-import {Row, Col, Card, Icon} from 'react-materialize';
+import { Row, Col, Card, Icon } from 'react-materialize';
 
 const TextPost=()=>{
     return(
@@ -10,8 +10,8 @@ const TextPost=()=>{
   >
     <Card
       actions={[
-        <a key="1" href="#">Text Post</a>,
-        <a key="2" href="#">Comments</a>
+        <a key="1">Text Post</a>,
+        <a key="2">Comments</a>
       ]}
       className="blue-grey darken-1"
       closeIcon={<Icon>close</Icon>}

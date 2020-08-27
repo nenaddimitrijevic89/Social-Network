@@ -1,7 +1,7 @@
 import React from 'react';
 import { TextPost } from './TextPost';
 import { Container } from 'react-materialize';
-import { authentication } from '../../services/authService';
+// import { authentication } from '../../services/authService';
 import { ImagePost } from './ImagePost';
 import { VideoPost } from './VideoPost';
 import { storageService } from '../../services/storageService';
@@ -19,8 +19,10 @@ class Feed extends React.Component{
         //     this.setState({token:response.data.token})
         // })
     }
+    
     render(){
         const token=storageService.get('token');
+        console.log(token)
         if(!token){
             this.props.history.push('/')
         }

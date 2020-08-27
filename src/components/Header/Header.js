@@ -24,13 +24,13 @@ const Header =()=>{
     preventScrolling: true
   }}
 >
-  <Link to='/feed'><NavItem href="">
+  <Link to='/feed'><NavItem>
     Feed
   </NavItem></Link>
-  <NavItem href="">
+  <Link to='/'><NavItem>
     People
-  </NavItem>
-  <Link to='/profile'><NavItem href="">
+  </NavItem></Link>
+  <Link to='/profile'><NavItem>
     Profile
   </NavItem></Link>
 </Navbar>

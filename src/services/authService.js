@@ -8,7 +8,6 @@ class Authentication{
     }
     logIn({email, password}){
         return baseURL.post('auth/login', {email, password}, HEADERS)
-        // .then(response=>console.log(response.data.token))
     }
 }
 

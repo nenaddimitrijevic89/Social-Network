@@ -7,21 +7,23 @@ import { Footer } from './components/Footer/Footer';
 import {Switch, Route} from 'react-router-dom';
 import { Feed } from './components/Feed/Feed';
 import { Profile } from './components/Profile/Profile';
-import { Login } from './components/Login/Login';
+import { UserForm } from './components/UserForm/UserForm';
 
 function App() {
   return (
+    <Switch>
+      <Route exact path='/' component={UserForm}/>
+      <React.Fragment>
     <div className='page-container'>
       <div className='content'>
       <Header/>
-      <Switch>
-        <Route exact path='/' component={Login}/>
         <Route exact path='/feed' component={Feed}/>
         <Route exact path='/profile' component={Profile}/>
-      </Switch>
       </div>
       <Footer/>
     </div>
+    </React.Fragment>
+    </Switch>
   );
 }
 
