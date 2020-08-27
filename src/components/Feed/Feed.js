@@ -1,15 +1,16 @@
 import React from 'react';
 import { TextPost } from './TextPost';
 import { Container } from 'react-materialize';
-import { authentication } from '../../services/fetch';
+import { authentication } from '../../services/authService';
 import { ImagePost } from './ImagePost';
 import { VideoPost } from './VideoPost';
+import { storageService } from '../../services/storageService';
 
 class Feed extends React.Component{
     constructor(props){
         super(props)
         this.state={
-            token:null
+
         }
     }
     componentDidMount(){
@@ -19,6 +20,10 @@ class Feed extends React.Component{
         // })
     }
     render(){
+        const token=storageService.get('token');
+        if(!token){
+            this.props.history.push('/')
+        }
         return(
             <Container>
             <TextPost/>
@@ -28,5 +33,4 @@ class Feed extends React.Component{
         )
     }
 }
-
 export { Feed };
