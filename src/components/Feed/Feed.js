@@ -22,7 +22,6 @@ class Feed extends React.Component{
     
     render(){
         const token=storageService.get('token');
-        console.log(token)
         if(!token){
             this.props.history.push('/')
         }

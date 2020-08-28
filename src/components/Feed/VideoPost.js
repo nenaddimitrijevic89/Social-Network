@@ -1,8 +1,13 @@
 import React from 'react';
+import { Row, Col } from 'react-materialize';
 
 const VideoPost=()=>{
     return(
-        <>Video Post</>
+        <Row>
+            <Col>
+                <>Video Post</>
+            </Col>
+        </Row>
     )
 }
 

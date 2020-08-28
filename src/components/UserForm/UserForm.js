@@ -24,7 +24,7 @@ class UserForm extends React.Component{
     submitData=()=>{
         authentication.logIn(this.state)
         .then(response=>{
-            storageService.set('token', response.data.token)
+            storageService.set('token', response)
             this.props.history.push('/feed')
         })
     }
