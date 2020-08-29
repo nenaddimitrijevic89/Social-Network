@@ -1,7 +1,6 @@
 import React from 'react';
 import { TextPost } from './TextPost';
 import { Container } from 'react-materialize';
-// import { authentication } from '../../services/authService';
 import { ImagePost } from './ImagePost';
 import { VideoPost } from './VideoPost';
 import { storageService } from '../../services/storageService';
@@ -14,10 +13,7 @@ class Feed extends React.Component{
         }
     }
     componentDidMount(){
-        // authentication.register()
-        // .then(response=>{
-        //     this.setState({token:response.data.token})
-        // })
+
     }
     
     render(){
