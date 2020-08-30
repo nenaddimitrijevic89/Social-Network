@@ -1,14 +1,14 @@
 import React from 'react';
-import { Row, Col  } from 'react-materialize';
+import { Row, Col } from 'react-materialize';
 
-const TextPost=()=>{
-  return(
+const TextPost = () => {
+  return (
     <Row>
       <Col m={12} s={12}>
-        <>Text Post</>
+        <>Text</>
       </Col>
     </Row>
   )
 }
 
-export {TextPost};
+export { TextPost };

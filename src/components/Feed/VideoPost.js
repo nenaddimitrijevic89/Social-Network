@@ -1,14 +1,14 @@
 import React from 'react';
 import { Row, Col } from 'react-materialize';
 
-const VideoPost=()=>{
-    return(
+const VideoPost = () => {
+    return (
         <Row>
             <Col>
-                <>Video Post</>
+                <>Video</>
             </Col>
         </Row>
     )
 }
 
-export {VideoPost}
+export { VideoPost }
