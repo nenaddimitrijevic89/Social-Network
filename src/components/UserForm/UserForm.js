@@ -5,10 +5,10 @@ import { storageService } from '../../services/storageService';
 import { Login } from './Login/Login';
 import { Register } from './Register/Register';
 
-class UserForm extends React.Component{
-    constructor(props){
+class UserForm extends React.Component {
+    constructor(props) {
         super(props)
-        this.state={
+        this.state = {
             firstName: '',
             lastName: '',
             email: '',
@@ -17,38 +17,39 @@ class UserForm extends React.Component{
         }
     }
 
-    insertData=(event)=>{
+    insertData = (event) => {
         this.setState({ [event.target.name]: event.target.value })
     }
 
-    submitData=()=>{
+    submitData = () => {
         authentication.logIn(this.state)
-        .then(response=>{
-            storageService.set('token', response)
-            this.props.history.push('/feed')
-        })
+            .then(response => {
+                // console.log(response)
+                // storageService.set('token', response)
+                // this.props.history.push('/feed')
+            })
     }
 
-    registerOrLog=()=>{
-        this.setState(prevState=>({isLog: !prevState.isLog}))
+    registerOrLog = () => {
+        this.setState(prevState => ({ isLog: !prevState.isLog }))
     }
 
-    render(){
-        return(
-        <Container>
-            <Button
-            onClick={this.registerOrLog}
-            >Switch</Button>
-            {this.state.isLog
-            ?<Login
-            insertData={this.insertData}
-            submitData={this.submitData}
-            />
-            :<Register
-            insertData={this.insertData}
-            />
-            }
-        </Container>
+    render() {
+        return (
+            <Container>
+                <Button
+                    onClick={this.registerOrLog}
+                >Switch</Button>
+                {this.state.isLog
+                    ? <Login
+                        insertData={this.insertData}
+                        submitData={this.submitData}
+                    />
+                    : <Register
+                        insertData={this.insertData}
+                    />
+                }
+            </Container>
         )
     }
 }

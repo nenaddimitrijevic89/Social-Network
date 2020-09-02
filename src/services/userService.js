@@ -1,13 +1,13 @@
 import { HEADERS } from "../shared/constants";
 const { baseURL } = require("../shared/baseURL");
 
-class UserService{
-    getAllUsers(){
+class UserService {
+    getAllUsers() {
         return baseURL.get('users', {
-            headers: HEADERS
+            headers: HEADERS()
         })
-        .then(response=>console.log(response))
-        .catch(error=>console.log(error))
+            .then(response => console.log(response))
+            .catch(error => console.log(error))
     }
 }
 
