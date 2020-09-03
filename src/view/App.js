@@ -8,6 +8,7 @@ import {Switch, Route} from 'react-router-dom';
 import { Feed } from './components/Feed/Feed';
 import { Profile } from './components/Profile/Profile';
 import { UserForm } from './components/UserForm/UserForm';
+import { People } from './components/People/People';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <Header/>
         <Route exact path='/feed' component={Feed}/>
         <Route exact path='/profile' component={Profile}/>
+        <Route exact path='/people' component={People}/>
       </div>
       <Footer/>
     </div>

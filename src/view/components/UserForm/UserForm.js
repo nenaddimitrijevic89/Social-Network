@@ -1,7 +1,6 @@
 import React from 'react';
 import { Container, Button } from 'react-materialize';
-import { authentication } from '../../services/authService';
-import { storageService } from '../../services/storageService';
+import { authentication } from '../../../services/authService';
 import { Login } from './Login/Login';
 import { Register } from './Register/Register';
 
@@ -22,12 +21,10 @@ class UserForm extends React.Component {
     }
 
     submitData = () => {
-        authentication.logIn(this.state)
-            .then(response => {
-                // console.log(response)
-                // storageService.set('token', response)
-                // this.props.history.push('/feed')
-            })
+            authentication.logIn(this.state)
+                .then(() => {
+                    this.props.history.push('/feed')
+                })
     }
 
     registerOrLog = () => {

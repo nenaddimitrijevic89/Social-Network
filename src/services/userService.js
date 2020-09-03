@@ -1,4 +1,5 @@
 import { HEADERS } from "../shared/constants";
+import { User } from "../entities/User";
 const { baseURL } = require("../shared/baseURL");
 
 class UserService {
@@ -6,7 +7,11 @@ class UserService {
         return baseURL.get('users', {
             headers: HEADERS()
         })
-            .then(response => console.log(response))
+            .then(response=>{
+                const usersList=response.data.data;
+                const newUsersList=usersList.map(user=> new User(user))
+                return newUsersList;
+            })
             .catch(error => console.log(error))
     }
 }
