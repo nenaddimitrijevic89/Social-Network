@@ -22,4 +22,4 @@ class Profile extends React.Component{
     }
 }
 
-export {Profile};
+export { Profile };

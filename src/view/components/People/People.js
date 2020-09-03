@@ -1,6 +1,7 @@
 import React from 'react';
 import { Container } from 'react-materialize';
 import { userService } from '../../../services/userService';
+import { User } from './User/User';
 
 class People extends React.Component{
     constructor(props){
@@ -18,10 +19,10 @@ class People extends React.Component{
     render(){
         return(
             <Container>
-                <>People</>
+                {this.state.users.map(user=> <User user={user} key={user.id} /> )}
             </Container>
         )
     }
 }
 
-export {People};
+export { People };
