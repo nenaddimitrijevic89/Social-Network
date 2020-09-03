@@ -3,6 +3,7 @@ import { User } from "../entities/UserObj";
 const { baseURL } = require("../shared/baseURL");
 
 class UserService {
+
     getAllUsers() {
         return baseURL.get('users', {
             headers: HEADERS()
@@ -13,6 +14,13 @@ class UserService {
                 return newUsersList;
             })
             .catch(error => console.log(error))
+    }
+
+    getSingleUser(id){
+        return baseURL.get(`users/${id}`, {
+            headers: HEADERS()
+        })
+        .then(response=>console.log(response));
     }
 }
 

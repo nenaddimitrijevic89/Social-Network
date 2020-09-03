@@ -2,13 +2,14 @@ import React from 'react';
 import './App.css';
 import 'materialize-css/dist/css/materialize.min.css';
 import 'materialize-css/dist/js/materialize';
-import Header from './components/Header/Header';
-import { Footer } from './components/Footer/Footer';
+import Header from '../view/components/Header/Header';
+import { Footer } from '../view/components/Footer/Footer';
 import {Switch, Route} from 'react-router-dom';
-import { Feed } from './components/Feed/Feed';
-import { Profile } from './components/Profile/Profile';
-import { UserForm } from './components/UserForm/UserForm';
-import { People } from './components/People/People';
+import { Feed } from '../view/components/Feed/Feed';
+import { Profile } from '../view/components/Profile/Profile';
+import { UserForm } from '../view/components/UserForm/UserForm';
+import { People } from '../view/components/People/People';
+import { SingleUser } from '../view/components/People/SingleUser/SingleUser';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route exact path='/feed' component={Feed}/>
         <Route exact path='/profile' component={Profile}/>
         <Route exact path='/people' component={People}/>
+        <Route exact path='/people/:id' component={SingleUser}/>
       </div>
       <Footer/>
     </div>
