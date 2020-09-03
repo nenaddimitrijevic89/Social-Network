@@ -1,5 +1,5 @@
 import { HEADERS } from "../shared/constants";
-import { User } from "../entities/User";
+import { User } from "../entities/UserObj";
 const { baseURL } = require("../shared/baseURL");
 
 class UserService {
