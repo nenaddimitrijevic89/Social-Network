@@ -1,12 +1,5 @@
-import { storageService } from "../services/storageService";
+import {getAuthHeader} from './utilities';
 
-const getAuthHeader = () => {
-        const token = storageService.get('token')
-        if (token) {
-                return `Bearer ${token}`
-        }
-        return 'Bearer sn-token'
-}
 export const HEADERS = () => {
         return {
                 "Content-type": "application/json; charset=UTF-8",
@@ -14,4 +7,3 @@ export const HEADERS = () => {
                 Authorization: getAuthHeader()
         }
 };
-

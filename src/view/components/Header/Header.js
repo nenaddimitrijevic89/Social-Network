@@ -27,7 +27,7 @@ const Header =()=>{
   <Link to='/feed'><NavItem>
     Feed
   </NavItem></Link>
-  <Link to='/'><NavItem>
+  <Link to='/people'><NavItem>
     People
   </NavItem></Link>
   <Link to='/profile'><NavItem>

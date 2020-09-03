@@ -3,7 +3,7 @@ import { TextPost } from './TextPost';
 import { Container } from 'react-materialize';
 import { ImagePost } from './ImagePost';
 import { VideoPost } from './VideoPost';
-import { storageService } from '../../services/storageService';
+import { storageService } from '../../../services/storageService';
 
 class Feed extends React.Component{
     constructor(props){
@@ -23,9 +23,9 @@ class Feed extends React.Component{
         }
         return(
             <Container>
-            <TextPost/>
-            <ImagePost/>
-            <VideoPost/>
+                <TextPost/>
+                <ImagePost/>
+                <VideoPost/>
             </Container>
         )
     }

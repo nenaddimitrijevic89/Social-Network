@@ -1,6 +1,5 @@
 import React from 'react';
 import { Container } from 'react-materialize';
-import { userService } from '../../services/userService';
 
 class Profile extends React.Component{
     constructor(props){
@@ -11,7 +10,7 @@ class Profile extends React.Component{
     }
 
     componentDidMount(){
-        userService.getAllUsers()
+        
     }
 
     render(){
