@@ -20,7 +20,26 @@ class UserService {
         return baseURL.get(`users/${id}`, {
             headers: HEADERS()
         })
-        .then(response=>console.log(response));
+        .then(response=>{
+            const user= new User(response.data.data)
+            return user;
+        })
+        .catch(error=>console.log(error))
+    }
+
+    getSingleUserPosts(id){
+        return baseURL.get(`users/${id}/posts`,{
+            headers: HEADERS()
+        })
+        .then(response=>console.log(response))
+        .catch(error=>console.log(error))
+    }
+
+    deleteSingleUser(id, data){
+        return baseURL.delete(`users/${id}`, {
+            headers: HEADERS()
+        }, data)
+        .then(response=>console.log(response))
     }
 }
 

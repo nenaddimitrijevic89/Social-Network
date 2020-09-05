@@ -8,7 +8,7 @@ const Header =()=>{
         <Navbar
         className={style.header}
   alignLinks="right"
-  brand={<a className="brand-logo" href="#">Social Network</a>}
+  brand={<span className="brand-logo">Social Network</span>}
   centerChildren
   id="mobile-nav"
   menuIcon={<><div className={style.menu}></div><div className={style.menu}></div><div className={style.menu}></div></>}
