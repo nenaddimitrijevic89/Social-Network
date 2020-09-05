@@ -21,10 +21,17 @@ class UserForm extends React.Component {
     }
 
     submitData = () => {
+        if(this.state.isLog){
             authentication.logIn(this.state)
                 .then(() => {
                     this.props.history.push('/feed')
                 })
+        } else{
+            authentication.register(this.state)
+            .then(()=>{
+                this.props.history.push('/feed')
+            })
+        }
     }
 
     registerOrLog = () => {
@@ -44,6 +51,7 @@ class UserForm extends React.Component {
                     />
                     : <Register
                         insertData={this.insertData}
+                        submitData={this.submitData}
                     />
                 }
             </Container>

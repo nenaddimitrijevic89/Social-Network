@@ -1,6 +1,7 @@
 import React from 'react';
 import { userService } from '../../../../services/userService';
 import { Button } from 'react-materialize';
+import { storageService } from '../../../../services/storageService';
 
 class SingleUser extends React.Component{
     constructor(props){
@@ -19,6 +20,9 @@ class SingleUser extends React.Component{
 
     removeUser=()=>{
         userService.deleteSingleUser(this.props.match.params.id, this.state.user)
+        .then(()=>{
+            this.props.history.push('/')
+        })
     }
 
     render(){

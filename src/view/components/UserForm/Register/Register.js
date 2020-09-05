@@ -1,7 +1,7 @@
 import React from 'react';
 import { TextInput, Button } from 'react-materialize';
 
-const Register =({insertData})=>{
+const Register =({insertData, submitData})=>{
     return(
         <>
         <TextInput
@@ -32,7 +32,7 @@ const Register =({insertData})=>{
                 password
             />
             <Button
-                // onClick={submitData}
+                onClick={submitData}
                 node="button"
                 type="submit"
                 waves="light"
