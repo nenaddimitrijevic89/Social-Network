@@ -7,6 +7,9 @@ class StorageService{
     get(key){
         return JSON.parse(sessionStorage.getItem(key))
     }
+    remove(key){
+        return sessionStorage.removeItem(key)
+    }
 }
 
 export const storageService = new StorageService();

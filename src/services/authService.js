@@ -7,7 +7,12 @@ class Authentication {
 
     register({ email, password, firstName, lastName }) {
         return baseURL.post('auth/register', { email, password, firstName, lastName }, HEADERS())
-            .then(response => console.log(response))
+            .then((response)=>{
+                if(response.status === 200){
+                    storageService.set('token', response.data.token)
+                    console.log(response)
+                }
+            })
             .catch(error => console.log(error))
     }
 

@@ -1,5 +1,6 @@
 import { HEADERS } from "../shared/constants";
 import { User } from "../entities/UserObj";
+import { storageService } from "./storageService";
 const { baseURL } = require("../shared/baseURL");
 
 class UserService {
@@ -39,7 +40,11 @@ class UserService {
         return baseURL.delete(`users/${id}`, {
             headers: HEADERS()
         }, data)
-        .then(response=>console.log(response))
+        .then(response=>{
+            storageService.remove('token')
+            console.log(response)
+        })
+        .catch(error=>console.log(error))
     }
 }
 
