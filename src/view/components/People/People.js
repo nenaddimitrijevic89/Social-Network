@@ -3,23 +3,23 @@ import { Container } from 'react-materialize';
 import { userService } from '../../../services/userService';
 import { User } from './User/User';
 
-class People extends React.Component{
-    constructor(props){
+class People extends React.Component {
+    constructor(props) {
         super(props)
-        this.state={
+        this.state = {
             users: []
         }
     }
 
-    componentDidMount(){
+    componentDidMount() {
         userService.getAllUsers()
-        .then(response=>this.setState({users: response}))
+            .then(response => this.setState({ users: response }))
     }
 
-    render(){
-        return(
+    render() {
+        return (
             <Container>
-                {this.state.users.map(user=> <User user={user} key={user.id} /> )}
+                {this.state.users.map(user => <User user={user} key={user.id} />)}
             </Container>
         )
     }
