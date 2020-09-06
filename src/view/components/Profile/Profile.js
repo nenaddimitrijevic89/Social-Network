@@ -1,20 +1,22 @@
 import React from 'react';
 import { Container } from 'react-materialize';
+import { userService } from '../../../services/userService';
 
-class Profile extends React.Component{
-    constructor(props){
+class Profile extends React.Component {
+    constructor(props) {
         super(props)
-        this.state={
-
+        this.state = {
+            user: null
         }
     }
 
-    componentDidMount(){
-        
+    componentDidMount() {
+        userService.getSingleUser(this.props.match.params.id)
+            .then(response => this.setState({ user: response }))
     }
 
-    render(){
-        return(
+    render() {
+        return (
             <Container>
                 <h1>My Profile</h1>
             </Container>

@@ -1,11 +1,11 @@
 import React from 'react';
 import { TextInput, Button } from 'react-materialize';
 
-const Login =({insertData, submitData})=>{
-    
-    return(
+const Login = ({ insertData, submitData }) => {
+
+    return (
         <>
-        <TextInput
+            <TextInput
                 onChange={insertData}
                 id='TextInput-1'
                 email
@@ -26,10 +26,10 @@ const Login =({insertData, submitData})=>{
                 type="submit"
                 waves="light"
             >
-            Login
+                Login
             </Button>
-            </>
+        </>
     )
 }
 
-export {Login}
+export { Login }

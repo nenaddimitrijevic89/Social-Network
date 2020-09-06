@@ -4,7 +4,7 @@ import 'materialize-css/dist/css/materialize.min.css';
 import 'materialize-css/dist/js/materialize';
 import Header from '../view/components/Header/Header';
 import { Footer } from '../view/components/Footer/Footer';
-import {Switch, Route} from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import { Feed } from '../view/components/Feed/Feed';
 import { Profile } from '../view/components/Profile/Profile';
 import { UserForm } from '../view/components/UserForm/UserForm';
@@ -14,19 +14,19 @@ import { SingleUser } from '../view/components/People/SingleUser/SingleUser';
 function App() {
   return (
     <Switch>
-      <Route exact path='/' component={UserForm}/>
+      <Route exact path='/' component={UserForm} />
       <React.Fragment>
-    <div className='page-container'>
-      <div className='content'>
-      <Header/>
-        <Route exact path='/feed' component={Feed}/>
-        <Route exact path='/profile' component={Profile}/>
-        <Route exact path='/people' component={People}/>
-        <Route exact path='/people/:id' component={SingleUser}/>
-      </div>
-      <Footer/>
-    </div>
-    </React.Fragment>
+        <div className='page-container'>
+          <div className='content'>
+            <Header />
+            <Route exact path='/feed' component={Feed} />
+            <Route exact path='/profile' component={Profile} />
+            <Route exact path='/people' component={People} />
+            <Route exact path='/people/:id' component={SingleUser} />
+          </div>
+          <Footer />
+        </div>
+      </React.Fragment>
     </Switch>
   );
 }
