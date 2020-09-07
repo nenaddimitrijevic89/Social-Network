@@ -18,11 +18,22 @@ class UserService {
             .catch(error => console.log(error))
     }
 
+    getLoggedUser(){
+        return baseURL.get('users/me',{
+            headers: HEADERS()
+        })
+        .then(response=>{
+            const user = new User(response.data);
+            return user;
+        })
+    }
+
     getSingleUser(id) {
         return baseURL.get(`users/${id}`, {
             headers: HEADERS()
         })
             .then(response => {
+                console.log(response);
                 const user = new User(response.data.data)
                 return user;
             })
