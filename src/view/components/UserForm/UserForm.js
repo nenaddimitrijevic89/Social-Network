@@ -1,8 +1,9 @@
 import React from 'react';
-import { Container, Button } from 'react-materialize';
+import { Container, Row, Switch, Col } from 'react-materialize';
 import { authentication } from '../../../services/authService';
 import { Login } from './Login/Login';
 import { Register } from './Register/Register';
+import style from './UserForm.module.css';
 
 class UserForm extends React.Component {
     constructor(props) {
@@ -40,10 +41,16 @@ class UserForm extends React.Component {
 
     render() {
         return (
-            <Container>
-                <Button
-                    onClick={this.registerOrLog}
-                >Switch</Button>
+            <Container className={style.form}>
+                <h1 className={`center-align ${style.padding}`}>Social Network</h1>
+                <Row>
+                <Switch
+                    id="Switch-11"
+                    offLabel="Login"
+                    onChange={this.registerOrLog}
+                    onLabel="Register"
+                />
+                <Col l={6} className={style.margin}>
                 {this.state.isLog
                     ? <Login
                         insertData={this.insertData}
@@ -54,6 +61,12 @@ class UserForm extends React.Component {
                         submitData={this.submitData}
                     />
                 }
+                </Col>
+                <Col l={6}>
+                Social Network Social Network Social Network Social Network Social Network Social Network
+                 Social Network Social Network Social Network Social Network 
+                </Col>
+                </Row>
             </Container>
         )
     }

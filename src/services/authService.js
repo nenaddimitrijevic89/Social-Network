@@ -8,6 +8,7 @@ class Authentication {
     register({ email, password, firstName, lastName }) {
         return baseURL.post('auth/register', { email, password, firstName, lastName }, HEADERS())
             .then((response)=>{
+                console.log(response);
                 if(response.status === 200){
                     storageService.set('token', response.data.token)
                     console.log(response)
@@ -19,6 +20,7 @@ class Authentication {
     logIn({ email, password }) {
         return baseURL.post('auth/login', { email, password }, HEADERS())
             .then((response) => {
+                console.log(response);
                 if (response.status === 200) {
                     storageService.set('token', response.data.token)
                     return response
