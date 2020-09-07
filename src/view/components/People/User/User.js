@@ -1,5 +1,5 @@
 import React from 'react';
-import { Col, Row, Card, CardTitle } from 'react-materialize';
+import { Col, Row, Card } from 'react-materialize';
 import { Link } from 'react-router-dom';
 
 const User = ({ user }) => {

@@ -1,10 +1,11 @@
 import React from 'react';
-import { TextInput, Button } from 'react-materialize';
+import { TextInput, Button, Col } from 'react-materialize';
 
 const Login = ({ insertData, submitData }) => {
 
     return (
         <>
+        <Col l={6}>
             <TextInput
                 onChange={insertData}
                 id='TextInput-1'
@@ -13,6 +14,8 @@ const Login = ({ insertData, submitData }) => {
                 name="email"
                 validate
             />
+        </Col>
+        <Col l={6}>    
             <TextInput
                 onChange={insertData}
                 id='TextInput-2'
@@ -20,6 +23,8 @@ const Login = ({ insertData, submitData }) => {
                 name="password"
                 password
             />
+        </Col>
+        <Col l={12}>    
             <Button
                 onClick={submitData}
                 node="button"
@@ -28,6 +33,7 @@ const Login = ({ insertData, submitData }) => {
             >
                 Login
             </Button>
+        </Col>
         </>
     )
 }

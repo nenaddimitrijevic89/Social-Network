@@ -1,45 +1,55 @@
 import React from 'react';
-import { TextInput, Button } from 'react-materialize';
+import { TextInput, Button, Col } from 'react-materialize';
 
-const Register =({insertData, submitData})=>{
+const Register =({ insertData, submitData })=>{
     return(
         <>
-        <TextInput
+            <Col l={6}>
+                <TextInput
                 onChange={insertData}
                 id='TextInput-3'
                 label='First Name'
                 name="firstName"
-            />
-        <TextInput
+                />
+            </Col>
+            <Col l={6}>
+                <TextInput
                 onChange={insertData}
                 id='TextInput-4'
                 label='Last Name'
                 name="lastName"
-            />    
-        <TextInput
+                />
+            </Col>   
+            <Col l={6}> 
+                <TextInput
                 onChange={insertData}
                 id='TextInput-5'
                 email
                 label='Email'
                 name="email"
                 validate
-            />
-            <TextInput
+                />
+            </Col>
+            <Col l={6}>
+                <TextInput
                 onChange={insertData}
                 id='TextInput-6'
                 label='Password'
                 name="password"
                 password
-            />
-            <Button
+                />
+            </Col>
+            <Col l={12}>
+                <Button
                 onClick={submitData}
                 node="button"
                 type="submit"
                 waves="light"
-            >
-            Register
-            </Button>
-            </>
+                >
+                Register
+                </Button>
+            </Col>
+        </>
     )
 }
 
