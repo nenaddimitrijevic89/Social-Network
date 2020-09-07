@@ -11,8 +11,8 @@ class Profile extends React.Component {
     }
 
     componentDidMount() {
-        userService.getSingleUser(this.props.match.params.id)
-            .then(response => this.setState({ user: response }))
+        userService.getLoggedUser()
+        .then(response=>this.setState({ user: response }))
     }
 
     render() {

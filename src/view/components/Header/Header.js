@@ -1,5 +1,5 @@
 import React from 'react';
-import {Navbar, NavItem} from 'react-materialize';
+import {Navbar, NavItem, Dropdown, Icon, Divider} from 'react-materialize';
 import style from './Header.module.css';
 import { Link } from 'react-router-dom';
 
@@ -33,6 +33,35 @@ const Header =()=>{
   <Link to='/profile'><NavItem>
     Profile
   </NavItem></Link>
+  <Dropdown
+    id="Dropdown_6"
+    options={{
+      alignment: 'left',
+      autoTrigger: true,
+      closeOnClick: true,
+      constrainWidth: true,
+      container: null,
+      coverTrigger: true,
+      hover: false,
+      inDuration: 150,
+      onCloseEnd: null,
+      onCloseStart: null,
+      onOpenEnd: null,
+      onOpenStart: null,
+      outDuration: 250
+    }}
+    trigger={<a href="#!"><i class="fa fa-gear"></i></a>}
+  >
+    <a href="#">
+    <i class="fa fa-sign-out"></i>
+    </a>
+    <a href="#">
+      two
+    </a>
+    <a href="#">
+      three
+    </a>
+  </Dropdown>
 </Navbar>
     )
 }
