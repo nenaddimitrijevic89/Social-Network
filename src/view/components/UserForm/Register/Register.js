@@ -1,5 +1,6 @@
 import React from 'react';
 import { TextInput, Button, Col } from 'react-materialize';
+import style from '../UserForm.module.css';
 
 const Register =({ insertData, submitData })=>{
     return(
@@ -41,6 +42,7 @@ const Register =({ insertData, submitData })=>{
             </Col>
             <Col l={12}>
                 <Button
+                className={style.font}
                 onClick={submitData}
                 node="button"
                 type="submit"

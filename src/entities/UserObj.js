@@ -5,6 +5,7 @@ class User{
         this.about=user.about;
         this.firstName=user.firstName;
         this.lastName=user.lastName;
+        this.fullName=user.fullName;
         this.email=user.email;
     }
 }
