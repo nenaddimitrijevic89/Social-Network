@@ -1,6 +1,9 @@
 import React from 'react';
-import { Container } from 'react-materialize';
+import { Container, Row } from 'react-materialize';
 import { userService } from '../../../services/userService';
+import avatar from '../../../images/user.png';
+import style from './Profile.module.css';
+import { isLoggedIn } from '../../../shared/utilities';
 
 class Profile extends React.Component {
     constructor(props) {
@@ -16,9 +19,24 @@ class Profile extends React.Component {
     }
 
     render() {
+
+        const isAuthorized=isLoggedIn()
+        if(!isAuthorized){
+            this.props.history.push('/')
+        }
+
         return (
             <Container>
-                <h1>My Profile</h1>
+                {this.state.user
+                ?<Row>
+                    <h1 className='center-align'>{this.state.user.fullName}</h1>
+                    <div className='center-align'>
+                        <img src={avatar} className={`${style.user} center-align`} alt='avatar' />
+                    </div>
+                    <h4 className='center-align'>{this.state.user.email}</h4>
+                </Row>
+                :<></>
+            }
             </Container>
         )
     }

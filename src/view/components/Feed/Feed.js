@@ -3,8 +3,8 @@ import { TextPost } from './TextPost/TextPost';
 import { Container } from 'react-materialize';
 import { ImagePost } from './ImagePost/ImagePost';
 import { VideoPost } from './VideoPost/VideoPost';
-import { storageService } from '../../../services/storageService';
 import { postService } from '../../../services/postService';
+import { isLoggedIn } from '../../../shared/utilities';
 
 class Feed extends React.Component {
     constructor(props) {
@@ -18,15 +18,13 @@ class Feed extends React.Component {
         postService.getAllPosts()
     }
 
-    isLogon = () => {
-        const token = storageService.get('token');
-        if (!token) {
+    render() {
+        
+        const isAuthorized=isLoggedIn()
+        if(!isAuthorized){
             this.props.history.push('/')
         }
-    }
 
-    render() {
-        this.isLogon()
         return (
             <Container>
                 <TextPost />

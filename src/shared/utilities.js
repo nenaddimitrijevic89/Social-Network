@@ -8,4 +8,12 @@ const getAuthHeader = () => {
     return 'Bearer sn-token'
 }
 
-export { getAuthHeader }
+const isLoggedIn = () => {
+    const token = storageService.get('token');
+    if (token) {
+        return true;
+    }
+    return false;
+}
+
+export { getAuthHeader, isLoggedIn }
