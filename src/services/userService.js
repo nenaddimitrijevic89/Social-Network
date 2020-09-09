@@ -7,8 +7,8 @@ class UserService {
 
     getAllUsers() {
         return baseURL.get('users', {
-            headers: HEADERS()
-        })
+                headers: HEADERS()
+            })
             .then(response => {
                 const usersList = response.data.data;
                 console.log(usersList)
@@ -18,20 +18,20 @@ class UserService {
             .catch(error => console.log(error))
     }
 
-    getLoggedUser(){
-        return baseURL.get('users/me',{
-            headers: HEADERS()
-        })
-        .then(response=>{
-            const user = new User(response.data);
-            return user;
-        })
+    getLoggedUser() {
+        return baseURL.get('users/me', {
+                headers: HEADERS()
+            })
+            .then(response => {
+                const user = new User(response.data);
+                return user;
+            })
     }
 
     getSingleUser(id) {
         return baseURL.get(`users/${id}`, {
-            headers: HEADERS()
-        })
+                headers: HEADERS()
+            })
             .then(response => {
                 console.log(response);
                 const user = new User(response.data.data)
@@ -40,18 +40,25 @@ class UserService {
             .catch(error => console.log(error))
     }
 
+    updateUser(id, data) {
+        return baseURL.patch(`users/${id}`, {
+                headers: HEADERS()
+            }, data)
+            .then(response => console.log(response))
+    }
+
     getSingleUserPosts(id) {
         return baseURL.get(`users/${id}/posts`, {
-            headers: HEADERS()
-        })
+                headers: HEADERS()
+            })
             .then(response => console.log(response))
             .catch(error => console.log(error))
     }
 
     deleteSingleUser(id, data) {
         return baseURL.delete(`users/${id}`, {
-            headers: HEADERS()
-        }, data)
+                headers: HEADERS()
+            }, data)
             .then(response => {
                 storageService.remove('token')
                 console.log(response)
