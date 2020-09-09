@@ -12,12 +12,6 @@ class Profile extends React.Component {
         this.state = {
             user: {},
             modalIsOpen: false,
-            userUpdate : {
-                firstName: "John ",
-                lastName: "Smith",
-                about: "something about yourself",
-                prefix: "Developer"
-              }
         }
     }
 
@@ -35,7 +29,7 @@ class Profile extends React.Component {
     }
 
     submitData=()=>{
-        userService.updateUser(this.state.user.id, this.state.userUpdate )
+        userService.updateUser(this.state.user.id, this.state.user )
     }
 
     render() {
