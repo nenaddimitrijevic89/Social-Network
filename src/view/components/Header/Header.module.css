@@ -1,18 +1,31 @@
-.menu{
+.menu {
     width: 35px;
     height: 5px;
-    background-color:white;
+    background-color: white;
     margin: 6px 0;
-  }
-  
-  .menu:first-child{
-    margin-top: 15px ;
-  }
+}
 
-  .header{
+.menu:first-child {
+    margin-top: 15px;
+}
+
+.header {
     background-color: #38405F;
-  }
+    margin-bottom: 15px;
+}
 
-  .font{
+.font {
     font-family: 'Changa', sans-serif;
-  }
+}
+
+@media only screen and (max-width: 992px) {
+    .title {
+        font-size: 24px !important;
+    }
+}
+
+@media only screen and (max-width: 347px) {
+    .title {
+        font-size: 20px !important;
+    }
+}

@@ -14,7 +14,7 @@ const Header =()=>{
       <Navbar
         className={style.header}
         alignLinks="right"
-        brand={<span className="brand-logo">Social Network</span>}
+        brand={<span className={`brand-logo ${style.title}`}>Social Network</span>}
         centerChildren
         id="mobile-nav"
         menuIcon={<><div className={style.menu}></div><div className={style.menu}></div><div className={style.menu}></div></>}
