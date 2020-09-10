@@ -41,10 +41,11 @@ class UserForm extends React.Component {
 
     render() {
         return (
-            <Container className={style.form}>
+            <Container className={style.form} onKeyUp={ event => event.keyCode === 13 && this.submitData() }>
                 <h1 className={`center-align ${style.padding}`}>Social Network</h1>
                 <Row>
                 <Switch
+                    className='center-align'
                     id="Switch-11"
                     offLabel="Login"
                     onChange={this.registerOrLog}
@@ -62,7 +63,7 @@ class UserForm extends React.Component {
                     />
                 }
                 </Col>
-                <Col l={6}>
+                <Col l={6} className={style.info}>
                 Social Network Social Network Social Network Social Network Social Network Social Network
                  Social Network Social Network Social Network Social Network 
                 </Col>
