@@ -1,7 +1,7 @@
 import React from 'react';
-import { TextInput, Col, Button } from 'react-materialize';
+import { TextInput, Col } from 'react-materialize';
 
-const Input = ({ insertData, submitData }) => {
+const Input = ({ insertData }) => {
     return (
         <Col>
             <TextInput
@@ -28,7 +28,6 @@ const Input = ({ insertData, submitData }) => {
                 label='Prefix'
                 name="prefix"
             />
-            <Button onClick={submitData}>Save</Button>
         </Col>
     )
 }

@@ -1,12 +1,33 @@
 import React from 'react';
 import Modal from 'react-modal';
-import { Container, Row } from 'react-materialize';
+import { Container, Row, Button } from 'react-materialize';
 import { Input } from './Input';
 
 const ProfileModal = ({ insertData, submitData, modalIsOpen, openModal, user }) => {
+
+    const customStyles = {
+        overlay: {
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: 'rgba(218, 218, 218, 0.5)'
+        },
+        content: {
+            top: '50%',
+            left: '50%',
+            right: 'auto',
+            bottom: 'auto',
+            marginRight: '-50%',
+            transform: 'translate(-50%, -50%)'
+        }
+    };
+    
     return (
         <Modal
             isOpen={modalIsOpen}
+            style={customStyles}
             ariaHideApp={false}
             onRequestClose={() => { openModal({}) }}
             contentLabel="modal"
@@ -21,6 +42,9 @@ const ProfileModal = ({ insertData, submitData, modalIsOpen, openModal, user }) 
                         insertData={insertData}
                         submitData={submitData}    
                     />
+                </Row>
+                <Row>
+                    <Button onClick={submitData}>Save</Button>
                 </Row>
             </Container>
         </Modal>

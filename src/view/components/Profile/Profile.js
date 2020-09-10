@@ -11,7 +11,7 @@ class Profile extends React.Component {
         super(props)
         this.state = {
             user: {},
-            modalIsOpen: false,
+            modalIsOpen: false
         }
     }
 
@@ -29,7 +29,7 @@ class Profile extends React.Component {
     }
 
     submitData=()=>{
-        userService.updateUser(this.state.user.id, this.state.user )
+        userService.updateUser(this.state.user.id, [this.state.firstName] )
     }
 
     render() {
@@ -54,8 +54,10 @@ class Profile extends React.Component {
                     <div className='center-align'>
                         <img src={avatar} className={`${style.user} center-align`} alt='avatar' />
                     </div>
+                    <div className='center-align'>
+                        <Button onClick={()=>this.openModal(this.state.user)}>Update User</Button>
+                    </div>
                     <h4 className='center-align'>{this.state.user.email}</h4>
-                    <Button onClick={()=>this.openModal(this.state.user)}>Modal</Button>
                 </Row> 
                 :<></>
             }
