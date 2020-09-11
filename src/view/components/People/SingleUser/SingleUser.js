@@ -12,7 +12,6 @@ class SingleUser extends React.Component {
     }
 
     componentDidMount() {
-        console.log(this.props.match.params.id)
         userService.getSingleUser(this.props.match.params.id)
             .then(response => this.setState({ user: response }))
         userService.getSingleUserPosts(this.props.match.params.id)
