@@ -41,11 +41,10 @@ class UserService {
     }
 
     updateUser(id, data) {
-        console.log(data)
-        return baseURL.patch(`users/${id}`, {
+        return baseURL.patch(`users/${id}`, data, {
                 headers: HEADERS()
-            }, data)
-            .then(response => console.log(response))
+            })
+            .catch(error=>console.log(error))
     }
 
     getSingleUserPosts(id) {

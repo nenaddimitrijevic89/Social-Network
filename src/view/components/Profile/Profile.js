@@ -17,16 +17,27 @@ class Profile extends React.Component {
 
     componentDidMount() {
         userService.getLoggedUser()
-        .then(response=>this.setState({ user: response }))
+        .then(response=>this.setState({ user: response  }))
     }
 
     openModal = ({}) => {
         this.setState(prevState => ({ modalIsOpen: !prevState.modalIsOpen }))
     }
 
-    insertData=(data)=>{
-        console.log(data)
-        this.setState({ data: data})
+    insertData=(data, name)=>{
+        switch(name){
+            case 'firstName':
+                this.setState({ firstName: data })
+                break;
+            case 'lastName':
+                this.setState({ lastName: data })
+                break;
+            case 'about':
+                this.setState({ about: data })
+                break;
+            default:
+                this.setState({ prefix: data })
+        }     
     }
 
     submitData=()=>{
@@ -37,7 +48,11 @@ class Profile extends React.Component {
         data.about=about;
         data.prefix=prefix;
 
-        userService.updateUser(this.state.user.id, data )
+        userService.updateUser(this.state.user.id, data)
+        .then(response=>{
+            console.log(response);
+            window.location.reload()
+        })
     }
 
     render() {
@@ -59,6 +74,7 @@ class Profile extends React.Component {
                         submitData={this.submitData}
                     />
                     <h1 className='center-align'>{this.state.user.fullName}</h1>
+                    <h4 className='center-align'>{this.state.user.prefix}</h4>
                     <div className='center-align'>
                         <img src={avatar} className={`${style.user} center-align`} alt='avatar' />
                     </div>
@@ -66,6 +82,8 @@ class Profile extends React.Component {
                         <Button onClick={()=>this.openModal(this.state.user)}>Update User</Button>
                     </div>
                     <h4 className='center-align'>{this.state.user.email}</h4>
+                    <h4 className='center-align'>{this.state.user.about}</h4>
+                    
                 </Row> 
                 :<></>
             }

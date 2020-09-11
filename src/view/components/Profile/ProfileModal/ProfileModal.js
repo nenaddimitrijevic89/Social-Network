@@ -32,7 +32,7 @@ const ProfileModal = ({ insertData, submitData, modalIsOpen, openModal, user }) 
             onRequestClose={() => { openModal({}) }}
             contentLabel="modal"
         >
-            <Container>
+            <Container onKeyUp={event=>event.keyCode === 13 && submitData()}>
                 <h2>
                 {user.fullName}
                 </h2>
