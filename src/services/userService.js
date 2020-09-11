@@ -41,6 +41,7 @@ class UserService {
     }
 
     updateUser(id, data) {
+        console.log(data)
         return baseURL.patch(`users/${id}`, {
                 headers: HEADERS()
             }, data)

@@ -24,12 +24,20 @@ class Profile extends React.Component {
         this.setState(prevState => ({ modalIsOpen: !prevState.modalIsOpen }))
     }
 
-    insertData=(event)=>{
-        this.setState({ [event.target.name]: event.target.value })
+    insertData=(data)=>{
+        console.log(data)
+        this.setState({ data: data})
     }
 
     submitData=()=>{
-        userService.updateUser(this.state.user.id, [this.state.firstName] )
+        const data={}
+        const { firstName, lastName, about, prefix }=this.state;
+        data.firstName=firstName;
+        data.lastName=lastName;
+        data.about=about;
+        data.prefix=prefix;
+
+        userService.updateUser(this.state.user.id, data )
     }
 
     render() {
