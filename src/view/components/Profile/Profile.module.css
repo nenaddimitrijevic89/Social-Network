@@ -1,4 +1,24 @@
-.user{
+@keyframes spin { 
+    from { 
+        transform: rotate(0deg); 
+    } to { 
+        transform: rotate(360deg); 
+    }
+}
+
+.image{
     background-color: orange;
     border-radius: 120px;
+}
+
+.edit{
+    cursor: pointer;
+    margin-top: 0px;
+}
+
+.editIcon:hover{
+    animation-name: spin;
+    animation-duration: .5s;
+    animation-timing-function: linear;
+    cursor: pointer;
 }
