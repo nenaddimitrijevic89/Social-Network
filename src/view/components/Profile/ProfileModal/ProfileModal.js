@@ -28,7 +28,7 @@ const ProfileModal = ({ insertData, submitData, modalIsOpen, openModal, user }) 
         <Modal
             isOpen={modalIsOpen}
             style={customStyles}
-            ariaHideApp={false}
+            ariaHideApp={true}
             onRequestClose={() => { openModal({}) }}
             contentLabel="modal"
         >

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Row, Button } from 'react-materialize';
+import { Container, Row } from 'react-materialize';
 import { userService } from '../../../services/userService';
 import avatar from '../../../images/user.png';
 import style from './Profile.module.css';
@@ -65,7 +65,7 @@ class Profile extends React.Component {
         return (
             <Container>
                 {this.state.user
-                ?<Row>
+                ?<Row className={style.user}>
                     <ProfileModal
                         user={this.state.user}
                         modalIsOpen={this.state.modalIsOpen}
@@ -76,12 +76,12 @@ class Profile extends React.Component {
                     <h1 className='center-align'>{this.state.user.fullName}</h1>
                     <h4 className='center-align'>{this.state.user.prefix}</h4>
                     <div className='center-align'>
-                        <img src={avatar} className={`${style.user} center-align`} alt='avatar' />
+                        <img src={avatar} className={`${style.image} center-align`} alt='avatar' />
                     </div>
                     <div className='center-align'>
-                        <Button onClick={()=>this.openModal(this.state.user)}>Update User</Button>
+                        <h5 onClick={()=>this.openModal(this.state.user)} className={style.edit}><i className={`fa fa-edit ${style.editIcon}`}></i> edit user</h5>
                     </div>
-                    <h4 className='center-align'>{this.state.user.email}</h4>
+                    <h4 className='center-align'><i className='fa fa-envelope'></i> {this.state.user.email}</h4>
                     <h4 className='center-align'>{this.state.user.about}</h4>
                     
                 </Row> 
