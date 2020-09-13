@@ -5,7 +5,7 @@ const ImagePost = () => {
   return (
     <Row>
       <Col m={12} s={12}>
-        <>Image Post</>
+        <></>
       </Col>
     </Row>
   )
