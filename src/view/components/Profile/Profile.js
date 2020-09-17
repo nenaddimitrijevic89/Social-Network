@@ -7,11 +7,12 @@ import { isLoggedIn } from '../../../shared/utilities';
 import { ProfileModal } from './ProfileModal/ProfileModal';
 
 class Profile extends React.Component {
-    constructor(props) {
-        super(props)
+    constructor() {
+        super()
         this.state = {
             user: {},
-            modalIsOpen: false
+            modalIsOpen: false,
+            isPass: false
         }
     }
 
@@ -40,9 +41,13 @@ class Profile extends React.Component {
         }     
     }
 
+    changePassword = () => {
+        this.setState(prevState => ({ isPass: !prevState.isPass }))
+    }
+
     submitData=()=>{
         const data={}
-        const { firstName, lastName, about, prefix }=this.state;
+        const { firstName, lastName, about, prefix } = this.state;
         data.firstName=firstName;
         data.lastName=lastName;
         data.about=about;
@@ -72,6 +77,8 @@ class Profile extends React.Component {
                         openModal={this.openModal}
                         insertData={this.insertData}
                         submitData={this.submitData}
+                        changePassword={this.changePassword}
+                        isPass={this.state.isPass}
                     />
                     <h1 className='center-align'>{this.state.user.fullName}</h1>
                     <h4 className='center-align'>{this.state.user.prefix}</h4>

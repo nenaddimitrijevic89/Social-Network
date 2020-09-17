@@ -6,8 +6,8 @@ import { Register } from './Register/Register';
 import style from './UserForm.module.css';
 
 class UserForm extends React.Component {
-    constructor(props) {
-        super(props)
+    constructor() {
+        super()
         this.state = {
             firstName: '',
             lastName: '',

@@ -3,7 +3,11 @@ import Modal from 'react-modal';
 import { Container, Row, Button } from 'react-materialize';
 import { Input } from './Input';
 
-const ProfileModal = ({ insertData, submitData, modalIsOpen, openModal, user }) => {
+const ProfileModal = ({ insertData, submitData, modalIsOpen, openModal, user, isPass, changePassword }) => {
+
+    const a = () =>{
+        changePassword()
+    }
 
     const customStyles = {
         overlay: {
@@ -32,7 +36,23 @@ const ProfileModal = ({ insertData, submitData, modalIsOpen, openModal, user }) 
             onRequestClose={() => { openModal({}) }}
             contentLabel="modal"
         >
-            <Container onKeyUp={event=>event.keyCode === 13 && submitData()}>
+            <>
+            {isPass
+            ?<Container>
+                <h2>
+                Password
+                </h2>
+                <hr></hr>
+                <Row>
+                    Password
+                </Row>
+                <Row>
+                    <Button>Save</Button>
+                    <Button onClick={a}>change</Button>
+                </Row>
+            </Container>
+
+            :<Container onKeyUp={event=>event.keyCode === 13 && submitData()}>
                 <h2>
                 {user.fullName}
                 </h2>
@@ -45,8 +65,15 @@ const ProfileModal = ({ insertData, submitData, modalIsOpen, openModal, user }) 
                 </Row>
                 <Row>
                     <Button onClick={submitData}>Save</Button>
+                    <Button onClick={a}><i className='fa fa-key'><span> change password</span></i></Button>
                 </Row>
             </Container>
+            }
+            
+
+
+            
+            </>
         </Modal>
     )
 }
