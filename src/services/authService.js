@@ -28,6 +28,11 @@ class Authentication {
             })
             .catch(error => console.log(error))
     }
+
+    changePassword({ email, password, newPassword}){
+        return baseURL.patch('auth/password/change', { email, password, newPassword}, HEADERS())
+        .then(response => console.log(response))
+    }
 }
 
 export const authentication = new Authentication();
