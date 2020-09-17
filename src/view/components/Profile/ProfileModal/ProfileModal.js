@@ -2,10 +2,11 @@ import React from 'react';
 import Modal from 'react-modal';
 import { Container, Row, Button } from 'react-materialize';
 import { Input } from './Input';
+import { InputPassword } from './InputPassword';
 
-const ProfileModal = ({ insertData, submitData, modalIsOpen, openModal, user, isPass, changePassword }) => {
+const ProfileModal = ({ insertData, submitData, modalIsOpen, openModal, user, isPass, changePassword, saveNewPassword }) => {
 
-    const a = () =>{
+    const changeForm = () =>{
         changePassword()
     }
 
@@ -32,30 +33,32 @@ const ProfileModal = ({ insertData, submitData, modalIsOpen, openModal, user, is
         <Modal
             isOpen={modalIsOpen}
             style={customStyles}
-            ariaHideApp={true}
+            ariaHideApp={false}
             onRequestClose={() => { openModal({}) }}
             contentLabel="modal"
         >
             <>
             {isPass
+
             ?<Container>
                 <h2>
                 Password
                 </h2>
                 <hr></hr>
                 <Row>
-                    Password
+                    <InputPassword insertData={insertData}/>
                 </Row>
                 <Row>
-                    <Button>Save</Button>
-                    <Button onClick={a}>change</Button>
+                    <Button onClick={saveNewPassword}>Save</Button>
+                    <Button onClick={changeForm}>change</Button>
                 </Row>
             </Container>
 
-            :<Container onKeyUp={event=>event.keyCode === 13 && submitData()}>
+            :<Container onKeyUp={event => event.keyCode === 13 && submitData()}>
                 <h2>
                 {user.fullName}
                 </h2>
+                <i className='fa fa-key' onClick={changeForm}><span> change password</span></i>
                 <hr></hr>
                 <Row>
                     <Input
@@ -65,14 +68,10 @@ const ProfileModal = ({ insertData, submitData, modalIsOpen, openModal, user, is
                 </Row>
                 <Row>
                     <Button onClick={submitData}>Save</Button>
-                    <Button onClick={a}><i className='fa fa-key'><span> change password</span></i></Button>
+                    
                 </Row>
             </Container>
             }
-            
-
-
-            
             </>
         </Modal>
     )

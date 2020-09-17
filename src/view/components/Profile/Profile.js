@@ -5,6 +5,7 @@ import avatar from '../../../images/user.png';
 import style from './Profile.module.css';
 import { isLoggedIn } from '../../../shared/utilities';
 import { ProfileModal } from './ProfileModal/ProfileModal';
+import { authentication } from '../../../services/authService';
 
 class Profile extends React.Component {
     constructor() {
@@ -36,9 +37,23 @@ class Profile extends React.Component {
             case 'about':
                 this.setState({ about: data })
                 break;
-            default:
+            case 'prefix':
                 this.setState({ prefix: data })
+                break;
+            case 'email':
+                this.setState({ email: data })
+                break;
+            case 'password':
+                this.setState({ password: data })
+                break;
+            case 'newPassword':
+                this.setState({ newPassword: data })
+                break;
         }     
+    }
+
+    saveNewPassword = () =>{
+        authentication.changePassword(this.state)
     }
 
     changePassword = () => {
@@ -79,6 +94,7 @@ class Profile extends React.Component {
                         submitData={this.submitData}
                         changePassword={this.changePassword}
                         isPass={this.state.isPass}
+                        saveNewPassword={this.saveNewPassword}
                     />
                     <h1 className='center-align'>{this.state.user.fullName}</h1>
                     <h4 className='center-align'>{this.state.user.prefix}</h4>
