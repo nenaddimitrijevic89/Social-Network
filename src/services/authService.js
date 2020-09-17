@@ -30,7 +30,9 @@ class Authentication {
     }
 
     changePassword({ email, password, newPassword}){
-        return baseURL.patch('auth/password/change', { email, password, newPassword}, HEADERS())
+        return baseURL.patch('auth/password/change', { email, password, newPassword }, {
+            headers: HEADERS()
+        })
         .then(response => console.log(response))
     }
 }
