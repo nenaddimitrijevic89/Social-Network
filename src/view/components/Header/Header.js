@@ -61,9 +61,6 @@ const Header =()=>{
         <Link to='/'><span onClick={logOut}>
         <i className='fa fa-sign-out'><span className={style.font}> log out</span></i>
         </span></Link>
-        <Link to='/'><span onClick={logOut}>
-        <i className='fa fa-key'><span className={style.font}> change password</span></i>
-        </span></Link>
       </Dropdown>
 </Navbar>
     )
