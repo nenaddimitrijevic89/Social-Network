@@ -5,7 +5,7 @@ const VideoPost = () => {
     return (
         <Row>
             <Col>
-                <>Video</>
+                <>Video change</>
             </Col>
         </Row>
     )
