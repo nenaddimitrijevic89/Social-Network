@@ -1,14 +1,14 @@
 import React from 'react';
 import { TextInput, Col } from 'react-materialize';
 
-const Input = ({ insertData }) => {
+const InputInfo = ({ insertData }) => {
 
-    const changeData=(event)=>{
-        let name=event.target.name;
+    const changeData = (event) => {
+        let name = event.target.name;
         let data = event.target.value;
-        insertData(data, name)    
+        insertData(data, name)
     }
-    
+
     return (
         <Col>
             <TextInput
@@ -39,4 +39,4 @@ const Input = ({ insertData }) => {
     )
 }
 
-export { Input }
+export { InputInfo }
