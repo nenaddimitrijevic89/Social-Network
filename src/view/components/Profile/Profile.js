@@ -13,21 +13,22 @@ class Profile extends React.Component {
         this.state = {
             user: {},
             modalIsOpen: false,
-            isPass: false
+            isPass: false,
+            email: null
         }
     }
 
     componentDidMount() {
         userService.getLoggedUser()
-        .then(response=>this.setState({ user: response  }))
+            .then(response => this.setState({ user: response, email: response.email }))
     }
 
-    openModal = ({}) => {
+    openModal = ({ }) => {
         this.setState(prevState => ({ modalIsOpen: !prevState.modalIsOpen }))
     }
 
-    insertData=(data, name)=>{
-        switch(name){
+    insertData = (data, name) => {
+        switch (name) {
             case 'firstName':
                 this.setState({ firstName: data })
                 break;
@@ -49,10 +50,10 @@ class Profile extends React.Component {
             case 'newPassword':
                 this.setState({ newPassword: data })
                 break;
-        }     
+        }
     }
 
-    saveNewPassword = () =>{
+    saveNewPassword = () => {
         authentication.changePassword(this.state)
     }
 
@@ -60,56 +61,56 @@ class Profile extends React.Component {
         this.setState(prevState => ({ isPass: !prevState.isPass }))
     }
 
-    submitData=()=>{
-        const data={}
+    submitData = () => {
+        const data = {}
         const { firstName, lastName, about, prefix } = this.state;
-        data.firstName=firstName;
-        data.lastName=lastName;
-        data.about=about;
-        data.prefix=prefix;
+        data.firstName = firstName;
+        data.lastName = lastName;
+        data.about = about;
+        data.prefix = prefix;
 
         userService.updateUser(this.state.user.id, data)
-        .then(response=>{
-            console.log(response);
-            window.location.reload()
-        })
+            .then(response => {
+                console.log(response);
+                window.location.reload()
+            })
     }
 
     render() {
 
-        const isAuthorized=isLoggedIn()
-        if(!isAuthorized){
+        const isAuthorized = isLoggedIn()
+        if (!isAuthorized) {
             this.props.history.push('/')
         }
 
         return (
             <Container>
                 {this.state.user
-                ?<Row className={style.user}>
-                    <ProfileModal
-                        user={this.state.user}
-                        modalIsOpen={this.state.modalIsOpen}
-                        openModal={this.openModal}
-                        insertData={this.insertData}
-                        submitData={this.submitData}
-                        changePassword={this.changePassword}
-                        isPass={this.state.isPass}
-                        saveNewPassword={this.saveNewPassword}
-                    />
-                    <h1 className='center-align'>{this.state.user.fullName}</h1>
-                    <h4 className='center-align'>{this.state.user.prefix}</h4>
-                    <div className='center-align'>
-                        <img src={avatar} className={`${style.image} center-align`} alt='avatar' />
-                    </div>
-                    <div className='center-align'>
-                        <h5 onClick={()=>this.openModal(this.state.user)} className={style.edit}><i className={`fa fa-edit ${style.editIcon}`}></i> edit user</h5>
-                    </div>
-                    <h4 className='center-align'><i className='fa fa-envelope'></i> {this.state.user.email}</h4>
-                    <h4 className='center-align'>{this.state.user.about}</h4>
-                    
-                </Row> 
-                :<></>
-            }
+                    ? <Row className={style.user}>
+                        <ProfileModal
+                            user={this.state.user}
+                            modalIsOpen={this.state.modalIsOpen}
+                            openModal={this.openModal}
+                            insertData={this.insertData}
+                            submitData={this.submitData}
+                            changePassword={this.changePassword}
+                            isPass={this.state.isPass}
+                            saveNewPassword={this.saveNewPassword}
+                        />
+                        <h1 className='center-align'>{this.state.user.fullName}</h1>
+                        <h4 className='center-align'>{this.state.user.prefix}</h4>
+                        <div className='center-align'>
+                            <img src={avatar} className={`${style.image} center-align`} alt='avatar' />
+                        </div>
+                        <div className='center-align'>
+                            <h5 onClick={() => this.openModal(this.state.user)} className={style.edit}><i className={`fa fa-edit ${style.editIcon}`}></i> edit user</h5>
+                        </div>
+                        <h4 className='center-align'><i className='fa fa-envelope'></i> {this.state.user.email}</h4>
+                        <h4 className='center-align'>{this.state.user.about}</h4>
+
+                    </Row>
+                    : <></>
+                }
             </Container>
         )
     }
