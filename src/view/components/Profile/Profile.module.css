@@ -22,3 +22,7 @@
     animation-timing-function: linear;
     cursor: pointer;
 }
+
+.user{
+    background-color: orange;
+}
