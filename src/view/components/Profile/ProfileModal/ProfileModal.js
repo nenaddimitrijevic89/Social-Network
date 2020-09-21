@@ -44,7 +44,7 @@ const ProfileModal = ({ insertData, submitData, modalIsOpen, openModal, user, is
                     id="Switch-11"
                     offLabel="Info"
                     onChange={changeForm}
-                    onLabel={<i className='fa fa-key'><span className={style.font}> Change Password</span></i>}
+                    onLabel='Change Password'
                 />
                 {isPass
 

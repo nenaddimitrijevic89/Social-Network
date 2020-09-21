@@ -6,6 +6,7 @@ import style from './Profile.module.css';
 import { isLoggedIn } from '../../../shared/utilities';
 import { ProfileModal } from './ProfileModal/ProfileModal';
 import { authentication } from '../../../services/authService';
+import { Loader } from '../Loader/Loader';
 
 class Profile extends React.Component {
     constructor() {
@@ -14,13 +15,15 @@ class Profile extends React.Component {
             user: {},
             modalIsOpen: false,
             isPass: false,
-            email: null
+            email: null,
+            isLoading: true
         }
     }
 
     componentDidMount() {
         userService.getLoggedUser()
             .then(response => this.setState({ user: response, email: response.email }))
+            .finally(()=> this.setState({ isLoading: false }))
     }
 
     openModal = ({ }) => {
@@ -85,8 +88,11 @@ class Profile extends React.Component {
 
         return (
             <Container>
-                {this.state.user
-                    ? <Row className={style.user}>
+                {this.state.isLoading
+
+                    ?<Loader />
+
+                    : <Row className={style.user}>
                         <ProfileModal
                             user={this.state.user}
                             modalIsOpen={this.state.modalIsOpen}
@@ -109,7 +115,6 @@ class Profile extends React.Component {
                         <h4 className='center-align'>{this.state.user.about}</h4>
 
                     </Row>
-                    : <></>
                 }
             </Container>
         )
