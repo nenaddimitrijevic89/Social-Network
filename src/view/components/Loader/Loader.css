@@ -1,7 +1,7 @@
 .sk-folding-cube {
-    margin: 20px auto;
-    width: 40px;
-    height: 40px;
+    margin: 200px auto;
+    width: 60px;
+    height: 60px;
     position: relative;
     -webkit-transform: rotateZ(45deg);
             transform: rotateZ(45deg);
@@ -23,7 +23,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: red;
+    background-color: #38405F;
     -webkit-animation: sk-foldCubeAngle 2.4s infinite linear both;
             animation: sk-foldCubeAngle 2.4s infinite linear both;
     -webkit-transform-origin: 100% 100%;
