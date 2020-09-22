@@ -11,7 +11,7 @@ const User = ({ user }) => {
             <Row className={style.margin}>
                 <Col className={style.user} lg={12}>
                     <div className=''>
-                        <img className={style.image} src={avatar}></img>
+                        <img className={style.image} src={avatar} alt='avatar'></img>
                     </div>
                     <div className={style.info}>
                         <p><span> {firstName} {lastName}</span></p>

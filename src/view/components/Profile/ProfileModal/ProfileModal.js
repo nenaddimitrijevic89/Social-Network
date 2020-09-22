@@ -1,15 +1,14 @@
 import React from 'react';
 import Modal from 'react-modal';
 import { Container, Row, Button, Switch } from 'react-materialize';
-import style from './ProfileModal.module.css';
 import { InputInfo } from './Input/InputInfo';
 import { InputPassword } from './Input/InputPassword';
 
-const ProfileModal = ({ insertData, submitData, modalIsOpen, openModal, user, isPass, changePassword, saveNewPassword }) => {
+const ProfileModal = ({ insertData, submitData, modalIsOpen, openModal, user, isPass, changeForm, saveNewPassword }) => {
 
-    const changeForm = () => {
-        changePassword()
-    }
+    // const changeForm = () => {
+    //     changePassword()
+    // }
 
     const customStyles = {
         overlay: {

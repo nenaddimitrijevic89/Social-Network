@@ -31,6 +31,10 @@ const InputPassword = ({ insertData, email }) => {
                 label='New Password'
                 name="newPassword"
             />
+            <TextInput
+                id='TextInput-14'
+                style={{ visibility: 'hidden' }}
+            />
         </Col>
     )
 }

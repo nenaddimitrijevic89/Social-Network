@@ -26,7 +26,7 @@ class Profile extends React.Component {
             .finally(()=> this.setState({ isLoading: false }))
     }
 
-    openModal = ({ }) => {
+    openModal = () => {
         this.setState(prevState => ({ modalIsOpen: !prevState.modalIsOpen }))
     }
 
@@ -53,6 +53,9 @@ class Profile extends React.Component {
             case 'newPassword':
                 this.setState({ newPassword: data })
                 break;
+            default:
+                return null
+
         }
     }
 
@@ -60,7 +63,7 @@ class Profile extends React.Component {
         authentication.changePassword(this.state)
     }
 
-    changePassword = () => {
+    changeForm = () => {
         this.setState(prevState => ({ isPass: !prevState.isPass }))
     }
 
@@ -99,7 +102,7 @@ class Profile extends React.Component {
                             openModal={this.openModal}
                             insertData={this.insertData}
                             submitData={this.submitData}
-                            changePassword={this.changePassword}
+                            changeForm={this.changeForm}
                             isPass={this.state.isPass}
                             saveNewPassword={this.saveNewPassword}
                         />
