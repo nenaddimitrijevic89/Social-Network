@@ -7,8 +7,8 @@ import { postService } from '../../../services/postService';
 import { isLoggedIn } from '../../../shared/utilities';
 
 class Feed extends React.Component {
-    constructor(props) {
-        super(props)
+    constructor() {
+        super()
         this.state = {
 
         }
