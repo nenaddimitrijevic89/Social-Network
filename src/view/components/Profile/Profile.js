@@ -106,7 +106,7 @@ class Profile extends React.Component {
                             isPass={this.state.isPass}
                             saveNewPassword={this.saveNewPassword}
                         />
-                        <h1 className='center-align'>{this.state.user.fullName}</h1>
+                        <h1 className={`center-align ${style.nameWidth}`}>{this.state.user.fullName}</h1>
                         <h4 className='center-align'>{this.state.user.prefix}</h4>
                         <div className='center-align'>
                             <img src={avatar} className={`${style.image} center-align`} alt='avatar' />
