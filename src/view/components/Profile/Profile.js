@@ -1,12 +1,12 @@
 import React from 'react';
 import { Container, Row } from 'react-materialize';
-import { userService } from '../../../services/userService';
-import avatar from '../../../images/user.png';
 import style from './Profile.module.css';
+import { userService } from '../../../services/userService';
 import { isLoggedIn } from '../../../shared/utilities';
 import { ProfileModal } from './ProfileModal/ProfileModal';
 import { authentication } from '../../../services/authService';
 import { Loader } from '../Loader/Loader';
+import { ProfileInfo } from './ProfileInfo/ProfileInfo';
 
 class Profile extends React.Component {
     constructor() {
@@ -106,17 +106,10 @@ class Profile extends React.Component {
                             isPass={this.state.isPass}
                             saveNewPassword={this.saveNewPassword}
                         />
-                        <h1 className={`center-align ${style.nameWidth}`}>{this.state.user.fullName}</h1>
-                        <h4 className='center-align'>{this.state.user.prefix}</h4>
-                        <div className='center-align'>
-                            <img src={avatar} className={`${style.image} center-align`} alt='avatar' />
-                        </div>
-                        <div className='center-align'>
-                            <h5 onClick={() => this.openModal(this.state.user)} className={style.edit}><i className={`fa fa-edit ${style.editIcon}`}></i> edit user</h5>
-                        </div>
-                        <h4 className='center-align'><i className='fa fa-envelope'></i> {this.state.user.email}</h4>
-                        <h4 className='center-align'>{this.state.user.about}</h4>
-
+                        <ProfileInfo 
+                            user={this.state.user}
+                            openModal={this.openModal}
+                        />
                     </Row>
                 }
             </Container>
