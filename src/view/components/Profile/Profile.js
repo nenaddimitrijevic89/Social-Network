@@ -61,6 +61,7 @@ class Profile extends React.Component {
 
     saveNewPassword = () => {
         authentication.changePassword(this.state)
+        .finally(()=>this.setState({ modalIsOpen: false }))
     }
 
     changeForm = () => {
