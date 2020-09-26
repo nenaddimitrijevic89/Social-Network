@@ -1,11 +1,11 @@
 import React from 'react';
 import { Row, Col } from 'react-materialize';
 
-const TextPost = () => {
+const TextPost = ({ src }) => {
   return (
     <Row>
       <Col m={12} s={12}>
-        <>Text</>
+        <h1>{src}</h1>
       </Col>
     </Row>
   )
