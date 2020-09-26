@@ -1,11 +1,11 @@
 import React from 'react';
 import { Row, Col } from 'react-materialize';
 
-const VideoPost = () => {
+const VideoPost = ({ src }) => {
     return (
         <Row>
             <Col>
-                <>VideoPost</>
+                <iframe src={src} title='post video'></iframe>
             </Col>
         </Row>
     )

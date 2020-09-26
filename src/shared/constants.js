@@ -1,4 +1,4 @@
-import {getAuthHeader} from './utilities';
+import { getAuthHeader } from './utilities';
 
 export const HEADERS = () => {
         return {
@@ -7,3 +7,23 @@ export const HEADERS = () => {
                 Authorization: getAuthHeader()
         }
 };
+
+export const handlePostTypeDisplay = (post) => {
+        if (post.type === "image") {
+          const buffer = post.src?.data;
+          
+          const b64 = Buffer.from(buffer).toString("base64");
+          post.src = buffer ? "data:image/png;base64," + b64 : null;
+        } else {
+          const stringSrc = Buffer.from(post.src.data).toString();
+          post.src = stringSrc;
+        }
+}
+
+export const cut =(post)=>{
+        const base = 'https://www.youtube.com/embed/';
+        const id=post.slice(32)
+        return `${base}${id}`;
+}
+
+      
