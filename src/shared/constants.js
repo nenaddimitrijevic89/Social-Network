@@ -18,4 +18,10 @@ export const handlePostTypeDisplay = (post) => {
           const stringSrc = Buffer.from(post.src.data).toString();
           post.src = stringSrc;
         }
-}      
+}
+
+export const handleImageDisplay = (user) => {
+                const buffer = user.avatarUrl?.data || "";
+                const b64 = Buffer.from(buffer).toString("base64");
+                user.avatarUrl = buffer ? "data:image/png;base64," + b64 : null;
+}

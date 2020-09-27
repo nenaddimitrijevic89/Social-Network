@@ -1,4 +1,4 @@
-import { HEADERS } from "../shared/constants";
+import { handleImageDisplay, HEADERS } from "../shared/constants";
 import { User } from "../entities/UserObj";
 import { storageService } from "./storageService";
 const { baseURL } = require("../shared/baseURL");
@@ -12,7 +12,10 @@ class UserService {
             .then(response => {
                 const usersList = response.data.data;
                 console.log(usersList)
-                const newUsersList = usersList.map(user => new User(user))
+                const newUsersList = usersList.map(user =>{
+                    handleImageDisplay(user)
+                    return new User(user)
+                })
                 return newUsersList;
             })
             .catch(error => console.log(error))
@@ -23,7 +26,9 @@ class UserService {
                 headers: HEADERS()
             })
             .then(response => {
-                const user = new User(response.data);
+                const buffer=response.data;
+                handleImageDisplay(buffer)
+                const user = new User(buffer);
                 return user;
             })
     }
@@ -34,7 +39,9 @@ class UserService {
             })
             .then(response => {
                 console.log(response);
-                const user = new User(response.data.data)
+                const buffer=response.data.data;
+                handleImageDisplay(buffer)
+                const user = new User(buffer)
                 return user;
             })
             .catch(error => console.log(error))

@@ -8,7 +8,7 @@ const ProfileInfo =({ user, openModal })=>{
             <h1 className={`center-align ${style.nameWidth}`}>{user.fullName}</h1>
             <h4 className='center-align'>{user.prefix}</h4>
             <div className='center-align'>
-                <img src={avatar} className={`${style.image} center-align`} alt='avatar' />
+                <img src={user.avatarUrl ? user.avatarUrl : avatar} className={`${style.image} center-align`} alt='avatar' />
             </div>
             <div className='center-align'>
                 <h5 onClick={() => openModal(user)} className={style.edit}><i className={`fa fa-edit ${style.editIcon}`}></i> edit user</h5>
