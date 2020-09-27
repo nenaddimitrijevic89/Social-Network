@@ -1,4 +1,4 @@
-import { cut } from "../shared/constants";
+import { embed } from "../shared/utilities";
 
 class Post{
     constructor(post){
@@ -6,7 +6,7 @@ class Post{
             this.id=post._id;
             this.createdAt = post.createdAt;
             this.owner = post.owner; 
-            this.src = cut(post.src);
+            this.src = embed(post.src);
             this.type = post.type;
             this.updatedAt = post.updatedAt;
         } else {
