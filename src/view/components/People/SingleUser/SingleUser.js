@@ -28,7 +28,7 @@ class SingleUser extends React.Component {
         return (
             <>
                 <Button
-                    onClick={this.removeUser}
+                    // onClick={this.removeUser}
                 >Remove User
                 </Button>
             </>
