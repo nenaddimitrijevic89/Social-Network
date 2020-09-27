@@ -18,12 +18,4 @@ export const handlePostTypeDisplay = (post) => {
           const stringSrc = Buffer.from(post.src.data).toString();
           post.src = stringSrc;
         }
-}
-
-export const cut =(post)=>{
-        const base = 'https://www.youtube.com/embed/';
-        const id=post.slice(32)
-        return `${base}${id}`;
-}
-
-      
+}      
