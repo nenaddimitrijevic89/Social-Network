@@ -1,14 +1,15 @@
 import React from 'react';
 import { Row, Col, Card } from 'react-materialize';
 import { PostUser } from '../PostUser/PostUser';
+import style from './VideoPost.module.css';
 
-const VideoPost = ({ src }) => {
+const VideoPost = ({ post, user }) => {
     return (
         <Row>
             <Col>
-                <Card>
-                    <PostUser/>
-                    <iframe src={src} title='post video' width='720px' height='400px'></iframe>
+                <Card className={style.div}>
+                    <PostUser user={user} post={post}/>
+                    <iframe src={post.src} title='post video' className={style.video}></iframe>
                 </Card>
             </Col>
         </Row>
