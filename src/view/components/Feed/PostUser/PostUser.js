@@ -14,8 +14,7 @@ const PostUser =({ user, post })=> {
                 <img className={style.radius} src={user[0].avatarUrl ? user[0].avatarUrl: avatar } alt='user'></img>
             </div>
             <div className={style.info}>
-                <p><span> </span></p>
-                <p><span> {user[0] ? user[0].fullName : 'unknown'}</span></p>
+                <p><span className={style.bold}> {user[0] ? user[0].fullName : 'unknown'}</span></p>
                 <p>created:<span> {convertDate(post.createdAt)}</span></p>
             </div>
         </div>

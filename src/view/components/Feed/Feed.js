@@ -1,12 +1,13 @@
 import React from 'react';
 import { TextPost } from './TextPost/TextPost';
-import { Container } from 'react-materialize';
+import { Button, Container, Icon } from 'react-materialize';
 import { ImagePost } from './ImagePost/ImagePost';
 import { VideoPost } from './VideoPost/VideoPost';
 import { postService } from '../../../services/postService';
 import { isLoggedIn } from '../../../shared/utilities';
 import { userService } from '../../../services/userService';
 import { Loader } from '../Loader/Loader';
+import { PostModal } from './PostModal/PostModal';
 
 class Feed extends React.Component {
     constructor() {
@@ -14,7 +15,8 @@ class Feed extends React.Component {
         this.state = {
             posts: [],
             users: [],
-            isLoading: true
+            isLoading: true,
+            modalIsOpen: false
         }
     }
 
@@ -32,6 +34,10 @@ class Feed extends React.Component {
         return postUser;
     }
 
+    openModal = () => {
+        this.setState(prevState => ({ modalIsOpen: !prevState.modalIsOpen }))
+    }
+
     render() {
         
         const isAuthorized=isLoggedIn()
@@ -45,18 +51,28 @@ class Feed extends React.Component {
                 
                 ?<Loader/>
 
-                :<>{this.state.posts.map(post => {
-                    if(post.type==="text"){
-                        return <TextPost key={post.id} post={post} user={this.filterPostUser(post.owner)}/>
-                    }
-                    if(post.type==="video"){
-                        return <VideoPost key={post.id} post={post} user={this.filterPostUser(post.owner)}/>
-                    }else{
-                        return <ImagePost key={post.id} post={post} user={this.filterPostUser(post.owner)}/>
-                    }
+                :<><PostModal openModal={this.openModal} modalIsOpen={this.state.modalIsOpen}/>
+                    {this.state.posts.map(post => {
+                        if(post.type==="text"){
+                            return <TextPost key={post.id} post={post} user={this.filterPostUser(post.owner)}/>
+                        }
+                        if(post.type==="video"){
+                            return <VideoPost key={post.id} post={post} user={this.filterPostUser(post.owner)}/>
+                        }else{
+                            return <ImagePost key={post.id} post={post} user={this.filterPostUser(post.owner)}/>
+                        }
                 })}</>
                 
                 }
+                <Button
+                    onClick={this.openModal}
+                    className="red"
+                    fab
+                    icon={<i className='fa fa-plus'></i>}
+                    floating
+                    large
+                    node="button"
+                ></Button>
             </Container>
         )
     }

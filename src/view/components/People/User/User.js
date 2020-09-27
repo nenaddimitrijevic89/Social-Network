@@ -5,19 +5,17 @@ import avatar from '../../../../images/user.png';
 import style from './User.module.css';
 
 const User = ({ user }) => {
-    const { firstName, lastName, email, id } = user;
+    const { email, id, fullName } = user;
     return (
         <Link to={`/people/${id}`}>
-            <Row className={style.margin}>
-                <Col className={style.user} lg={12}>
+            <Row className={`${style.margin} ${style.center}`}>
+                <Col className={`${style.user} ${style.marginSide}`} s={12} m={12} l={9}>
                     <div className=''>
-                        <img className={style.image} src={avatar} alt='avatar'></img>
+                        <img className={style.image} src={user.avatarUrl ? user.avatarUrl : avatar} alt='avatar'></img>
                     </div>
                     <div className={style.info}>
-                        <p><span> {firstName} {lastName}</span></p>
+                        <p><span className={style.bold}> {fullName}</span></p>
                         <p><i className="fa fa-envelope"></i><span> {email}</span></p>
-                    {/* </div>
-                    <div className={style.info}> */}
                         <p>posts</p>
                         <p>comments</p>
                     </div>

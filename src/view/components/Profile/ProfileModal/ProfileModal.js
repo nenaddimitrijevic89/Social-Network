@@ -3,31 +3,9 @@ import Modal from 'react-modal';
 import { Container, Row, Button, Switch } from 'react-materialize';
 import { InputInfo } from './Input/InputInfo';
 import { InputPassword } from './Input/InputPassword';
+import { customStyles } from '../../../../shared/constants';
 
 const ProfileModal = ({ insertData, submitData, modalIsOpen, openModal, user, isPass, changeForm, saveNewPassword }) => {
-
-    // const changeForm = () => {
-    //     changePassword()
-    // }
-
-    const customStyles = {
-        overlay: {
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            backgroundColor: 'rgba(218, 218, 218, 0.5)'
-        },
-        content: {
-            top: '50%',
-            left: '50%',
-            right: 'auto',
-            bottom: 'auto',
-            marginRight: '-50%',
-            transform: 'translate(-50%, -50%)'
-        }
-    };
 
     return (
         <Modal
