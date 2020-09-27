@@ -4,11 +4,14 @@ import avatar from '../../../../images/user.png';
 import { convertDate } from '../../../../shared/utilities';
 
 const PostUser =({ user, post })=> {
+    if(!user[0]){
+        return <></>
+    }
     console.log(user)
     return(
         <div className={style.user}>
             <div className={style.img}>
-                <img className={style.radius} src={user.avatarUrl ? user.avatarUrl: avatar } alt='user'></img>
+                <img className={style.radius} src={user[0].avatarUrl ? user[0].avatarUrl: avatar } alt='user'></img>
             </div>
             <div className={style.info}>
                 <p><span> </span></p>
