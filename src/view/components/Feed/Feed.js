@@ -18,7 +18,9 @@ class Feed extends React.Component {
             isLoading: true,
             modalIsOpen: false,
             type: null,
-            src: null
+            src: null,
+            isText: true,
+            isImage: false
         }
     }
 
@@ -54,6 +56,19 @@ class Feed extends React.Component {
         .then(() => window.location.reload())
     }
 
+    change =()=>{
+        this.setState(prevState => ({ isText: !prevState.isText, isImage: !prevState.isImage }),
+        ()=>{
+            if(this.state.isText){
+                this.setState({ type: 'text'})
+            }else{
+                this.setState({ type: 'image' })
+            }
+        }
+        )
+        
+    }
+
     render() {
         
         const isAuthorized=isLoggedIn()
@@ -72,6 +87,8 @@ class Feed extends React.Component {
                         modalIsOpen={this.state.modalIsOpen}
                         writePost={this.writePost}
                         savePost={this.savePost}
+                        change={this.change}
+                        isText={this.state.isText}
                     />
                     {this.state.posts.map(post => {
                         if(post.type==="text"){
@@ -83,9 +100,8 @@ class Feed extends React.Component {
                             return <ImagePost key={post.id} post={post} user={this.filterPostUser(post.owner)}/>
                         }
                 })}</>
-                
                 }
-                {/* <Button
+                <Button
                     onClick={this.openModal}
                     className="red"
                     fab
@@ -93,21 +109,7 @@ class Feed extends React.Component {
                     floating
                     large
                     node="button"
-                ></Button> */}
-
-<div class="fixed-action-btn">
-  <a class="btn-floating btn-large red">
-    <i class="large material-icons">mode_edit</i>
-  </a>
-  <ul>
-    <li><a class="btn-floating red"><i class="material-icons">insert_chart</i></a></li>
-    <li><a class="btn-floating yellow darken-1"><i class="material-icons">format_quote</i></a></li>
-    <li><a class="btn-floating green"><i class="material-icons">publish</i></a></li>
-    <li><a class="btn-floating blue"><i class="material-icons">attach_file</i></a></li>
-  </ul>
-</div>
-
-
+                ></Button>
             </Container>
         )
     }
