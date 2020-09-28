@@ -4,8 +4,6 @@ import { PostUser } from '../PostUser/PostUser';
 import style from './TextPost.module.css';
 
 const TextPost = ({ post, user, deletePost }) => {
-  const {id}=post;
-  console.log(id)
   return (
     <Row className={style.center}>
       <Col m={12} s={12} l={9} className={style.margin}>
@@ -16,7 +14,7 @@ const TextPost = ({ post, user, deletePost }) => {
           </CardPanel>
           <i className='fa fa-trash' onClick={() => {
             console.log('deleted')
-            deletePost(id)}}></i>
+            deletePost(post.id)}}></i>
         </Card>
       </Col>
     </Row>

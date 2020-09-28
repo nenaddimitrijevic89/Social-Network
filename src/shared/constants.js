@@ -26,14 +26,11 @@ const handleImageDisplay = (user) => {
                 user.avatarUrl = buffer ? "data:image/png;base64," + b64 : null;
 }
 
-const customStyles =(width)=> {
-
+const customStyles = (width) => {
         if(window.innerWidth < 860){
                 width='90%'
         }
-
         return{
-
                 overlay: {
                     position: 'fixed',
                     top: 0,
