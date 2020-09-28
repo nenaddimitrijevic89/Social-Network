@@ -1,6 +1,6 @@
 import React from 'react';
 import { TextPost } from './TextPost/TextPost';
-import { Button, Container, Icon } from 'react-materialize';
+import { Button, Container } from 'react-materialize';
 import { ImagePost } from './ImagePost/ImagePost';
 import { VideoPost } from './VideoPost/VideoPost';
 import { postService } from '../../../services/postService';
@@ -49,6 +49,11 @@ class Feed extends React.Component {
         .then(() => window.location.reload())
     }
 
+    deletePost = (id) => {
+        postService.deletePost(id)
+        .then(() => window.location.reload())
+    }
+
     render() {
         
         const isAuthorized=isLoggedIn()
@@ -70,7 +75,7 @@ class Feed extends React.Component {
                     />
                     {this.state.posts.map(post => {
                         if(post.type==="text"){
-                            return <TextPost key={post.id} post={post} user={this.filterPostUser(post.owner)}/>
+                            return <TextPost key={post.id} post={post} user={this.filterPostUser(post.owner)} deletePost={this.deletePost}/>
                         }
                         if(post.type==="video"){
                             return <VideoPost key={post.id} post={post} user={this.filterPostUser(post.owner)}/>

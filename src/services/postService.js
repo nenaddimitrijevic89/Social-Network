@@ -26,6 +26,12 @@ class PostService {
         })
         .then(response=>console.log(response))
     }
+
+    deletePost(id) {
+        return baseURL.delete(`posts/${id}`, {
+            headers: HEADERS()
+        })
+    }
 }
 
 export const postService = new PostService()
