@@ -3,8 +3,8 @@ import { userService } from '../../../../services/userService';
 import { Button } from 'react-materialize';
 
 class SingleUser extends React.Component {
-    constructor(props) {
-        super(props)
+    constructor() {
+        super()
         this.state = {
             user: null,
             posts: []
