@@ -5,7 +5,7 @@ import { customStyles }  from '../../../../shared/constants';
 import { TextPostModal } from './TextPostModal.js/TextPostModal';
 import { ImagePostModal } from './ImagePostModal/ImagePostModal';
 
-const PostModal =({ modalIsOpen, openModal, writePost, savePost })=>{
+const PostModal =({ modalIsOpen, openModal, writePost, savePost, change, isText })=>{
     
     return(
         <Modal
@@ -16,8 +16,15 @@ const PostModal =({ modalIsOpen, openModal, writePost, savePost })=>{
             contentLabel="modal"
         >
             <Container>
-                <TextPostModal writePost={writePost} />
-                <ImagePostModal/>
+                <Button onClick={change}>change</Button>
+                
+                {isText
+                
+                ?<TextPostModal writePost={writePost} />
+
+                :<ImagePostModal writePost={writePost} />
+                }
+                
                 <Row>
                     <Button onClick={savePost}>Save</Button>
                 </Row>

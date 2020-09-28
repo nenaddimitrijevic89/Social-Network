@@ -1,7 +1,11 @@
 import React from 'react';
 import { Row } from 'react-materialize';
 
-const ImagePostModal =()=>{
+const ImagePostModal =({ writePost })=>{
+    const posting=(event)=>{
+        const post=event.target.value;
+        writePost(post)
+    }
     return(
         <Row>
             <h2>
@@ -14,7 +18,7 @@ const ImagePostModal =()=>{
                     <input type="file"/>
                 </div>
                 <div class="file-path-wrapper">
-                    <input class="file-path validate" type="text"/>
+                    <input class="file-path validate" type="text" onDrag={posting}/>
                 </div>
             </div>
         </Row>
