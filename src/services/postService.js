@@ -10,7 +10,6 @@ class PostService {
         })
         .then(response =>{
             const posts=response.data.data.map(post=>{
-                console.log(post)
                 handlePostTypeDisplay(post)
                 return new Post(post)
             })
@@ -25,12 +24,14 @@ class PostService {
             headers: HEADERS()
         })
         .then(response=>console.log(response))
+        .catch(error => console.log(error))
     }
 
     deletePost(id) {
         return baseURL.delete(`posts/${id}`, {
             headers: HEADERS()
         })
+        .catch(error=>console.log(error))
     }
 }
 
