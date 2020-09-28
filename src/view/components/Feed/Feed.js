@@ -16,7 +16,9 @@ class Feed extends React.Component {
             posts: [],
             users: [],
             isLoading: true,
-            modalIsOpen: false
+            modalIsOpen: false,
+            type: null,
+            src: null
         }
     }
 
@@ -35,7 +37,16 @@ class Feed extends React.Component {
     }
 
     openModal = () => {
-        this.setState(prevState => ({ modalIsOpen: !prevState.modalIsOpen }))
+        this.setState(prevState => ({ modalIsOpen: !prevState.modalIsOpen, type: 'text' }))
+    }
+
+    writePost = (post) => {
+        this.setState({ src: post })
+    }
+
+    savePost = () => {
+        postService.createPost(this.state)
+        .then(() => window.location.reload())
     }
 
     render() {
@@ -51,7 +62,12 @@ class Feed extends React.Component {
                 
                 ?<Loader/>
 
-                :<><PostModal openModal={this.openModal} modalIsOpen={this.state.modalIsOpen}/>
+                :<><PostModal
+                        openModal={this.openModal}
+                        modalIsOpen={this.state.modalIsOpen}
+                        writePost={this.writePost}
+                        savePost={this.savePost}
+                    />
                     {this.state.posts.map(post => {
                         if(post.type==="text"){
                             return <TextPost key={post.id} post={post} user={this.filterPostUser(post.owner)}/>

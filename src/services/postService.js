@@ -19,6 +19,13 @@ class PostService {
         .catch(error => console.log(error))
             
     }
+
+    createPost({ type, src }) {
+        return baseURL.post('posts', { type, src }, {
+            headers: HEADERS()
+        })
+        .then(response=>console.log(response))
+    }
 }
 
 export const postService = new PostService()
