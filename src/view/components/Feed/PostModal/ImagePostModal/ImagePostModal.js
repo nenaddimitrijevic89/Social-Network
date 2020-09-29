@@ -4,6 +4,7 @@ import { Row } from 'react-materialize';
 const ImagePostModal =({ writePost })=>{
     const posting=(event)=>{
         const post=event.target.value;
+        console.log(post)
         writePost(post)
     }
     return(
@@ -12,13 +13,13 @@ const ImagePostModal =({ writePost })=>{
                 Image Post
             </h2>
             <hr></hr>                
-            <div class="file-field input-field">
-                <div class="btn">
+            <div className="file-field input-field">
+                <div className="btn">
                     <span>File</span>
                     <input type="file"/>
                 </div>
-                <div class="file-path-wrapper">
-                    <input class="file-path validate" type="text" onDrag={posting}/>
+                <div className="file-path-wrapper">
+                    <input className="file-path validate" type="text" onChange={posting}/>
                 </div>
             </div>
         </Row>
