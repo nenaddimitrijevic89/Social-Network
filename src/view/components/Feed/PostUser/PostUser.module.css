@@ -4,6 +4,7 @@
     padding: 15px;
     border: 1px solid rgb(200, 199, 199);
     border-bottom: none;
+    position: relative;
 }
 
 .user:hover {
@@ -27,3 +28,15 @@
 .bold{
     font-weight: bold;
 }
+
+.trash{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 25px;
+}
+
+.trash:hover{
+    color: red;
+}
+

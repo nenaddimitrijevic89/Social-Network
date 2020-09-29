@@ -20,7 +20,8 @@ class Feed extends React.Component {
             type: null,
             src: null,
             isText: true,
-            isImage: false
+            isImage: false,
+            isVideo: false
         }
     }
 
@@ -48,7 +49,10 @@ class Feed extends React.Component {
 
     savePost = () => {
         postService.createPost(this.state)
-        .then(() => window.location.reload())
+        .then(() => {
+            postService.getAllPosts()
+            .then(response=>this.setState({ posts: response, modalIsOpen: false }))
+        })
     }
 
     deletePost = (id) => {
@@ -56,17 +60,16 @@ class Feed extends React.Component {
         .then(() => window.location.reload())
     }
 
-    change =()=>{
-        this.setState(prevState => ({ isText: !prevState.isText, isImage: !prevState.isImage }),
-        ()=>{
-            if(this.state.isText){
-                this.setState({ type: 'text'})
-            }else{
-                this.setState({ type: 'image' })
-            }
-        }
-        )
-        
+    changeText =()=>{
+        this.setState({ isText: true, isImage: false, isVideo: false, type: 'text' })
+    }
+
+    changeImage =()=>{
+        this.setState({ isImage: true, isText: false, isVideo: false, type: 'image' })
+    }
+
+    changeVideo=()=>{
+        this.setState({ isVideo: true, isText: false, isImage: false, type: 'video' })
     }
 
     render() {
@@ -87,17 +90,21 @@ class Feed extends React.Component {
                         modalIsOpen={this.state.modalIsOpen}
                         writePost={this.writePost}
                         savePost={this.savePost}
-                        change={this.change}
+                        changeText={this.changeText}
+                        changeImage={this.changeImage}
+                        changeVideo={this.changeVideo}
                         isText={this.state.isText}
+                        isImage={this.state.isImage}
+                        isVideo={this.state.isVideo}
                     />
                     {this.state.posts.map(post => {
                         if(post.type==="text"){
                             return <TextPost key={post.id} post={post} user={this.filterPostUser(post.owner)} deletePost={this.deletePost}/>
                         }
                         if(post.type==="video"){
-                            return <VideoPost key={post.id} post={post} user={this.filterPostUser(post.owner)}/>
+                            return <VideoPost key={post.id} post={post} user={this.filterPostUser(post.owner)} deletePost={this.deletePost}/>
                         }else{
-                            return <ImagePost key={post.id} post={post} user={this.filterPostUser(post.owner)}/>
+                            return <ImagePost key={post.id} post={post} user={this.filterPostUser(post.owner)} deletePost={this.deletePost}/>
                         }
                 })}</>
                 }

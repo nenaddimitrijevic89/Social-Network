@@ -4,8 +4,9 @@ import Modal from 'react-modal';
 import { customStyles }  from '../../../../shared/constants';
 import { TextPostModal } from './TextPostModal.js/TextPostModal';
 import { ImagePostModal } from './ImagePostModal/ImagePostModal';
+import { VideoPostModal } from './VideoPostModal/VideoPostModal';
 
-const PostModal =({ modalIsOpen, openModal, writePost, savePost, change, isText })=>{
+const PostModal =({ modalIsOpen, openModal, writePost, savePost,changeText, changeImage, changeVideo, isText, isImage, isVideo })=>{
     
     return(
         <Modal
@@ -16,15 +17,16 @@ const PostModal =({ modalIsOpen, openModal, writePost, savePost, change, isText 
             contentLabel="modal"
         >
             <Container>
-                <Button onClick={change}>change</Button>
-                
-                {isText
-                
-                ?<TextPostModal writePost={writePost} />
+                <Button onClick={changeText} name='text'><i className='fa fa-pencil'></i></Button>
+                <Button onClick={changeImage} name='image'><i className='fa fa-image'></i></Button>
+                <Button onClick={changeVideo} name='video'><i className='fa fa-play'></i></Button>
 
-                :<ImagePostModal writePost={writePost} />
-                }
+                {isText && <TextPostModal writePost={writePost} />}
+
+                {isImage && <ImagePostModal writePost={writePost} />}
                 
+                {isVideo && <VideoPostModal writePost={writePost}/>}
+
                 <Row>
                     <Button onClick={savePost}>Save</Button>
                 </Row>
