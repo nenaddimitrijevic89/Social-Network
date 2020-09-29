@@ -17,6 +17,7 @@ const PostUser =({ user, post, deletePost })=> {
                 <p><span> {convertDate(post.createdAt)}</span></p>
             </div>
             <i className={`${style.trash} fa fa-trash`} onClick={() => deletePost(post.id)}></i>
+            <i class={`${style.comment} fa fa-comment`}></i>
         </div>
     )
 }

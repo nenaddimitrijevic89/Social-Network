@@ -40,3 +40,13 @@
     color: red;
 }
 
+.comment{
+    position: absolute;
+    top: 45px;
+    right: 10px;
+    font-size: 25px;
+}
+
+.comment:hover{
+    color: blue;
+}
