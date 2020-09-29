@@ -102,9 +102,9 @@ class Feed extends React.Component {
                             return <TextPost key={post.id} post={post} user={this.filterPostUser(post.owner)} deletePost={this.deletePost}/>
                         }
                         if(post.type==="video"){
-                            return <VideoPost key={post.id} post={post} user={this.filterPostUser(post.owner)}/>
+                            return <VideoPost key={post.id} post={post} user={this.filterPostUser(post.owner)} deletePost={this.deletePost}/>
                         }else{
-                            return <ImagePost key={post.id} post={post} user={this.filterPostUser(post.owner)}/>
+                            return <ImagePost key={post.id} post={post} user={this.filterPostUser(post.owner)} deletePost={this.deletePost}/>
                         }
                 })}</>
                 }

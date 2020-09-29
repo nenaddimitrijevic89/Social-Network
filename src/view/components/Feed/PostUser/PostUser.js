@@ -3,7 +3,7 @@ import style from './PostUser.module.css';
 import avatar from '../../../../images/user.png';
 import { convertDate } from '../../../../shared/utilities';
 
-const PostUser =({ user, post })=> {
+const PostUser =({ user, post, deletePost })=> {
     if(!user[0]){
         return <></>
     }
@@ -14,8 +14,9 @@ const PostUser =({ user, post })=> {
             </div>
             <div className={style.info}>
                 <p><span className={style.bold}> {user[0] ? user[0].fullName : 'unknown'}</span></p>
-                <p>created:<span> {convertDate(post.createdAt)}</span></p>
+                <p><span> {convertDate(post.createdAt)}</span></p>
             </div>
+            <i className={`${style.trash} fa fa-trash`} onClick={() => deletePost(post.id)}></i>
         </div>
     )
 }
