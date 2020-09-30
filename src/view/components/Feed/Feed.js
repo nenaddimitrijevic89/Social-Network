@@ -49,10 +49,10 @@ class Feed extends React.Component {
 
     uploadImage = () => {
         const data = new FormData();
-        data.append('image', this.state.src, this.state.src.name);
+        data.append(this.state.src, this.state.src.name);
         console.log(data)
         this.setState({ src: data })
-        // postService.createPost(this.state)
+        postService.createImagePost(this.state.src)
     }
 
     savePost = () => {

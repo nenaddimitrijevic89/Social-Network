@@ -4,7 +4,9 @@ import { Row } from 'react-materialize';
 const ImagePostModal =({ writePost })=>{
     const posting=(event)=>{
         const post=event.target.files;
-        console.log(post[0])
+        // const formData= new FormData();
+        // formData.append('image',post[0], post[0].name)
+        // console.log(post[0], post[0].name)
         writePost(post[0])
     }
     return(
@@ -16,7 +18,7 @@ const ImagePostModal =({ writePost })=>{
             <div className="file-field input-field">
                 <div className="btn">
                     <span>File</span>
-                    <input type="file" name='file'onChange={posting}/>
+                    <input type="file" name='image' accept='image/jpeg' onChange={posting}/>
                 </div>
                 <div className="file-path-wrapper">
                     <input className="file-path validate" type="text"/>
