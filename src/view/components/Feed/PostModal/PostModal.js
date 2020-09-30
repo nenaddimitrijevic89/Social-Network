@@ -6,7 +6,7 @@ import { TextPostModal } from './TextPostModal.js/TextPostModal';
 import { ImagePostModal } from './ImagePostModal/ImagePostModal';
 import { VideoPostModal } from './VideoPostModal/VideoPostModal';
 
-const PostModal =({ modalIsOpen, openModal, writePost, savePost,changeText, changeImage, changeVideo, isText, isImage, isVideo })=>{
+const PostModal =({ modalIsOpen, openModal, writePost, savePost,changeText, changeImage, changeVideo, isText, isImage, isVideo, uploadImage })=>{
     
     return(
         <Modal
@@ -29,6 +29,7 @@ const PostModal =({ modalIsOpen, openModal, writePost, savePost,changeText, chan
 
                 <Row>
                     <Button onClick={savePost}>Save</Button>
+                    <Button onClick={uploadImage}>Upload</Button>
                 </Row>
             </Container>
         </Modal>

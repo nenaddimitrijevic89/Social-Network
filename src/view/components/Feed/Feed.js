@@ -47,6 +47,14 @@ class Feed extends React.Component {
         this.setState({ src: post })
     }
 
+    uploadImage = () => {
+        const data = new FormData();
+        data.append('image', this.state.src, this.state.src.name);
+        console.log(data)
+        this.setState({ src: data })
+        // postService.createPost(this.state)
+    }
+
     savePost = () => {
         postService.createPost(this.state)
         .then(() => {
@@ -96,6 +104,7 @@ class Feed extends React.Component {
                         isText={this.state.isText}
                         isImage={this.state.isImage}
                         isVideo={this.state.isVideo}
+                        uploadImage={this.uploadImage}
                     />
                     {this.state.posts.map(post => {
                         if(post.type==="text"){
