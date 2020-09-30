@@ -1,4 +1,5 @@
 import { Post } from "../entities/PostObj";
+import { storageService } from "./storageService";
 const { baseURL } = require("../shared/baseURL");
 const { HEADERS, handlePostTypeDisplay } = require("../shared/constants");
 
@@ -22,6 +23,18 @@ class PostService {
     createPost({ type, src }) {
         return baseURL.post('posts', { type, src }, {
             headers: HEADERS()
+        })
+        .then(response=>console.log(response))
+        .catch(error => console.log(error))
+    }
+
+    createImagePost(data) {
+        const token=storageService.get('token');
+        return baseURL.post('posts?type=image', data, {
+            headers: {
+                "x-api-key": "1vaHd3v",
+                Authorization: token,
+            }
         })
         .then(response=>console.log(response))
         .catch(error => console.log(error))
