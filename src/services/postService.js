@@ -28,9 +28,9 @@ class PostService {
         .catch(error => console.log(error))
     }
 
-    createImagePost(data) {
+    createImagePost({ src }) {
         const token=storageService.get('token');
-        return baseURL.post('posts?type=image', data, {
+        return baseURL.post('posts?type=image', src, {
             headers: {
                 "x-api-key": "1vaHd3v",
                 Authorization: token,
