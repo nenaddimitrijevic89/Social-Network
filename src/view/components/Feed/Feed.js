@@ -52,7 +52,7 @@ class Feed extends React.Component {
         data.append(this.state.src, this.state.src.name);
         console.log(data)
         this.setState({ src: data })
-        postService.createImagePost(this.state.src)
+        postService.createImagePost(this.state.src, this.state.type)
     }
 
     savePost = () => {
