@@ -11,7 +11,7 @@ const ImagePost = ({ post, user, deletePost, showComments, switchComments }) => 
         <Card>
           <PostUser user={user} post={post} deletePost={deletePost} switchComments={switchComments}/>
           <img src={post.src} alt='imagePost' style={{ width: '100%' }}/>
-          <Comments showComments={showComments} />
+          <Comments showComments={showComments}/>
         </Card>
       </Col>
     </Row>
