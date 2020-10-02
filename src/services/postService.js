@@ -24,10 +24,14 @@ class PostService {
         return baseURL.get(`posts/${id}`, {
             headers: HEADERS()
         })
-            .then(response => console.log(response))
+            .then(response => {
+                const post = response.data.data;
+                handlePostTypeDisplay(post)
+                return new Post(post)
+            })
     }
 
-    getAllPostComments(id) {
+    getSinglePostComments(id) {
         return baseURL.get(`posts/${id}/comments`, {
             headers: HEADERS()
         })

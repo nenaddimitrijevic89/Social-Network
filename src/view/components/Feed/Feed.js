@@ -23,8 +23,7 @@ class Feed extends React.Component {
             src: null,
             isText: true,
             isImage: false,
-            isVideo: false,
-            showComments: false
+            isVideo: false
         }
     }
 
@@ -86,10 +85,6 @@ class Feed extends React.Component {
         this.setState({ isVideo: true, isText: false, isImage: false, type: 'video' })
     }
 
-    switchComments =()=>{
-        this.setState(prevState => ({ showComments: !prevState.showComments }))
-    }
-
     render() {
         
         const isAuthorized=isLoggedIn()
@@ -118,12 +113,12 @@ class Feed extends React.Component {
                     />
                     {this.state.posts.map(post => {
                         if(post.type==="text"){
-                            return <TextPost key={post.id} post={post} showComments={this.state.showComments} user={this.filterPostUser(post.owner)} deletePost={this.deletePost}/>
+                            return <TextPost key={post.id} post={post} user={this.filterPostUser(post.owner)} deletePost={this.deletePost} isShown={false}/>
                         }
                         if(post.type==="video"){
-                            return <VideoPost key={post.id} post={post} user={this.filterPostUser(post.owner)} deletePost={this.deletePost}/>
+                            return <VideoPost key={post.id} post={post} user={this.filterPostUser(post.owner)} deletePost={this.deletePost} isShown={false}/>
                         }else{
-                            return <ImagePost switchComments={this.switchComments} key={post.id} showComments={this.state.showComments} post={post} user={this.filterPostUser(post.owner)} deletePost={this.deletePost}/>
+                            return <ImagePost key={post.id} post={post} user={this.filterPostUser(post.owner)} deletePost={this.deletePost} isShown={false}/>
                         }
                 })}</>
                 }
