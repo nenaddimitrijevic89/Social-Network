@@ -8,6 +8,7 @@ import { isLoggedIn } from '../../../shared/utilities';
 import { userService } from '../../../services/userService';
 import { Loader } from '../Loader/Loader';
 import { PostModal } from './PostModal/PostModal';
+import { commentService } from '../../../services/commentService';
 
 class Feed extends React.Component {
     constructor() {
@@ -15,13 +16,15 @@ class Feed extends React.Component {
         this.state = {
             posts: [],
             users: [],
+            comments: [],
             isLoading: true,
             modalIsOpen: false,
             type: null,
             src: null,
             isText: true,
             isImage: false,
-            isVideo: false
+            isVideo: false,
+            showComments: false
         }
     }
 
@@ -32,6 +35,9 @@ class Feed extends React.Component {
         postService.getAllPosts()
             .then(response=>this.setState({ posts: response }))
             .finally(()=> this.setState({ isLoading: false }))
+
+        commentService.getAllComments()
+            .then(response => this.setState({ comments: response }))
     }
 
     filterPostUser=(id)=>{
@@ -80,6 +86,10 @@ class Feed extends React.Component {
         this.setState({ isVideo: true, isText: false, isImage: false, type: 'video' })
     }
 
+    switchComments =()=>{
+        this.setState(prevState => ({ showComments: !prevState.showComments }))
+    }
+
     render() {
         
         const isAuthorized=isLoggedIn()
@@ -108,12 +118,12 @@ class Feed extends React.Component {
                     />
                     {this.state.posts.map(post => {
                         if(post.type==="text"){
-                            return <TextPost key={post.id} post={post} user={this.filterPostUser(post.owner)} deletePost={this.deletePost}/>
+                            return <TextPost key={post.id} post={post} showComments={this.state.showComments} user={this.filterPostUser(post.owner)} deletePost={this.deletePost}/>
                         }
                         if(post.type==="video"){
                             return <VideoPost key={post.id} post={post} user={this.filterPostUser(post.owner)} deletePost={this.deletePost}/>
                         }else{
-                            return <ImagePost key={post.id} post={post} user={this.filterPostUser(post.owner)} deletePost={this.deletePost}/>
+                            return <ImagePost switchComments={this.switchComments} key={post.id} showComments={this.state.showComments} post={post} user={this.filterPostUser(post.owner)} deletePost={this.deletePost}/>
                         }
                 })}</>
                 }

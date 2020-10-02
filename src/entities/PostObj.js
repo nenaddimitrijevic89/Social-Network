@@ -3,7 +3,7 @@ import { embed } from "../shared/utilities";
 class Post{
     constructor(post){
         if(post.type==='video'){
-            this.id=post._id;
+            this.id = post._id;
             this.createdAt = post.createdAt;
             this.owner = post.owner; 
             this.src = embed(post.src);

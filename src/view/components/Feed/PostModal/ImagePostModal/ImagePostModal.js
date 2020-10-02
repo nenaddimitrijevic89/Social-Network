@@ -10,14 +10,14 @@ const ImagePostModal =({ writePost })=>{
         writePost(formData)
     }
     return(
-        <Row>
+        <Row style={{ marginBottom: '26px' }}>
             <h2>
                 Image Post
             </h2>
             <hr></hr>                
-            <div className="file-field input-field">
+            <div className="file-field input-field col s12">
                 <div className="btn">
-                    <span>File</span>
+                    <i className='fa fa-upload'></i>
                     <input type="file" name='file' accept='image/jpeg' onChange={posting}/>
                 </div>
                 <div className="file-path-wrapper">
