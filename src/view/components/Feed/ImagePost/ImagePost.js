@@ -4,14 +4,14 @@ import { Comments } from '../Comments/Comments';
 import { PostUser } from '../PostUser/PostUser';
 import style from './ImagePost.module.css';
 
-const ImagePost = ({ post, user, deletePost }) => {
+const ImagePost = ({ post, user, deletePost, isShown }) => {
   return (
     <Row className={style.center}>
       <Col m={12} s={12} l={9} className={style.margin}>
         <Card>
           <PostUser user={user} post={post} deletePost={deletePost} />
           <img src={post.src} alt='imagePost' style={{ width: '100%' }} />
-          <Comments />
+          <Comments isShown={isShown} />
         </Card>
       </Col>
     </Row>

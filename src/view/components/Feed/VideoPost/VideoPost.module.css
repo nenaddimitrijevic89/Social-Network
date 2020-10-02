@@ -1,8 +1,3 @@
-.video{
-    width: 100%;
-    height: 450px;
-}
-
 .center{
     justify-content: center;
     align-items: center;
@@ -12,6 +7,11 @@
 .margin{
     margin-left: auto;
     margin-right: auto;
+}
+
+.video{
+    width: 100%;
+    height: 450px;
 }
 
 @media only screen and (max-width: 1024px){

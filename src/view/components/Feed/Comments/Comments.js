@@ -1,14 +1,14 @@
 import React from 'react';
 import { Card } from 'react-materialize';
 
-const Comments = ({ showComments }) => {
+const Comments = ({ isShown }) => {
     return(
         <>
-        {showComments
-        &&        
-            <Card>
-                Comments    
-            </Card>
+        {isShown
+        &&      
+        <Card>
+            Comments    
+        </Card>
         }
         </>
     )
