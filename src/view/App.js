@@ -10,6 +10,7 @@ import { Profile } from '../view/components/Profile/Profile';
 import { UserForm } from '../view/components/UserForm/UserForm';
 import { People } from '../view/components/People/People';
 import { SingleUser } from '../view/components/People/SingleUser/SingleUser';
+import { SinglePost } from './components/Feed/SinglePost/SinglePost';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <div className='content'>
             <Header />
             <Route exact path='/feed' component={Feed} />
+            <Route exact path='/feed/post/:id' component={SinglePost} />
             <Route exact path='/profile' component={Profile} />
             <Route exact path='/people' component={People} />
             <Route exact path='/people/:id' component={SingleUser} />
