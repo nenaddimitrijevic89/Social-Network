@@ -3,7 +3,7 @@ import style from './PostUser.module.css';
 import avatar from '../../../../images/user.png';
 import { convertDate } from '../../../../shared/utilities';
 
-const PostUser =({ user, post, deletePost })=> {
+const PostUser =({ user, post, deletePost, switchComments })=> {
     if(!user[0]){
         return <></>
     }
@@ -17,7 +17,7 @@ const PostUser =({ user, post, deletePost })=> {
                 <p><span> {convertDate(post.createdAt)}</span></p>
             </div>
             <i className={`${style.trash} fa fa-trash`} onClick={() => deletePost(post.id)}></i>
-            <i className={`${style.comment} fa fa-comment`}></i>
+            <i className={`${style.comment} fa fa-comment`} onClick={switchComments}></i>
         </div>
     )
 }
