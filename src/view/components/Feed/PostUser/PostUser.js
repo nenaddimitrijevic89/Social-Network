@@ -8,6 +8,7 @@ const PostUser = ({ user, post, deletePost, isShown }) => {
     // if (!user[0]) {
     //     return <></>
     // }
+    console.log(user)
     return (
         <div className={style.user}>
             <div className={style.img}>
