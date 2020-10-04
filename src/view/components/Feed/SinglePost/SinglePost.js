@@ -11,7 +11,8 @@ class SinglePost extends React.Component {
         this.state = {
             isLoading: true,
             post: [],
-            user: []
+            user: [],
+            comments: null
         }
     }
 
@@ -21,6 +22,7 @@ class SinglePost extends React.Component {
         
 
         postService.getSinglePostComments(this.props.match.params.id)
+        .then(response => this.setState({ comments: response }))
         .then(() => userService.getSingleUser(this.state.post.owner)
         .then(response => this.setState({ user: response, isLoading: false })))
 
@@ -41,7 +43,7 @@ class SinglePost extends React.Component {
                 ?<Loader />
             
                 :<>
-                {this.state.post.type === 'image' && <ImagePost post={this.state.post} user={this.state.user} deletePost={this.deletePost} isShown={true}/>}
+                {this.state.post.type === 'image' && <ImagePost post={this.state.post} user={this.state.user} deletePost={this.deletePost} isShown={true} comments={this.state.comments}/>}
                 </>
                 }
             </Container>

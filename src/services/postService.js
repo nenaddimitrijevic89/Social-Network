@@ -1,3 +1,4 @@
+import { Comment } from "../entities/CommentObj";
 import { Post } from "../entities/PostObj";
 import { storageService } from "./storageService";
 const { baseURL } = require("../shared/baseURL");
@@ -35,7 +36,10 @@ class PostService {
         return baseURL.get(`posts/${id}/comments`, {
             headers: HEADERS()
         })
-            .then(response => console.log(response))
+            .then(response => {
+                const comments = response.data.data.map(comment => new Comment(comment))
+                return comments
+            })
     }
 
     createPost({ type, src }) {
