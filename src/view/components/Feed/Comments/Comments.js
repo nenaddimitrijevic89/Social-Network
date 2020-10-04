@@ -1,13 +1,15 @@
 import React from 'react';
 import { Card } from 'react-materialize';
 
-const Comments = ({ isShown }) => {
+const Comments = ({ isShown, comments }) => {
     return(
         <>
         {isShown
         &&      
         <Card>
-            Comments    
+            <i className='fa fa-pencil'></i>
+            <input type='text'/>
+            {comments.map(comment => <p>{comment.body}</p>)}
         </Card>
         }
         </>
