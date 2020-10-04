@@ -15,7 +15,7 @@ class Feed extends React.Component {
         super()
         this.state = {
             posts: [],
-            users: [],
+            users: null,
             comments: [],
             isLoading: true,
             modalIsOpen: false,

@@ -25,9 +25,10 @@ class SinglePost extends React.Component {
         .then(response => this.setState({ comments: response }))
         .then(() => userService.getSingleUser(this.state.post.owner)
         .then(response => this.setState({ user: response, isLoading: false })))
+    }
 
-        
-        
+    createComment =(text)=>{
+        this.setState({ body: text })
     }
 
     deletePost = (id) => {
