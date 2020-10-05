@@ -4,6 +4,8 @@ import { postService } from '../../../../services/postService';
 import { userService } from '../../../../services/userService';
 import { Loader } from '../../Loader/Loader';
 import { ImagePost } from '../ImagePost/ImagePost';
+import { TextPost } from '../TextPost/TextPost';
+import { VideoPost } from '../VideoPost/VideoPost';
 
 class SinglePost extends React.Component {
     constructor() {
@@ -23,8 +25,10 @@ class SinglePost extends React.Component {
 
         postService.getSinglePostComments(this.props.match.params.id)
         .then(response => this.setState({ comments: response }))
-        .then(() => userService.getSingleUser(this.state.post.owner)
-        .then(response => this.setState({ user: response, isLoading: false })))
+        .then(() => {
+            userService.getSingleUser(this.state.post.owner)
+            .then(response => this.setState({ user: response, isLoading: false }))
+        })
     }
 
     createComment =(text)=>{
@@ -45,6 +49,8 @@ class SinglePost extends React.Component {
             
                 :<>
                 {this.state.post.type === 'image' && <ImagePost post={this.state.post} user={this.state.user} deletePost={this.deletePost} isShown={true} comments={this.state.comments}/>}
+                {this.state.post.type === 'text' && <TextPost post={this.state.post} user={this.state.user} deletePost={this.deletePost} isShown={true} comments={this.state.comments}/>}
+                {this.state.post.type === 'video' && <VideoPost post={this.state.post} user={this.state.user} deletePost={this.deletePost} isShown={true} comments={this.state.comments}/>}
                 </>
                 }
             </Container>
