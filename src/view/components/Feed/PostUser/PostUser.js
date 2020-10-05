@@ -15,7 +15,7 @@ const PostUser = ({ user, post, deletePost, isShown }) => {
             <div className={style.info}>
                 {isShown
                 ? <p><span className={style.bold}> {user.fullName}</span></p>
-                : <p><span className={style.bold}> {user[0]?.fullName || 'unknown'}</span></p>}
+                : <p><span className={style.bold}> {user[0]?.fullName || 'Deleted Account'}</span></p>}
                 <p><span> {convertDate(post.createdAt)}</span></p>
             </div>
             <i className={`${style.trash} fa fa-trash`} onClick={() => deletePost(post.id)}></i>
