@@ -6,15 +6,13 @@ import avatar from '../../../../../images/user.png';
 
 const Comment =({ comment, users })=>{
    
-
     const filterCommentUser=(id)=>{
         const commUser = users.filter(user => user.id === id);
         return commUser[0];
     }
 
     const commentUser=filterCommentUser(comment.owner)
-    
-    
+     
     return(
         <Card>
             <div className={style.user}>
@@ -24,7 +22,6 @@ const Comment =({ comment, users })=>{
                 <div className={style.info}>
                     <p><span className={style.bold}> {commentUser?.fullName || 'Deleted Account'}</span></p>
                     <p><span> {convertDate(comment.createdAt)}</span></p>
-                    
                 </div>
                 
             </div>

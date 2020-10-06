@@ -18,7 +18,7 @@ class CommmentService {
         return baseURL.post('comments', { postId, body }, {
             headers: HEADERS()
         })
-        .then(response => console.log(response))
+        // .then(response => console.log(response))
     }
 }
 
