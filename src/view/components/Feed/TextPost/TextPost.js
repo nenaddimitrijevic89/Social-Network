@@ -4,7 +4,7 @@ import { Comments } from '../Comments/Comments';
 import { PostUser } from '../PostUser/PostUser';
 import style from './TextPost.module.css';
 
-const TextPost = ({ post, user, deletePost, isShown, comments, users, writeComment, saveComment }) => {
+const TextPost = ({ post, user, deletePost, isShown, comments, users, writeComment, saveComment, deleteComment }) => {
   return (
     <Row className={style.center}>
       <Col m={12} s={12} l={9} className={style.margin}>
@@ -13,7 +13,7 @@ const TextPost = ({ post, user, deletePost, isShown, comments, users, writeComme
           <CardPanel className="grey" style={{ marginTop: '0px' }}>
             <span className="white-text">{post.src}</span>
           </CardPanel>
-          <Comments isShown={isShown} comments={comments} users={users} writeComment={writeComment} saveComment={saveComment}/>
+          <Comments isShown={isShown} comments={comments} users={users} writeComment={writeComment} saveComment={saveComment} deleteComment={deleteComment}/>
         </Card>
       </Col>
     </Row>

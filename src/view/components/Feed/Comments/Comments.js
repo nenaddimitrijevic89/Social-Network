@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, Card } from 'react-materialize';
 import { Comment } from './Comment/Comment';
 
-const Comments = ({ isShown, comments, users, writeComment, saveComment }) => {
+const Comments = ({ isShown, comments, users, writeComment, saveComment, deleteComment }) => {
 
     const writing =(event)=>{
         const text = event.target.value;
@@ -20,7 +20,7 @@ const Comments = ({ isShown, comments, users, writeComment, saveComment }) => {
             </Card>
             <>
             {comments.length
-            ?<>{comments.map(comment => <Comment comment={comment} users={users}/>)}</>
+            ?<>{comments.map(comment => <Comment comment={comment} users={users} deleteComment={deleteComment}/>)}</>
             :<></>
             }
             </>
