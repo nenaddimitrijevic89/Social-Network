@@ -1,10 +1,13 @@
 import React from 'react';
-import { Card } from 'react-materialize';
+import { Button, Card } from 'react-materialize';
 import { Comment } from './Comment/Comment';
 
-const Comments = ({ isShown, comments, users }) => {
+const Comments = ({ isShown, comments, users, writeComment, saveComment }) => {
 
-   
+    const writing =(event)=>{
+        const text = event.target.value;
+        writeComment(text)
+    }
 
     return(
         <>
@@ -13,7 +16,7 @@ const Comments = ({ isShown, comments, users }) => {
         <>      
             <Card>
                 <i className='fa fa-pencil'> Write comment</i>
-                <input type='text'/>
+                <input type='text'onChange={writing}/><Button onClick={saveComment}>Save</Button>
             </Card>
             <>
             {comments.length

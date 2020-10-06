@@ -1,5 +1,6 @@
 import React from 'react';
 import { Container } from 'react-materialize';
+import { commentService } from '../../../../services/commentService';
 import { postService } from '../../../../services/postService';
 import { userService } from '../../../../services/userService';
 import { Loader } from '../../Loader/Loader';
@@ -16,13 +17,15 @@ class SinglePost extends React.Component {
             user: [],
             users: [],
             comments: null,
-            isShown: true
+            isShown: true,
+            body: null,
+            postId: null
         }
     }
 
     componentDidMount() {
         postService.getSinglePost(this.props.match.params.id)
-        .then(response => this.setState({ post: response }))
+        .then(response => this.setState({ post: response, postId: response.id }))
 
         userService.getAllUsers()
         .then(response => this.setState({ users: response }))
@@ -37,9 +40,19 @@ class SinglePost extends React.Component {
         .finally(()=> this.setState({ isLoading: false }))
     }
 
-    createComment =(text)=>{
+    writeComment =(text)=>{
         this.setState({ body: text })
     }
+
+    saveComment =()=>{
+        commentService.createComment(this.state)
+        .then(response=>{
+            alert(response.data.data)
+            window.location.reload()
+        })
+    }
+
+
 
     deletePost = (id) => {
         postService.deletePost(id)
@@ -54,9 +67,9 @@ class SinglePost extends React.Component {
                 ?<Loader />
             
                 :<>
-                {this.state.post.type === 'image' && <ImagePost post={this.state.post} user={this.state.user} deletePost={this.deletePost} isShown={true} comments={this.state.comments} users={this.state.users}/>}
-                {this.state.post.type === 'text' && <TextPost post={this.state.post} user={this.state.user} deletePost={this.deletePost} isShown={true} comments={this.state.comments} users={this.state.users}/>}
-                {this.state.post.type === 'video' && <VideoPost post={this.state.post} user={this.state.user} deletePost={this.deletePost} isShown={true} comments={this.state.comments} users={this.state.users}/>}
+                {this.state.post.type === 'image' && <ImagePost post={this.state.post} user={this.state.user} deletePost={this.deletePost} isShown={true} comments={this.state.comments} users={this.state.users} writeComment={this.writeComment} saveComment={this.saveComment}/>}
+                {this.state.post.type === 'text' && <TextPost post={this.state.post} user={this.state.user} deletePost={this.deletePost} isShown={true} comments={this.state.comments} users={this.state.users} writeComment={this.writeComment} saveComment={this.saveComment}/>}
+                {this.state.post.type === 'video' && <VideoPost post={this.state.post} user={this.state.user} deletePost={this.deletePost} isShown={true} comments={this.state.comments} users={this.state.users} writeComment={this.writeComment} saveComment={this.saveComment}/>}
                 </>
                 }
             </Container>
