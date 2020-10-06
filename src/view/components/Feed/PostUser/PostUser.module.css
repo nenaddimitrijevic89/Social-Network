@@ -38,10 +38,12 @@
 
 .trash:hover{
     color: red;
+    cursor: pointer;
 }
 
 .comment{
     position: absolute;
+    color: black;
     top: 10px;
     right: 45px;
     font-size: 25px;
@@ -49,4 +51,5 @@
 
 .comment:hover{
     color: rgb(245, 211, 98);
+    cursor: pointer;
 }

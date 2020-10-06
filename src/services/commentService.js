@@ -18,7 +18,14 @@ class CommmentService {
         return baseURL.post('comments', { postId, body }, {
             headers: HEADERS()
         })
-        // .then(response => console.log(response))
+        .catch(error => console.log(error))
+    }
+
+    deleteComment(id){
+        return baseURL.delete(`comments/${id}`, {
+            headers: HEADERS()
+        })
+        .catch(()=> alert('This is not your comment. You can not delete it!'))
     }
 }
 

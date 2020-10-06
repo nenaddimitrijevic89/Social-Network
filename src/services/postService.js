@@ -66,7 +66,7 @@ class PostService {
         return baseURL.delete(`posts/${id}`, {
             headers: HEADERS()
         })
-            .catch(error => console.log(error))
+            .catch(() => alert('This is not your post. You can not delete it!'))
     }
 }
 

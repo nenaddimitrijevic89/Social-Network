@@ -46,13 +46,19 @@ class SinglePost extends React.Component {
 
     saveComment =()=>{
         commentService.createComment(this.state)
-        .then(response=>{
+        .then(response => {
             alert(response.data.data)
             window.location.reload()
         })
     }
 
-
+    deleteComment =(id)=>{
+        commentService.deleteComment(id)
+        .then(()=>{
+            postService.getSinglePostComments(this.props.match.params.id)
+            .then(response => this.setState({ comments: response }))
+        })
+    }
 
     deletePost = (id) => {
         postService.deletePost(id)
@@ -67,9 +73,9 @@ class SinglePost extends React.Component {
                 ?<Loader />
             
                 :<>
-                {this.state.post.type === 'image' && <ImagePost post={this.state.post} user={this.state.user} deletePost={this.deletePost} isShown={true} comments={this.state.comments} users={this.state.users} writeComment={this.writeComment} saveComment={this.saveComment}/>}
-                {this.state.post.type === 'text' && <TextPost post={this.state.post} user={this.state.user} deletePost={this.deletePost} isShown={true} comments={this.state.comments} users={this.state.users} writeComment={this.writeComment} saveComment={this.saveComment}/>}
-                {this.state.post.type === 'video' && <VideoPost post={this.state.post} user={this.state.user} deletePost={this.deletePost} isShown={true} comments={this.state.comments} users={this.state.users} writeComment={this.writeComment} saveComment={this.saveComment}/>}
+                {this.state.post.type === 'image' && <ImagePost post={this.state.post} user={this.state.user} deletePost={this.deletePost} isShown={true} comments={this.state.comments} users={this.state.users} writeComment={this.writeComment} saveComment={this.saveComment} deleteComment={this.deleteComment}/>}
+                {this.state.post.type === 'text' && <TextPost post={this.state.post} user={this.state.user} deletePost={this.deletePost} isShown={true} comments={this.state.comments} users={this.state.users} writeComment={this.writeComment} saveComment={this.saveComment} deleteComment={this.deleteComment}/>}
+                {this.state.post.type === 'video' && <VideoPost post={this.state.post} user={this.state.user} deletePost={this.deletePost} isShown={true} comments={this.state.comments} users={this.state.users} writeComment={this.writeComment} saveComment={this.saveComment} deleteComment={this.deleteComment}/>}
                 </>
                 }
             </Container>
