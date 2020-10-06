@@ -42,7 +42,7 @@ class Feed extends React.Component {
     filterPostUser=(id)=>{
         const postUser=this.state.users.filter(user => user.id === id);
         console.log(postUser)
-        return postUser;
+        return postUser[0];
     }
 
     openModal = () => {

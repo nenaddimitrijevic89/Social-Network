@@ -6,7 +6,7 @@ const { baseURL } = require("../shared/baseURL");
 class UserService {
 
     getAllUsers() {
-        return baseURL.get('users', {
+        return baseURL.get('users?limit=100&offset=0', {
                 headers: HEADERS()
             })
             .then(response => {
@@ -38,7 +38,6 @@ class UserService {
                 headers: HEADERS()
             })
             .then(response => {
-                console.log(response);
                 const buffer=response.data.data;
                 handleImageDisplay(buffer)
                 const user = new User(buffer)

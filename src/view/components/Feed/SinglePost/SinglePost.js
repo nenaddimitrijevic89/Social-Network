@@ -14,21 +14,27 @@ class SinglePost extends React.Component {
             isLoading: true,
             post: [],
             user: [],
-            comments: null
+            users: [],
+            comments: null,
+            isShown: true
         }
     }
 
     componentDidMount() {
         postService.getSinglePost(this.props.match.params.id)
         .then(response => this.setState({ post: response }))
+
+        userService.getAllUsers()
+        .then(response => this.setState({ users: response }))
         
 
         postService.getSinglePostComments(this.props.match.params.id)
         .then(response => this.setState({ comments: response }))
         .then(() => {
             userService.getSingleUser(this.state.post.owner)
-            .then(response => this.setState({ user: response, isLoading: false }))
+            .then(response => this.setState({ user: response }))
         })
+        .finally(()=> this.setState({ isLoading: false }))
     }
 
     createComment =(text)=>{
@@ -48,9 +54,9 @@ class SinglePost extends React.Component {
                 ?<Loader />
             
                 :<>
-                {this.state.post.type === 'image' && <ImagePost post={this.state.post} user={this.state.user} deletePost={this.deletePost} isShown={true} comments={this.state.comments}/>}
-                {this.state.post.type === 'text' && <TextPost post={this.state.post} user={this.state.user} deletePost={this.deletePost} isShown={true} comments={this.state.comments}/>}
-                {this.state.post.type === 'video' && <VideoPost post={this.state.post} user={this.state.user} deletePost={this.deletePost} isShown={true} comments={this.state.comments}/>}
+                {this.state.post.type === 'image' && <ImagePost post={this.state.post} user={this.state.user} deletePost={this.deletePost} isShown={true} comments={this.state.comments} users={this.state.users}/>}
+                {this.state.post.type === 'text' && <TextPost post={this.state.post} user={this.state.user} deletePost={this.deletePost} isShown={true} comments={this.state.comments} users={this.state.users}/>}
+                {this.state.post.type === 'video' && <VideoPost post={this.state.post} user={this.state.user} deletePost={this.deletePost} isShown={true} comments={this.state.comments} users={this.state.users}/>}
                 </>
                 }
             </Container>
