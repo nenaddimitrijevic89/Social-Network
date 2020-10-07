@@ -1,0 +1,22 @@
+import React from 'react';
+import { Button, Container, Row } from 'react-materialize';
+import { InputPassword } from '../Input/InputPassword';
+
+const PasswordChange =({ user, saveNewPassword, insertData })=>{
+    return(
+        <Container onKeyUp={event => event.keyCode === 13 && saveNewPassword()}>
+            <h2>
+                {user.fullName}
+            </h2>
+            <hr></hr>
+            <Row>
+                <InputPassword insertData={insertData} email={user.email} />
+            </Row>
+            <Row>
+                <Button onClick={saveNewPassword}>Save</Button>
+            </Row>
+        </Container>
+    )
+}
+
+export { PasswordChange };
