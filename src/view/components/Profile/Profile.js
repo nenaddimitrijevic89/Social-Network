@@ -12,6 +12,7 @@ class Profile extends React.Component {
         super()
         this.state = {
             user: {},
+            image: null,
             modalIsOpen: false,
             isInfo: true,
             isPassword: false,
@@ -65,10 +66,6 @@ class Profile extends React.Component {
         .finally(()=>this.setState({ modalIsOpen: false }))
     }
 
-    changeForm = () => {
-        this.setState(prevState => ({ isPassword: !prevState.isPassword }))
-    }
-
     changeInfo =()=>{
         this.setState({ isInfo: true, isProfileImage: false, isPassword: false })
     }
@@ -79,6 +76,15 @@ class Profile extends React.Component {
 
     changeProfileImage =()=>{
         this.setState({ isInfo: false, isProfileImage: true, isPassword: false })
+    }
+
+    setImage =(img)=>{
+        this.setState({ image: img })
+    }
+
+    uploadImage =()=>{
+        console.log('aaaaaaa')
+        userService.uploadProfileImage(this.state.user.id, this.state.image)
     }
 
     submitData = () => {
@@ -116,7 +122,6 @@ class Profile extends React.Component {
                             openModal={this.openModal}
                             insertData={this.insertData}
                             submitData={this.submitData}
-                            changeForm={this.changeForm}
                             isPassword={this.state.isPassword}
                             isProfileImage={this.state.isProfileImage}
                             isInfo={this.state.isInfo}
@@ -124,6 +129,8 @@ class Profile extends React.Component {
                             changePassword={this.changePassword}
                             changeProfileImage={this.changeProfileImage}
                             saveNewPassword={this.saveNewPassword}
+                            uploadImage={this.uploadImage}
+                            setImage={this.setImage}
                         />
                         <ProfileInfo 
                             user={this.state.user}

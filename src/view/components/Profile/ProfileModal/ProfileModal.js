@@ -1,6 +1,6 @@
 import React from 'react';
 import Modal from 'react-modal';
-import { Button, Switch } from 'react-materialize';
+import { Button } from 'react-materialize';
 import { customStyles } from '../../../../shared/constants';
 import { PasswordChange } from './PasswordChange/PasswordChange';
 import { InfoChange } from './InfoChange/InfoChange';
@@ -9,7 +9,7 @@ import { ProfileImageChange } from './ProfileImageChange/ProfileImageChange';
 const ProfileModal = ({ insertData, submitData, modalIsOpen,
                         openModal, user, isPassword, saveNewPassword,
                         isProfileImage, isInfo, changeInfo,
-                        changePassword, changeProfileImage }) => {
+                        changePassword, changeProfileImage, uploadImage, setImage }) => {
 
     return (
         <Modal
@@ -20,23 +20,15 @@ const ProfileModal = ({ insertData, submitData, modalIsOpen,
             contentLabel="modal"
         >
             <>
-                {/* <Switch
-                    className='center-align'
-                    id="Switch-11"
-                    offLabel="Info"
-                    onChange={changeForm}
-                    onLabel='Change Password'
-                /> */}
-
-                <Button onClick={changeInfo}>Info</Button>
-                <Button onClick={changePassword}>Password</Button>
-                <Button onClick={changeProfileImage}>Image</Button>
+                <Button onClick={changeInfo} style={{marginRight: '5px'}}><i className='fa fa-info'></i></Button>
+                <Button onClick={changePassword} style={{marginRight: '5px'}}><i className='fa fa-key'></i></Button>
+                <Button onClick={changeProfileImage}><i className='fa fa-user-circle-o'></i></Button>
 
                 {isPassword && <PasswordChange user={user} saveNewPassword={saveNewPassword} insertData={insertData}/>}
 
                 {isInfo && <InfoChange user={user} submitData={submitData} insertData={insertData}/>} 
 
-                 {isProfileImage && <ProfileImageChange user={user}/>}
+                {isProfileImage && <ProfileImageChange user={user} uploadImage={uploadImage} setImage={setImage}/>}
             </>
         </Modal>
     )

@@ -1,13 +1,23 @@
 import React from 'react';
 import { Col, TextInput } from 'react-materialize';
 
-const InputProfileImage =()=>{
+const InputProfileImage =({ setImage })=>{
+
+    const posting=(event)=>{
+        const post=event.target.files;
+        const formData= new FormData();
+        formData.append('image', post[0], post[0].name)
+        console.log(post[0], post[0].name)
+        setImage(formData)
+    }
+
     return(
         <Col>
             <TextInput
-            // onChange={changeData}
+                onChange={posting}
                 id='TextInput-15'
                 type='file'
+                label='Picture'
             />
             <TextInput
                 id='TextInput-16'
