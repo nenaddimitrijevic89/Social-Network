@@ -53,6 +53,16 @@ class UserService {
             .catch(error=>console.log(error))
     }
 
+    uploadProfileImage(id, data) {
+        const token = storageService.get('token');
+        return baseURL.post(`users/${id}/image`, data, {
+            headers: {
+                "x-api-key": "1vaHd3v",
+                Authorization: token,
+            }
+        })
+    }
+
     getSingleUserPosts(id) {
         return baseURL.get(`users/${id}/posts`, {
                 headers: HEADERS()

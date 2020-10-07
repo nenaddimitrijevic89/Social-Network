@@ -6,6 +6,10 @@
     }
 }
 
+.avatar{
+    width: 150px;
+}
+
 .center{
     justify-content: center;
     align-items: center;
@@ -20,6 +24,7 @@
 .image{
     background-color: orange;
     border-radius: 120px;
+    width: 100%;
 }
 
 .edit{

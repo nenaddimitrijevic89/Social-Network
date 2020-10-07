@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, Container, Row } from 'react-materialize';
 import { InputProfileImage } from '../Input/InputProfileImage';
 
-const ProfileImageChange = ({ user }) => {
+const ProfileImageChange = ({ user, uploadImage, setImage }) => {
     return(
         <Container>
             <h2>
@@ -10,10 +10,10 @@ const ProfileImageChange = ({ user }) => {
             </h2>
             <hr></hr>
             <Row>
-                <InputProfileImage />
+                <InputProfileImage setImage={setImage}/>
             </Row>
             <Row>
-                <Button >Save</Button>
+                <Button onClick={uploadImage}>Save</Button>
             </Row>
         </Container>
     )
