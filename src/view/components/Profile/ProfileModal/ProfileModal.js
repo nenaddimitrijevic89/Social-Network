@@ -1,11 +1,15 @@
 import React from 'react';
 import Modal from 'react-modal';
-import { Container, Row, Button, Switch } from 'react-materialize';
-import { InputInfo } from './Input/InputInfo';
-import { InputPassword } from './Input/InputPassword';
+import { Button, Switch } from 'react-materialize';
 import { customStyles } from '../../../../shared/constants';
+import { PasswordChange } from './PasswordChange/PasswordChange';
+import { InfoChange } from './InfoChange/InfoChange';
+import { ProfileImageChange } from './ProfileImageChange/ProfileImageChange';
 
-const ProfileModal = ({ insertData, submitData, modalIsOpen, openModal, user, isPass, changeForm, saveNewPassword }) => {
+const ProfileModal = ({ insertData, submitData, modalIsOpen,
+                        openModal, user, isPassword, saveNewPassword,
+                        isProfileImage, isInfo, changeInfo,
+                        changePassword, changeProfileImage }) => {
 
     return (
         <Modal
@@ -16,41 +20,23 @@ const ProfileModal = ({ insertData, submitData, modalIsOpen, openModal, user, is
             contentLabel="modal"
         >
             <>
-                <Switch
+                {/* <Switch
                     className='center-align'
                     id="Switch-11"
                     offLabel="Info"
                     onChange={changeForm}
                     onLabel='Change Password'
-                />
-                {isPass
+                /> */}
 
-                    ? <Container onKeyUp={event => event.keyCode === 13 && saveNewPassword()}>
-                        <h2>
-                            {user.fullName}
-                        </h2>
-                        <hr></hr>
-                        <Row>
-                            <InputPassword insertData={insertData} email={user.email} />
-                        </Row>
-                        <Row>
-                            <Button onClick={saveNewPassword}>Save</Button>
-                        </Row>
-                    </Container>
+                <Button onClick={changeInfo}>Info</Button>
+                <Button onClick={changePassword}>Password</Button>
+                <Button onClick={changeProfileImage}>Image</Button>
 
-                    : <Container onKeyUp={event => event.keyCode === 13 && submitData()}>
-                        <h2>
-                            {user.fullName}
-                        </h2>
-                        <hr></hr>
-                        <Row>
-                            <InputInfo insertData={insertData} />
-                        </Row>
-                        <Row>
-                            <Button onClick={submitData}>Save</Button>
-                        </Row>
-                    </Container>
-                }
+                {isPassword && <PasswordChange user={user} saveNewPassword={saveNewPassword} insertData={insertData}/>}
+
+                {isInfo && <InfoChange user={user} submitData={submitData} insertData={insertData}/>} 
+
+                 {isProfileImage && <ProfileImageChange user={user}/>}
             </>
         </Modal>
     )

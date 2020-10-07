@@ -15,7 +15,7 @@ const Comments = ({ isShown, comments, users, writeComment, saveComment, deleteC
             &&
             <>      
                 <Card>
-                    <i className='fa fa-pencil'> Write comment</i>
+                    <i className='fa fa-pencil'></i> Write comment
                     <input type='text'onChange={writing}/>
                     <Button onClick={saveComment}>Save</Button>
                 </Card>

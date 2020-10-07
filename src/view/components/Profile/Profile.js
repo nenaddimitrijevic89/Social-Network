@@ -1,6 +1,5 @@
 import React from 'react';
 import { Container, Row } from 'react-materialize';
-import style from './Profile.module.css';
 import { userService } from '../../../services/userService';
 import { isLoggedIn } from '../../../shared/utilities';
 import { ProfileModal } from './ProfileModal/ProfileModal';
@@ -14,7 +13,9 @@ class Profile extends React.Component {
         this.state = {
             user: {},
             modalIsOpen: false,
-            isPass: false,
+            isInfo: true,
+            isPassword: false,
+            isProfileImage: false,
             email: null,
             isLoading: true
         }
@@ -65,7 +66,19 @@ class Profile extends React.Component {
     }
 
     changeForm = () => {
-        this.setState(prevState => ({ isPass: !prevState.isPass }))
+        this.setState(prevState => ({ isPassword: !prevState.isPassword }))
+    }
+
+    changeInfo =()=>{
+        this.setState({ isInfo: true, isProfileImage: false, isPassword: false })
+    }
+
+    changePassword =()=>{
+        this.setState({ isInfo: false, isProfileImage: false, isPassword: true })
+    }
+
+    changeProfileImage =()=>{
+        this.setState({ isInfo: false, isProfileImage: true, isPassword: false })
     }
 
     submitData = () => {
@@ -96,7 +109,7 @@ class Profile extends React.Component {
 
                     ?<Loader />
 
-                    : <Row className={style.user}>
+                    : <Row>
                         <ProfileModal
                             user={this.state.user}
                             modalIsOpen={this.state.modalIsOpen}
@@ -104,7 +117,12 @@ class Profile extends React.Component {
                             insertData={this.insertData}
                             submitData={this.submitData}
                             changeForm={this.changeForm}
-                            isPass={this.state.isPass}
+                            isPassword={this.state.isPassword}
+                            isProfileImage={this.state.isProfileImage}
+                            isInfo={this.state.isInfo}
+                            changeInfo={this.changeInfo}
+                            changePassword={this.changePassword}
+                            changeProfileImage={this.changeProfileImage}
                             saveNewPassword={this.saveNewPassword}
                         />
                         <ProfileInfo 
