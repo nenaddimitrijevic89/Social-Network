@@ -15,7 +15,7 @@ class Feed extends React.Component {
         super()
         this.state = {
             posts: [],
-            users: null,
+            users: [],
             comments: [],
             isLoading: true,
             modalIsOpen: false,
@@ -37,6 +37,11 @@ class Feed extends React.Component {
 
         commentService.getAllComments()
             .then(response => this.setState({ comments: response }))
+    }
+
+    filterPostComments =(id)=>{
+        const postComments=this.state.comments.filter(comment => comment.postId === id)
+        return postComments.length;
     }
 
     filterPostUser=(id)=>{
@@ -71,7 +76,11 @@ class Feed extends React.Component {
 
     deletePost = (id) => {
         postService.deletePost(id)
-        .then(() => window.location.reload())
+        // .then(() => window.location.reload())
+        .then(() => {
+            postService.getAllPosts()
+            .then(response=>this.setState({ posts: response }))
+        })
     }
 
     changeText =()=>{
@@ -114,12 +123,12 @@ class Feed extends React.Component {
                     />
                     {this.state.posts.map(post => {
                         if(post.type==="text"){
-                            return <TextPost key={post.id} post={post} user={this.filterPostUser(post.owner)} deletePost={this.deletePost} isShown={false}/>
+                            return <TextPost key={post.id} post={post} user={this.filterPostUser(post.owner)} numbOfComments={this.filterPostComments(post.id)} deletePost={this.deletePost} isShown={false}/>
                         }
                         if(post.type==="video"){
-                            return <VideoPost key={post.id} post={post} user={this.filterPostUser(post.owner)} deletePost={this.deletePost} isShown={false}/>
+                            return <VideoPost key={post.id} post={post} user={this.filterPostUser(post.owner)} numbOfComments={this.filterPostComments(post.id)} deletePost={this.deletePost} isShown={false}/>
                         }else{
-                            return <ImagePost key={post.id} post={post} user={this.filterPostUser(post.owner)} deletePost={this.deletePost} isShown={false}/>
+                            return <ImagePost key={post.id} post={post} user={this.filterPostUser(post.owner)} numbOfComments={this.filterPostComments(post.id)} deletePost={this.deletePost} isShown={false}/>
                         }
                 })}</>
                 }
