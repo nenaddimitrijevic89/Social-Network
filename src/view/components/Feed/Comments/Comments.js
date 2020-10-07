@@ -20,7 +20,7 @@ const Comments = ({ isShown, comments, users, writeComment, saveComment, deleteC
             </Card>
             <>
             {comments.length
-            ?<>{comments.map(comment => <Comment comment={comment} users={users} deleteComment={deleteComment}/>)}</>
+            ?<>{comments.map(comment => <Comment key={comment.id} comment={comment} users={users} deleteComment={deleteComment}/>)}</>
             :<></>
             }
             </>

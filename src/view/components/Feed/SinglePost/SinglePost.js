@@ -62,7 +62,7 @@ class SinglePost extends React.Component {
 
     deletePost = (id) => {
         postService.deletePost(id)
-        .then(() => window.location.reload())
+        .then(() => this.props.history.push('/feed'))
     }
 
     render() {
