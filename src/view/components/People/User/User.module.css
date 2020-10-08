@@ -24,6 +24,7 @@
 }
 
 .image {
+    object-fit: cover;
     width: 150px;
     height: 150px;
     background-color: rgb(121, 167, 253);
