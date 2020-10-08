@@ -10,7 +10,6 @@
     width: 300px;
     height: 300px;
     object-fit: cover;
-    /* border: 5px solid black; */
 }
 
 .center{
@@ -29,12 +28,12 @@
     margin-top: 0px;
 }
 
-.editIcon:hover{
+/* .editIcon:hover{
     animation-name: spin;
     animation-duration: .4s;
     animation-timing-function: linear;
     cursor: pointer;
-}
+} */
 
 .nameWidth{
     border-bottom: 1px solid black;
@@ -45,7 +44,6 @@
 
 @media only screen and (max-width: 992px){
     .nameWidth{
-        /* width: 60%; */
         font-size: 45px;
     }
 }
@@ -54,5 +52,22 @@
     .nameWidth{
         width: 60%;
         font-size: 40px;
+    }
+    .image{
+        width: 220px;
+        height: 220px;
+    }
+}
+
+@media only screen and (max-width: 520px){
+    .font{
+        font-size: 24px;
+    }
+    .edit{
+        font-size: 20px;
+    }
+    .nameWidth{
+        width: 100%;
+        font-size: 36px;
     }
 }

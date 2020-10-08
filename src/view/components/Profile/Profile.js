@@ -6,6 +6,7 @@ import { ProfileModal } from './ProfileModal/ProfileModal';
 import { authentication } from '../../../services/authService';
 import { Loader } from '../Loader/Loader';
 import { ProfileInfo } from './ProfileInfo/ProfileInfo';
+import { ProfileCard } from './ProfileCard/ProfileCard';
 
 class Profile extends React.Component {
     constructor() {
@@ -85,6 +86,10 @@ class Profile extends React.Component {
     uploadImage =()=>{
         console.log('aaaaaaa')
         userService.uploadProfileImage(this.state.user.id, this.state.image)
+        .then(()=>{
+            userService.getLoggedUser()
+            .then(response => this.setState({ user: response, modalIsOpen: false }))
+        })
     }
 
     submitData = () => {
@@ -132,9 +137,13 @@ class Profile extends React.Component {
                             uploadImage={this.uploadImage}
                             setImage={this.setImage}
                         />
-                        <ProfileInfo 
+                        {/* <ProfileInfo 
                             user={this.state.user}
                             openModal={this.openModal}
+                        /> */}
+                        <ProfileCard
+                            user={this.state.user}
+                            openModal={this.openModal}    
                         />
                     </Row>
                 }
