@@ -12,8 +12,8 @@ const ProfileCard =({ user, openModal })=>{
                 </div>
                 <div className={style.cardBody}>
                     <p className={style.fullName}>{user.fullName}</p>
-                    <p className={style.username}>@{user.prefix}</p>
-                    <p className={style.city}>New York</p>
+                    <p className={style.username}><i className='fa fa-envelope'></i> {user.email}</p>
+                    <p className={style.city}>{user.prefix}</p>
                     <p className={style.desc}>{user.about}</p>
                     <p>
                         <i onClick={openModal} className="fa fa-facebook-f"></i>
