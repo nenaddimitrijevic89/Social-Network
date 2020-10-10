@@ -2,9 +2,8 @@ import React from 'react';
 import style from './PostUser.module.css';
 import avatar from '../../../../images/user.png';
 import { convertDate } from '../../../../shared/utilities';
-import { Link } from 'react-router-dom';
 
-const PostUser = ({ user, post, deletePost, isShown, numbOfComments }) => {
+const PostUser = ({ user, post, deletePost, isShown }) => {
     return (
         <div className={style.user}>
             <div className={style.img}>
@@ -19,11 +18,6 @@ const PostUser = ({ user, post, deletePost, isShown, numbOfComments }) => {
                 <p><span> {convertDate(post.createdAt)}</span></p>
             </div>
             <i className={`${style.trash} fa fa-trash`} onClick={() => deletePost(post.id)}></i>
-            {!isShown && <Link to={`/feed/post/${post.id}`}>
-                            <i className={`${style.comment} fa fa-comment`}>
-                                <span className={style.numb}>{numbOfComments === 0 ? '' : numbOfComments}</span>
-                            </i>
-                        </Link>}
         </div>
     )
 }
