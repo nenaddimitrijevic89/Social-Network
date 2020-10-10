@@ -1,69 +1,78 @@
-.center{
+.center {
     justify-content: center;
     align-items: center;
     display: flex;
 }
 
-.margin{
+.margin {
     margin-left: auto;
     margin-right: auto;
 }
 
-.video{
+.video {
     width: 100%;
     height: 450px;
 }
 
-@media only screen and (max-width: 1024px){
-    .video{
+.card {
+    background-color: #fff;
+    box-shadow: 0 3px 30px rgba(0, 0, 0, .14);
+    color: #444;
+    text-align: center;
+    font-size: 16px;
+    padding-bottom: 15px;
+}
+
+@media only screen and (max-width: 1024px) {
+    .video {
         height: 450px;
     }
 }
 
-@media only screen and (max-width: 768px){
-    .video{
+@media only screen and (max-width: 768px) {
+    .video {
         height: 400px;
     }
 }
 
-@media only screen and (max-width: 600px){
-    .video{
+@media only screen and (max-width: 600px) {
+    .video {
         height: 320px;
     }
 }
 
-@media only screen and (max-width: 540px){
-    .video{
+@media only screen and (max-width: 540px) {
+    .video {
         height: 200px;
     }
 }
 
-@media only screen and (max-width: 500px){
-    .video{
+@media only screen and (max-width: 500px) {
+    .video {
         height: 200px;
     }
 }
 
-@media only screen and (max-width: 400px){
-    .video{
+@media only screen and (max-width: 400px) {
+    .video {
         height: 150px;
     }
 }
 
-@media only screen and (max-width: 375px){
-    .video{
+@media only screen and (max-width: 375px) {
+    .video {
         height: 150px;
     }
 }
 
-@media only screen and (max-width: 360px){
-    .video{
+@media only screen and (max-width: 360px) {
+    .video {
         height: 150px;
     }
 }
 
-@media only screen and (max-width: 320px){
-    .video{
+@media only screen and (max-width: 320px) {
+    .video {
         height: 140px;
     }
 }
