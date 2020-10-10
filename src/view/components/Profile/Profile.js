@@ -84,7 +84,6 @@ class Profile extends React.Component {
     }
 
     uploadImage =()=>{
-        console.log('aaaaaaa')
         userService.uploadProfileImage(this.state.user.id, this.state.image)
         .then(()=>{
             userService.getLoggedUser()
