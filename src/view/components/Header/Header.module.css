@@ -29,3 +29,10 @@
         font-size: 20px !important;
     }
 }
+
+@media only screen and (max-width: 290px) {
+    .title {
+        width: 100%;
+        text-align: end;
+    }
+}

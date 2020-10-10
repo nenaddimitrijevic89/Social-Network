@@ -1,10 +1,15 @@
 import React from 'react';
+import { Col, Row } from 'react-materialize';
+import { Link } from 'react-router-dom';
+import { ImagePost } from '../ImagePost/ImagePost';
+import { TextPost } from '../TextPost/TextPost';
+import { VideoPost } from '../VideoPost/VideoPost';
 import style from './Posts.module.css';
 
-const Posts =({ posts, numbOfComments })=>{
+const Posts =({ posts, numbOfComments, isShown, deletePost, filterPostComments, filterPostUser })=>{
     return(
         <>
-        {posts.map(post => {
+        {posts.map(post => 
             <Row className={style.center}>
                 <Col m={12} s={12} l={9} className={style.margin}>
                     <div className={style.card}>
@@ -26,7 +31,7 @@ const Posts =({ posts, numbOfComments })=>{
                     </div>
                 </Col>
             </Row>
-        })}
+        )}
     </>
     )
 }
