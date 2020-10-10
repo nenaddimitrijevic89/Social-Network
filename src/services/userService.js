@@ -67,8 +67,16 @@ class UserService {
         return baseURL.get(`users/${id}/posts`, {
                 headers: HEADERS()
             })
-            .then(response => console.log(response))
+            .then(response => response.data.total)
             .catch(error => console.log(error))
+    }
+
+    getSingleUserComments(id) {
+        return baseURL.get(`users/${id}/comments`, {
+            headers: HEADERS()
+        })
+        .then(response => response.data.total)
+        .catch(error => console.log(error))
     }
 
     deleteSingleUser(id, data) {

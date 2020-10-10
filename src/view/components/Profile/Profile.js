@@ -5,7 +5,6 @@ import { isLoggedIn } from '../../../shared/utilities';
 import { ProfileModal } from './ProfileModal/ProfileModal';
 import { authentication } from '../../../services/authService';
 import { Loader } from '../Loader/Loader';
-import { ProfileInfo } from './ProfileInfo/ProfileInfo';
 import { ProfileCard } from './ProfileCard/ProfileCard';
 
 class Profile extends React.Component {
@@ -13,6 +12,8 @@ class Profile extends React.Component {
         super()
         this.state = {
             user: {},
+            numbOfPosts: null,
+            numbOfComments: null,
             image: null,
             modalIsOpen: false,
             isInfo: true,
@@ -26,7 +27,14 @@ class Profile extends React.Component {
     componentDidMount() {
         userService.getLoggedUser()
             .then(response => this.setState({ user: response, email: response.email }))
-            .finally(()=> this.setState({ isLoading: false }))
+            .then(() => {
+                userService.getSingleUserPosts(this.state.user.id)
+                .then(response => this.setState({ numbOfPosts: response }))
+
+                userService.getSingleUserComments(this.state.user.id)
+                .then(response => this.setState({ numbOfComments: response }))
+            })
+            .finally(() => this.setState({ isLoading: false }))
     }
 
     openModal = () => {
@@ -136,13 +144,11 @@ class Profile extends React.Component {
                             uploadImage={this.uploadImage}
                             setImage={this.setImage}
                         />
-                        {/* <ProfileInfo 
-                            user={this.state.user}
-                            openModal={this.openModal}
-                        /> */}
                         <ProfileCard
                             user={this.state.user}
-                            openModal={this.openModal}    
+                            openModal={this.openModal}
+                            numbOfPosts={this.state.numbOfPosts}
+                            numbOfComments={this.state.numbOfComments}    
                         />
                     </Row>
                 }
