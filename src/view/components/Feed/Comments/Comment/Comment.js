@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, CardPanel } from 'react-materialize';
+import { CardPanel } from 'react-materialize';
 import { CommentUser } from './CommentUser/CommentUser';
 
 const Comment =({ comment, users, deleteComment })=>{
@@ -12,12 +12,12 @@ const Comment =({ comment, users, deleteComment })=>{
     const commentUser=filterCommentUser(comment.owner)
      
     return(
-        <Card>
+        <div style={{ padding: '0px 24px' }}>
             <CommentUser comment={comment} commentUser={commentUser} deleteComment={deleteComment}/>
             <CardPanel className="grey" style={{ marginTop: '0px' }}>
             <span className="white-text">{comment.body}</span>
           </CardPanel>
-        </Card>
+        </div>
     )
 }
 

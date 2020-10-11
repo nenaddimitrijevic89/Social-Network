@@ -14,11 +14,11 @@ const Comments = ({ isShown, comments, users, writeComment, saveComment, deleteC
             {isShown
             &&
             <>      
-                <Card>
+                <div style={{ padding: '10px 24px 20px 24px' }} onKeyUp={event => event.keyCode === 13 && saveComment()}>
                     <i className='fa fa-pencil'></i> Write comment
                     <input type='text'onChange={writing}/>
-                    <Button onClick={saveComment}>Save</Button>
-                </Card>
+                    <Button onClick={saveComment}><i className='fa fa-send'></i></Button>
+                </div>
                 <>
                 {comments.length
                 ?<>{comments.map(comment => <Comment
