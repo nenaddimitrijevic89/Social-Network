@@ -13,7 +13,7 @@ const PasswordChange =({ user, saveNewPassword, insertData })=>{
                 <InputPassword insertData={insertData} email={user.email} />
             </Row>
             <Row>
-                <Button onClick={saveNewPassword}>Save</Button>
+                <Button onClick={saveNewPassword}><i className='fa fa-send'></i></Button>
             </Row>
         </Container>
     )

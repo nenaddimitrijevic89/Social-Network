@@ -13,7 +13,7 @@ const ProfileImageChange = ({ user, uploadImage, setImage }) => {
                 <InputProfileImage setImage={setImage}/>
             </Row>
             <Row>
-                <Button onClick={uploadImage}>Save</Button>
+                <Button onClick={uploadImage}><i className='fa fa-send'></i></Button>
             </Row>
         </Container>
     )

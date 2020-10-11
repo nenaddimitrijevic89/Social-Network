@@ -13,7 +13,7 @@ const InfoChange =({ user, submitData, insertData })=>{
                 <InputInfo insertData={insertData} />
             </Row>
             <Row>
-                <Button onClick={submitData}>Save</Button>
+                <Button onClick={submitData}><i className='fa fa-send'></i></Button>
             </Row>
         </Container>
     )

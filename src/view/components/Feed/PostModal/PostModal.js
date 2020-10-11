@@ -8,6 +8,14 @@ import { VideoPostModal } from './VideoPostModal/VideoPostModal';
 
 const PostModal =({ modalIsOpen, openModal, writePost, savePost,changeText, changeImage, changeVideo, isText, isImage, isVideo, uploadImage })=>{
     
+    const post =()=>{
+        if(isImage){
+            uploadImage()
+        }else{
+            savePost()
+        }
+    }
+
     return(
         <Modal
             isOpen={modalIsOpen}
@@ -16,7 +24,7 @@ const PostModal =({ modalIsOpen, openModal, writePost, savePost,changeText, chan
             onRequestClose={() => { openModal() }}
             contentLabel="modal"
         >
-            <Container>
+            <Container onKeyUp={event => event.keyCode === 13 && post()}>
                 <Button onClick={changeText} name='text' style={{marginRight: '5px'}}><i className='fa fa-pencil'></i></Button>
                 <Button onClick={changeImage} name='image' style={{marginRight: '5px'}}><i className='fa fa-image'></i></Button>
                 <Button onClick={changeVideo} name='video'><i className='fa fa-play'></i></Button>
@@ -28,8 +36,8 @@ const PostModal =({ modalIsOpen, openModal, writePost, savePost,changeText, chan
                 {isVideo && <VideoPostModal writePost={writePost}/>}
 
                 <Row>
-                    {(isText || isVideo) && <Button onClick={savePost}>Save</Button>}
-                    {isImage && <Button onClick={uploadImage}>Upload</Button>}
+                    {(isText || isVideo) && <Button onClick={savePost}><i className='fa fa-send'></i></Button>}
+                    {isImage && <Button onClick={uploadImage}><i className='fa fa-send'></i></Button>}
                     
                 </Row>
             </Container>
