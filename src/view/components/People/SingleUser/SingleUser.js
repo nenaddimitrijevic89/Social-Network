@@ -13,8 +13,10 @@ class SingleUser extends React.Component {
 
     componentDidMount() {
         userService.getSingleUser(this.props.match.params.id)
-            .then(response => this.setState({ user: response }))
+        .then(response => this.setState({ user: response }))
+        
         userService.getSingleUserPosts(this.props.match.params.id)
+        .then(response => this.setState({ posts: response }))
     }
 
     removeUser = () => {
