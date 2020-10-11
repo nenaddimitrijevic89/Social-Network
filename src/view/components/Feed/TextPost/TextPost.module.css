@@ -21,7 +21,7 @@
 
 .comment {
     position: absolute;
-    color: black;
+    color: #444;
     bottom: 13px;
     right: 15px;
     font-size: 25px;
@@ -34,9 +34,9 @@
 
 .numb {
     position: absolute;
-    left: 10px;
+    left: 9px;
     bottom: 5px;
-    color: black;
+    color: #444;
     font-size: 15px;
     font-family: 'Changa', sans-serif;
 }

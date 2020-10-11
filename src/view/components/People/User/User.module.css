@@ -1,20 +1,22 @@
 .user {
-    background-color: white;
+    background-color: #fff;
     display: flex;
     width: 100%;
     padding-top: 10px !important;
     border-top: 1px solid rgb(200, 199, 199);
     border-bottom: none !important;
-    color: black;
+    color: #444;
+    box-shadow: 0 3px 30px rgba(0, 0, 0, .14);
+    margin-bottom: 20px;
 }
 
-.center{
+.center {
     justify-content: center;
     align-items: center;
     display: flex;
 }
 
-.marginSide{
+.margin {
     margin-left: auto;
     margin-right: auto;
 }
@@ -35,15 +37,14 @@
     margin-left: 15px;
 }
 
-
 .info>p {
     margin: 10px !important;
 }
 
-.margin {
+.marginBottom {
     margin-bottom: 0px !important;
 }
 
-.bold{
+.bold {
     font-weight: bold;
 }

@@ -4,12 +4,16 @@ import { userService } from '../../../services/userService';
 import { User } from './User/User';
 import { isLoggedIn } from '../../../shared/utilities';
 import { Loader } from '../Loader/Loader';
+import { postService } from '../../../services/postService';
+import { commentService } from '../../../services/commentService';
 
 class People extends React.Component {
     constructor() {
         super()
         this.state = {
             users: [],
+            posts: [],
+            comments: [],
             isLoading: true
         }
     }
@@ -17,7 +21,23 @@ class People extends React.Component {
     componentDidMount() {
         userService.getAllUsers()
             .then(response => this.setState({ users: response }))
-            .finally(()=> this.setState({ isLoading: false }))
+        
+        postService.getAllPosts()
+        .then(response => this.setState({ posts: response }))
+
+        commentService.getAllComments()
+        .then(response => this.setState({ comments: response }))
+        .finally(()=> this.setState({ isLoading: false }))
+    }
+
+    filterPostOwner=(id)=>{
+        const postOwner=this.state.posts.filter(post => post.owner===id);
+        return postOwner.length;
+    }
+
+    filterCommentOwner=(id)=>{
+        const commentOwner=this.state.comments.filter(comment => comment.owner===id);
+        return commentOwner.length;
     }
 
     render() {
@@ -33,7 +53,12 @@ class People extends React.Component {
 
                 ?<Loader/>
 
-                :<>{this.state.users.map(user => <User user={user} key={user.id} />)}</>
+                :<>{this.state.users.map(user => <User
+                                                    user={user}
+                                                    key={user.id}
+                                                    numbOfPosts={this.filterPostOwner(user.id)}
+                                                    numbOfComments={this.filterCommentOwner(user.id)}
+                                                    />)}</>
 
                 }
             </Container>
