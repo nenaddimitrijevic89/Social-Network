@@ -35,8 +35,12 @@ class UserForm extends React.Component {
         }
     }
 
-    registerOrLog = () => {
-        this.setState(prevState => ({ isLog: !prevState.isLog }))
+    registerForm = () => {
+        this.setState({ isLog: false })
+    }
+
+    loginForm = () => {
+        this.setState({ isLog: true })
     }
 
     render() {
@@ -44,13 +48,17 @@ class UserForm extends React.Component {
             <Container className={style.form} onKeyUp={ event => event.keyCode === 13 && this.submitData() }>
                 <h1 className={`center-align ${style.padding}`}>Social Network</h1>
                 <Row>
-                <Switch
+                {/* <Switch
                     className='center-align'
                     id="Switch-11"
                     offLabel="Login"
                     onChange={this.registerOrLog}
                     onLabel="Register"
-                />
+                /> */}
+                <div>
+                    <span className={`${style.right} ${this.state.isLog && style.activeR}`} onClick={this.loginForm}>LOGIN</span>
+                    <span className={`${style.left} ${!this.state.isLog && style.activeL}`} onClick={this.registerForm}>REGISTER</span>
+                </div>
                 <Col l={6} className={style.margin}>
                 {this.state.isLog
                     ? <Login
@@ -64,8 +72,9 @@ class UserForm extends React.Component {
                 }
                 </Col>
                 <Col l={6} className={style.info}>
-                Social Network Social Network Social Network Social Network Social Network Social Network
-                 Social Network Social Network Social Network Social Network 
+                <p>If you don't want to Register account you can get in as Demo User.</p>
+                <p>email: demo@gmail.com</p>
+                <p>password: demodemo</p>
                 </Col>
                 </Row>
             </Container>

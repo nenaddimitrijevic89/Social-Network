@@ -1,8 +1,35 @@
 .form {
+    user-select: none;
     margin-top: 80px;
     background-color: white;
     padding: 0 40px 40px 40px;
-    border-radius: 10px;
+    border-radius: 5px;
+    box-shadow: 0 3px 30px rgba(0, 0, 0, .14);
+    color: #444;
+}
+
+.activeR{
+    border-bottom: #26a69a 3px solid;
+    border-right: #26a69a 3px solid;
+}
+.activeL{
+    border-bottom: #26a69a 3px solid;
+    border-left: #26a69a 3px solid;
+}
+
+.right{
+    user-select: none;
+    padding-right: 8px;
+    padding-left: 5px;
+    font-size: large;
+    cursor: pointer;
+}
+.left{
+    user-select: none;
+    padding-left: 8px;
+    padding-right: 5px;
+    font-size: large;
+    cursor: pointer;
 }
 
 .margin {
