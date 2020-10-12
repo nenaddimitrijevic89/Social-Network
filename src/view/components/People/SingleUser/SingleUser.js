@@ -1,22 +1,37 @@
 import React from 'react';
+import { Container } from 'react-materialize';
 import { userService } from '../../../../services/userService';
-import { Button } from 'react-materialize';
+import { ProfileCard } from '../../Profile/ProfileCard/ProfileCard';
+import { Loader } from '../../Loader/Loader';
 
 class SingleUser extends React.Component {
     constructor() {
         super()
         this.state = {
             user: null,
-            posts: []
+            loggedUser: null,
+            numbOfPosts: null,
+            numbOfComments: null,
+            isLoading: true
         }
     }
 
     componentDidMount() {
+        userService.getLoggedUser()
+        .then(response => this.setState({ loggedUser: response }))
+
         userService.getSingleUser(this.props.match.params.id)
         .then(response => this.setState({ user: response }))
+        .then(() => {
+            userService.getSingleUserPosts(this.props.match.params.id)
+            .then(response => this.setState({ numbOfPosts: response }))
+    
+            userService.getSingleUserComments(this.props.match.params.id)
+            .then(response => this.setState({ numbOfComments: response }))
+        })
+        .finally(() => this.setState({ isLoading: false }))
         
-        userService.getSingleUserPosts(this.props.match.params.id)
-        .then(response => this.setState({ posts: response }))
+
     }
 
     removeUser = () => {
@@ -28,12 +43,23 @@ class SingleUser extends React.Component {
 
     render() {
         return (
-            <>
-                <Button
-                    // onClick={this.removeUser}
-                >Remove User
-                </Button>
-            </>
+            <Container>
+                {this.state.isLoading
+
+                ? <Loader />
+                
+                :<>{this.state.loggedUser.id===this.state.user.id
+                    ?
+                    this.props.history.push('/profile')
+                    :<ProfileCard
+                    user={this.state.user}
+                    numbOfComments={this.state.numbOfComments}
+                    numbOfPosts={this.state.numbOfPosts}
+                    />
+                    }</>
+
+                }
+            </Container>
         )
     }
 }
