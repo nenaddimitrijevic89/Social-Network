@@ -7,7 +7,6 @@ const InputProfileImage =({ setImage })=>{
         const post=event.target.files;
         const formData= new FormData();
         formData.append('image', post[0], post[0].name)
-        console.log(post[0], post[0].name)
         setImage(formData)
     }
 
