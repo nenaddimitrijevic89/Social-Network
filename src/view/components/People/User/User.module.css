@@ -48,3 +48,33 @@
 .bold {
     font-weight: bold;
 }
+
+@media only screen and (max-width: 992px) {
+    .image{
+        width: 100px;
+        height: 100px;
+    }
+}
+
+@media only screen and (max-width: 440px) {
+    .image{
+        width: 80px;
+        height: 80px;
+    }
+    .info>p {
+        margin: 3px !important;
+    }
+    .info>p:last-child{
+        margin-bottom: 10px !important;
+    }
+}
+
+@media only screen and (max-width: 340px) {
+    .user{
+        flex-direction: column;
+        text-align: center;
+    }
+    .info>p:last-child{
+        margin-bottom: 10px !important;
+    }
+}
