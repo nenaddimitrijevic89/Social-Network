@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Row, Switch, Col } from 'react-materialize';
+import { Container, Row, Col } from 'react-materialize';
 import { authentication } from '../../../services/authService';
 import { Login } from './Login/Login';
 import { Register } from './Register/Register';
@@ -48,13 +48,6 @@ class UserForm extends React.Component {
             <Container className={style.form} onKeyUp={ event => event.keyCode === 13 && this.submitData() }>
                 <h1 className={`center-align ${style.padding}`}>Social Network</h1>
                 <Row>
-                {/* <Switch
-                    className='center-align'
-                    id="Switch-11"
-                    offLabel="Login"
-                    onChange={this.registerOrLog}
-                    onLabel="Register"
-                /> */}
                 <div>
                     <span className={`${style.right} ${this.state.isLog && style.activeR}`} onClick={this.loginForm}>LOGIN</span>
                     <span className={`${style.left} ${!this.state.isLog && style.activeL}`} onClick={this.registerForm}>REGISTER</span>
@@ -73,8 +66,8 @@ class UserForm extends React.Component {
                 </Col>
                 <Col l={6} className={style.info}>
                 <p>If you don't want to Register account you can get in as Demo User.</p>
-                <p>email: demo@gmail.com</p>
-                <p>password: demodemo</p>
+                <p>email: <span className={style.account}>demo@gmail.com</span></p>
+                <p>password: <span className={style.account}>demodemo</span></p>
                 </Col>
                 </Row>
             </Container>
