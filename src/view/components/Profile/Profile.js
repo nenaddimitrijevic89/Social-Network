@@ -20,7 +20,8 @@ class Profile extends React.Component {
             isPassword: false,
             isProfileImage: false,
             email: null,
-            isLoading: true
+            isLoading: true,
+            avatar: null
         }
     }
 
@@ -38,7 +39,7 @@ class Profile extends React.Component {
     }
 
     openModal = () => {
-        this.setState(prevState => ({ modalIsOpen: !prevState.modalIsOpen }))
+        this.setState(prevState => ({ modalIsOpen: !prevState.modalIsOpen, avatar: null }))
     }
 
     insertData = (data, name) => {
@@ -114,6 +115,10 @@ class Profile extends React.Component {
             })
     }
 
+    imagePreview=(image)=>{
+        this.setState({ avatar: image })
+    }
+
     render() {
 
         const isAuthorized = isLoggedIn()
@@ -143,6 +148,8 @@ class Profile extends React.Component {
                             saveNewPassword={this.saveNewPassword}
                             uploadImage={this.uploadImage}
                             setImage={this.setImage}
+                            avatar={this.state.avatar}
+                            imagePreview={this.imagePreview}
                         />
                         <ProfileCard
                             user={this.state.user}

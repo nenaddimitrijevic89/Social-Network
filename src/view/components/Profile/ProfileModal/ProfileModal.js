@@ -9,7 +9,7 @@ import { ProfileImageChange } from './ProfileImageChange/ProfileImageChange';
 const ProfileModal = ({ insertData, submitData, modalIsOpen,
                         openModal, user, isPassword, saveNewPassword,
                         isProfileImage, isInfo, changeInfo,
-                        changePassword, changeProfileImage, uploadImage, setImage }) => {
+                        changePassword, changeProfileImage, uploadImage, setImage, avatar, imagePreview }) => {
 
     return (
         <Modal
@@ -28,7 +28,7 @@ const ProfileModal = ({ insertData, submitData, modalIsOpen,
 
                 {isInfo && <InfoChange user={user} submitData={submitData} insertData={insertData}/>} 
 
-                {isProfileImage && <ProfileImageChange user={user} uploadImage={uploadImage} setImage={setImage}/>}
+                {isProfileImage && <ProfileImageChange user={user} uploadImage={uploadImage} setImage={setImage} avatar={avatar} imagePreview={imagePreview}/>}
             </>
         </Modal>
     )
