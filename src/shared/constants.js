@@ -27,7 +27,7 @@ const handleImageDisplay = (user) => {
 }
 
 const customStyles = (width) => {
-        if(window.innerWidth < 860){
+        if(window.innerWidth < 520){
                 width='90%'
         }
         return{
