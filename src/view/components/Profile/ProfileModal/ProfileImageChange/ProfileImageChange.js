@@ -4,16 +4,15 @@ import { InputProfileImage } from '../Input/InputProfileImage';
 
 const ProfileImageChange = ({ user, uploadImage, setImage, avatar, imagePreview }) => {
     console.log(avatar)
-    return(
+    return (
         <Container>
-            <h2>
-                {user.fullName}
-            </h2>
-            
+            <p>
+                Update profile image
+            </p>
             <hr></hr>
             <Row>
-                <img src={avatar} style={{width: '250px', height: '250px', backgroundColor: 'grey'}}/>
-                <InputProfileImage setImage={setImage} imagePreview={imagePreview}/>
+                <img src={avatar} style={{ width: '250px', height: '250px', backgroundColor: 'grey' }} />
+                <InputProfileImage setImage={setImage} imagePreview={imagePreview} />
             </Row>
             <Row>
                 <Button onClick={uploadImage}><i className='fa fa-send'></i></Button>

@@ -1,18 +1,19 @@
 import React from 'react';
 import { Col, TextInput } from 'react-materialize';
 
-const InputProfileImage =({ setImage, imagePreview })=>{
+const InputProfileImage = ({ setImage, imagePreview }) => {
 
-    const posting=(event)=>{
-        const post=event.target.files;
-        const preview= URL.createObjectURL(event.target.files[0])
-        const formData= new FormData();
+    const posting = (event) => {
+        console.log('aaaaa')
+        const post = event.target.files;
+        const preview = URL.createObjectURL(event.target.files[0])
+        const formData = new FormData();
         formData.append('image', post[0], post[0].name)
         imagePreview(preview)
         setImage(formData)
     }
 
-    return(
+    return (
         <Col s={12} m={6} l={6}>
             {/* <TextInput
                 onChange={posting}
@@ -20,10 +21,10 @@ const InputProfileImage =({ setImage, imagePreview })=>{
                 type='file'
                 label='Picture'
             /> */}
-             <div class="file-field input-field">
+            <div class="file-field input-field">
                 <div class="btn">
                     <span>File</span>
-                    <input type="file" onChange={posting}/>
+                    <input type="file" onChange={posting} accept="image/png, image/jpeg" />
                 </div>
             </div>
             {/* <TextInput
