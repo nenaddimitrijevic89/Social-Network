@@ -11,7 +11,7 @@ const ProfileImageChange = ({ user, uploadImage, setImage, avatar, imagePreview 
             </p>
             <hr></hr>
             <Row>
-                <img src={avatar} style={{ width: '250px', height: '250px', backgroundColor: 'grey' }} />
+                <img src={avatar} style={{ width: '320px', height: '269px', backgroundColor: 'grey' }} />
                 <InputProfileImage setImage={setImage} imagePreview={imagePreview} />
             </Row>
             <Row>
