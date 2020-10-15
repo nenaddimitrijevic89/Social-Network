@@ -2,12 +2,12 @@ import React from 'react';
 import { Button, Container, Row } from 'react-materialize';
 import { InputPassword } from '../Input/InputPassword';
 
-const PasswordChange =({ user, saveNewPassword, insertData })=>{
-    return(
+const PasswordChange = ({ user, saveNewPassword, insertData }) => {
+    return (
         <Container onKeyUp={event => event.keyCode === 13 && saveNewPassword()}>
-            <h2>
-                {user.fullName}
-            </h2>
+            <p>
+                Change password
+            </p>
             <hr></hr>
             <Row>
                 <InputPassword insertData={insertData} email={user.email} />
