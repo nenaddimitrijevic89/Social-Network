@@ -23,7 +23,8 @@ class Feed extends React.Component {
             src: null,
             isText: true,
             isImage: false,
-            isVideo: false
+            isVideo: false,
+            postImage: null
         }
     }
 
@@ -95,6 +96,10 @@ class Feed extends React.Component {
         this.setState({ isVideo: true, isText: false, isImage: false, type: 'video' })
     }
 
+    imagePreview =(img)=>{
+        this.setState({ postImage: img })
+    }
+
     render() {
         
         const isAuthorized=isLoggedIn()
@@ -121,6 +126,9 @@ class Feed extends React.Component {
                         isVideo={this.state.isVideo}
                         uploadImage={this.uploadImage}
                         src={this.state.src}
+                        imagePreview={this.imagePreview}
+                        postImage={this.state.postImage}
+
                     />
                     {this.state.posts.map(post => {
                         if(post.type==="text"){

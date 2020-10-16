@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Card } from 'react-materialize';
+import { Button } from 'react-materialize';
 import { Comment } from './Comment/Comment';
 
 const Comments = ({ isShown, comments, users, writeComment, saveComment, deleteComment }) => {

@@ -8,7 +8,8 @@ import { VideoPostModal } from './VideoPostModal/VideoPostModal';
 
 const PostModal =({ modalIsOpen, openModal, writePost,
                     savePost,changeText, changeImage,
-                    changeVideo, isText, isImage, isVideo, uploadImage, src })=>{
+                    changeVideo, isText, isImage, isVideo,
+                    uploadImage, src, imagePreview, postImage })=>{
     
     const post =()=>{
         if(isImage){
@@ -33,7 +34,7 @@ const PostModal =({ modalIsOpen, openModal, writePost,
 
                 {isText && <TextPostModal writePost={writePost} />}
 
-                {isImage && <ImagePostModal writePost={writePost} />}
+                {isImage && <ImagePostModal writePost={writePost} imagePreview={imagePreview} postImage={postImage}/>}
                 
                 {isVideo && <VideoPostModal writePost={writePost} src={src}/>}
 

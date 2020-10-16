@@ -52,6 +52,20 @@
     bottom: 13px;
 }
 
+@media only screen and (max-width: 380px) {
+    .postType{
+        font-size: 14px;
+    }
+    .comment{
+        font-size: 20px;
+        bottom: 15px;
+    }
+    .numb{
+        font-size: 12px;
+        left: 7px;
+    }
+}
+
 @media only screen and (max-width: 1024px) {
     .video {
         height: 450px;
