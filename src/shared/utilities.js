@@ -17,6 +17,7 @@ const isLoggedIn = () => {
 }
 
 const embed =(post)=>{
+    if(!post) return
     const base = 'https://www.youtube.com/embed/';
     const id=post.slice(32)
     return `${base}${id}`;

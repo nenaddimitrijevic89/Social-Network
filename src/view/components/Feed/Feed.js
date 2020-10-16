@@ -120,6 +120,7 @@ class Feed extends React.Component {
                         isImage={this.state.isImage}
                         isVideo={this.state.isVideo}
                         uploadImage={this.uploadImage}
+                        src={this.state.src}
                     />
                     {this.state.posts.map(post => {
                         if(post.type==="text"){

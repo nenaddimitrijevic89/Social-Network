@@ -1,5 +1,5 @@
 import React from 'react';
-import { Col, TextInput } from 'react-materialize';
+import { Col } from 'react-materialize';
 
 const InputProfileImage = ({ setImage, imagePreview }) => {
 
@@ -15,30 +15,12 @@ const InputProfileImage = ({ setImage, imagePreview }) => {
 
     return (
         <Col s={12} m={6} l={6}>
-            {/* <TextInput
-                onChange={posting}
-                id='TextInput-15'
-                type='file'
-                label='Picture'
-            /> */}
             <div class="file-field input-field">
                 <div class="btn">
                     <span>File</span>
                     <input type="file" onChange={posting} accept="image/png, image/jpeg" />
                 </div>
             </div>
-            {/* <TextInput
-                id='TextInput-16'
-                style={{ visibility: 'hidden' }}
-            />
-            <TextInput                
-                id='TextInput-17'
-                style={{ visibility: 'hidden' }}
-            />
-            <TextInput                
-                id='TextInput-18'
-                style={{ visibility: 'hidden' }}
-            /> */}
         </Col>
     )
 }

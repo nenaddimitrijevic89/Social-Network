@@ -8,9 +8,7 @@ const TextPostModal =({ writePost })=> {
     }
     return(
         <Row>
-            <h2>
-                Text Post
-            </h2>
+            <h4>Text Post</h4>
             <hr></hr>                
             <div className="input-field col s12">
                 <textarea id="textarea2" className="materialize-textarea" data-length="120" onChange={posting}></textarea>

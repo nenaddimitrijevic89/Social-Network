@@ -6,7 +6,9 @@ import { TextPostModal } from './TextPostModal.js/TextPostModal';
 import { ImagePostModal } from './ImagePostModal/ImagePostModal';
 import { VideoPostModal } from './VideoPostModal/VideoPostModal';
 
-const PostModal =({ modalIsOpen, openModal, writePost, savePost,changeText, changeImage, changeVideo, isText, isImage, isVideo, uploadImage })=>{
+const PostModal =({ modalIsOpen, openModal, writePost,
+                    savePost,changeText, changeImage,
+                    changeVideo, isText, isImage, isVideo, uploadImage, src })=>{
     
     const post =()=>{
         if(isImage){
@@ -19,7 +21,7 @@ const PostModal =({ modalIsOpen, openModal, writePost, savePost,changeText, chan
     return(
         <Modal
             isOpen={modalIsOpen}
-            style={customStyles('65%')}
+            style={customStyles('500px')}
             ariaHideApp={false}
             onRequestClose={() => { openModal() }}
             contentLabel="modal"
@@ -33,7 +35,7 @@ const PostModal =({ modalIsOpen, openModal, writePost, savePost,changeText, chan
 
                 {isImage && <ImagePostModal writePost={writePost} />}
                 
-                {isVideo && <VideoPostModal writePost={writePost}/>}
+                {isVideo && <VideoPostModal writePost={writePost} src={src}/>}
 
                 <Row>
                     {(isText || isVideo) && <Button onClick={savePost}><i className='fa fa-send'></i></Button>}
