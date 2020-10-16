@@ -5,9 +5,7 @@ import { InputPassword } from '../Input/InputPassword';
 const PasswordChange = ({ user, saveNewPassword, insertData }) => {
     return (
         <Container onKeyUp={event => event.keyCode === 13 && saveNewPassword()}>
-            <p>
-                Change password
-            </p>
+            <p style={{ marginBottom: '5px' }}>CHANGE PASSWORD</p>
             <hr></hr>
             <Row>
                 <InputPassword insertData={insertData} email={user.email} />

@@ -1,17 +1,16 @@
 import React from 'react';
 import { Button, Container, Row } from 'react-materialize';
 import { InputProfileImage } from '../Input/InputProfileImage';
+import style from './ProfileImageChange.module.css';
 
-const ProfileImageChange = ({ user, uploadImage, setImage, avatar, imagePreview }) => {
+const ProfileImageChange = ({ uploadImage, setImage, avatar, imagePreview }) => {
     console.log(avatar)
     return (
-        <Container>
-            <p>
-                Update profile image
-            </p>
+        <Container onKeyUp={event => event.keyCode === 13 && uploadImage()}>
+            <p style={{ marginBottom: '5px' }}>UPDATE PROFILE IMAGE</p>
             <hr></hr>
             <Row>
-                <img src={avatar} style={{ width: '320px', height: '269px', backgroundColor: 'grey' }} />
+                <img src={avatar} className={style.image}/>
                 <InputProfileImage setImage={setImage} imagePreview={imagePreview} />
             </Row>
             <Row>

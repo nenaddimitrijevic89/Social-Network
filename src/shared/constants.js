@@ -27,8 +27,8 @@ const handleImageDisplay = (user) => {
 }
 
 const customStyles = (width) => {
-        if(window.innerWidth < 520){
-                width='90%'
+        if(window.innerWidth < 541){
+                width='86%'
         }
         return{
                 overlay: {
