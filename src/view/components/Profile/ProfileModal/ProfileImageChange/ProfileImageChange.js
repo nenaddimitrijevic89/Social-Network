@@ -4,13 +4,12 @@ import { InputProfileImage } from '../Input/InputProfileImage';
 import style from './ProfileImageChange.module.css';
 
 const ProfileImageChange = ({ uploadImage, setImage, avatar, imagePreview }) => {
-    console.log(avatar)
     return (
         <Container onKeyUp={event => event.keyCode === 13 && uploadImage()}>
             <p style={{ marginBottom: '5px' }}>UPDATE PROFILE IMAGE</p>
             <hr></hr>
             <Row>
-                <img src={avatar} className={style.image}/>
+                <img src={avatar} className={style.image} style={{ objectFit: 'cover' }}/>
                 <InputProfileImage setImage={setImage} imagePreview={imagePreview} />
             </Row>
             <Row>

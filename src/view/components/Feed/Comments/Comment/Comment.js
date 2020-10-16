@@ -14,7 +14,7 @@ const Comment =({ comment, users, deleteComment })=>{
     return(
         <div style={{ padding: '0px 24px' }}>
             <CommentUser comment={comment} commentUser={commentUser} deleteComment={deleteComment}/>
-            <CardPanel className="grey" style={{ marginTop: '0px' }}>
+            <CardPanel className="grey left-align" style={{ marginTop: '0px' }}>
             <span className="white-text">{comment.body}</span>
           </CardPanel>
         </div>

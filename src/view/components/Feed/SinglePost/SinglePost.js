@@ -46,9 +46,10 @@ class SinglePost extends React.Component {
 
     saveComment =()=>{
         commentService.createComment(this.state)
-        .then(response => {
-            alert(response.data.data)
-            window.location.reload()
+        .then(() => this.setState({ isLoading: true }))
+        .then(()=>{
+            postService.getSinglePostComments(this.props.match.params.id)
+            .then(response => this.setState({ comments: response, isLoading: false }))
         })
     }
 

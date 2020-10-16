@@ -12,10 +12,9 @@ const VideoPostModal =({ writePost, src })=>{
             <h4>Video Post</h4>
             <hr></hr>
             <iframe src={embed(src)} style={{ width: '100%', height: '269px', backgroundColor: 'lightGrey'}}/>                
-            <div className="input-field col s12">
-                
+            <div className="input-field col s12">    
                 <textarea id="textarea2" className="materialize-textarea" data-length="120" onChange={posting}></textarea>
-                <label htmlFor="textarea2">Upload YouTube video</label>
+                <label htmlFor="textarea2">YouTube video URL</label>
             </div>
         </Row>
     )
