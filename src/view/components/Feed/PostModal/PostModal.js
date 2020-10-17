@@ -5,6 +5,7 @@ import { customStyles }  from '../../../../shared/constants';
 import { TextPostModal } from './TextPostModal.js/TextPostModal';
 import { ImagePostModal } from './ImagePostModal/ImagePostModal';
 import { VideoPostModal } from './VideoPostModal/VideoPostModal';
+import style from './PostModal.module.css'
 
 const PostModal =({ modalIsOpen, openModal, writePost,
                     savePost,changeText, changeImage,
@@ -27,7 +28,7 @@ const PostModal =({ modalIsOpen, openModal, writePost,
             onRequestClose={() => { openModal() }}
             contentLabel="modal"
         >
-            <Container onKeyUp={event => event.keyCode === 13 && post()}>
+            <Container onKeyUp={event => event.keyCode === 13 && post()} className={style.height}>
                 <Button onClick={changeText} name='text' style={{marginRight: '5px'}}><i className='fa fa-pencil'></i></Button>
                 <Button onClick={changeImage} name='image' style={{marginRight: '5px'}}><i className='fa fa-image'></i></Button>
                 <Button onClick={changeVideo} name='video'><i className='fa fa-play'></i></Button>
