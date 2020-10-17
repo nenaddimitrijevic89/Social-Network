@@ -1,5 +1,6 @@
 import React from 'react';
 import { Row } from 'react-materialize';
+import style from './ImagePostModal.module.css';
 
 const ImagePostModal =({ writePost, imagePreview, postImage })=>{
     const posting=(event)=>{
@@ -14,7 +15,7 @@ const ImagePostModal =({ writePost, imagePreview, postImage })=>{
         <Row style={{ marginBottom: '26px' }}>
             <h4>Image Post</h4>
             <hr></hr>
-            <img src={postImage} style={{ width: '100%', height: '269px', backgroundColor: 'lightGrey', objectFit: 'cover'}}/>                
+            <img src={postImage} className={style.image}/>                
             <div className="file-field input-field col s12" style={{ marginBottom: '23px'}}>
                 <div className="btn">
                     <i className='fa fa-upload'></i>

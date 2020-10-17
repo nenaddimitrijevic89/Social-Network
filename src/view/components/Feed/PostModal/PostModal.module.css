@@ -1,9 +1,0 @@
-.width> .input-field{
-    width: 100%;
-}
-
-@media only screen and (max-width: 500px) {
-    .height{
-        height: 50px;
-    }
-}
