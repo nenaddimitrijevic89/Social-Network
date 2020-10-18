@@ -11,7 +11,7 @@ const ImagePost = ({ post, user, deletePost, isShown, comments, users, writeComm
       <Col m={12} s={12} l={9} className={style.margin}>
         <div className={style.card}>
           <PostUser user={user} post={post} deletePost={deletePost} isShown={isShown} numbOfComments={numbOfComments}/>
-          <img src={post.src} alt='imagePost' style={{ width: '100%' }} />
+          <img src={post?.src} alt='imagePost' style={{ width: '100%' }} />
           <Comments isShown={isShown} comments={comments} users={users} writeComment={writeComment} saveComment={saveComment} deleteComment={deleteComment}/>
           {!isShown && <Link to={`/feed/post/${post.id}`}>
                             <i className={`${style.comment} fa fa-comment`}>
