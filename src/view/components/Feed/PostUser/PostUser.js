@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 const PostUser = ({ user, post, deletePost, isShown }) => {
     return (
         <div className={style.user}>
-            <Link to={`/people/${user.id}`}>
+            <Link to={`/people/${user?.id}`}>
                 <div className={style.img}>
                     {isShown
                     ? <img className={style.radius} src={user?.avatarUrl || avatar} alt='user'></img>

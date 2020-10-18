@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 const CommentUser =({ comment, commentUser, deleteComment })=>{
     return(
         <div className={style.user}>
-            <Link to={`/people/${commentUser.id}`}>
+            <Link to={`/people/${commentUser?.id}`}>
                 <div className={style.img}>
                     <img className={style.radius} src={commentUser?.avatarUrl || avatar} alt='user'></img>
                 </div>
