@@ -5,7 +5,7 @@ import { InputInfo } from '../Input/InputInfo';
 const InfoChange = ({ submitData, insertData }) => {
     return (
         <Container onKeyUp={event => event.keyCode === 13 && submitData()}>
-            <p style={{ marginBottom: '5px' }}>UPDATE INFO</p>
+            <p style={{ marginBottom: '5px', color: 'gray'  }}>UPDATE INFO</p>
             <hr></hr>
             <Row>
                 <InputInfo insertData={insertData} />
