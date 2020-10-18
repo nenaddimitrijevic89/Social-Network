@@ -6,7 +6,7 @@ import style from './ProfileImageChange.module.css';
 const ProfileImageChange = ({ uploadImage, setImage, avatar, imagePreview }) => {
     return (
         <Container onKeyUp={event => event.keyCode === 13 && uploadImage()}>
-            <p style={{ marginBottom: '5px', color: 'gray' , color: 'gray'  }}>UPDATE PROFILE IMAGE</p>
+            <p style={{ marginBottom: '5px', color: 'gray' }}>UPDATE PROFILE IMAGE</p>
             <hr></hr>
             <Row>
                 <img src={avatar} className={style.image}/>
