@@ -10,7 +10,7 @@ const VideoPost = ({ post, user, deletePost, isShown, comments, users, writeComm
         <Row className={style.center}>
             <Col m={12} s={12} l={9} className={style.margin}>
                 <div className={style.card}>
-                    <PostUser user={user} post={post} deletePost={deletePost} isShown={isShown} numbOfComments={numbOfComments}/>
+                    <PostUser user={user} post={post} deletePost={deletePost} numbOfComments={numbOfComments}/>
                     <iframe src={post.src} title='post video' className={style.video}></iframe>
                     <Comments isShown={isShown} comments={comments} users={users} writeComment={writeComment} saveComment={saveComment} deleteComment={deleteComment}/>
                     {!isShown && <Link to={`/feed/post/${post.id}`}>

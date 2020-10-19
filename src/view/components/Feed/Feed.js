@@ -77,7 +77,6 @@ class Feed extends React.Component {
 
     deletePost = (id) => {
         postService.deletePost(id)
-        // .then(() => window.location.reload())
         .then(() => {
             postService.getAllPosts()
             .then(response=>this.setState({ posts: response }))
