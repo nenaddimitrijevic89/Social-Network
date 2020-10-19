@@ -15,10 +15,9 @@ const InputProfileImage = ({ setImage, imagePreview }) => {
 
     return (
         <Col s={12} m={6} l={6}>
-            <div class="file-field input-field">
-                <div class="btn">
+            <div className="file-field input-field">
+                <div className="btn red red">
                 <i className='fa fa-upload'></i>
-                    {/* <span>File</span> */}
                     <input type="file" onChange={posting} accept="image/png, image/jpeg" />
                 </div>
             </div>

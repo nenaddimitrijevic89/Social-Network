@@ -4,7 +4,7 @@ import { InputInfo } from '../Input/InputInfo';
 
 const InfoChange = ({ submitData, insertData }) => {
     return (
-        <Container onKeyUp={event => event.keyCode === 13 && submitData()}>
+        <div onKeyUp={event => event.keyCode === 13 && submitData()}>
             <p style={{ marginBottom: '5px', color: 'gray'  }}>UPDATE INFO</p>
             <hr></hr>
             <Row>
@@ -13,7 +13,7 @@ const InfoChange = ({ submitData, insertData }) => {
             <Row>
                 <Button onClick={submitData}><i className='fa fa-send'></i></Button>
             </Row>
-        </Container>
+        </div>
     )
 }
 
