@@ -1,6 +1,6 @@
 import React from 'react';
 import Modal from 'react-modal';
-import { Button } from 'react-materialize';
+import { Button, Container } from 'react-materialize';
 import { customStyles } from '../../../../shared/constants';
 import { PasswordChange } from './PasswordChange/PasswordChange';
 import { InfoChange } from './InfoChange/InfoChange';
@@ -19,7 +19,7 @@ const ProfileModal = ({ insertData, submitData, modalIsOpen,
             onRequestClose={() => { openModal({}) }}
             contentLabel="modal"
         >
-            <>
+            <Container>
                 <Button onClick={changeInfo} style={{ marginRight: '5px' }}><i className='fa fa-info'></i></Button>
                 <Button onClick={changePassword} style={{ marginRight: '5px' }}><i className='fa fa-key'></i></Button>
                 <Button onClick={changeProfileImage}><i className='fa fa-user-circle-o'></i></Button>
@@ -29,7 +29,7 @@ const ProfileModal = ({ insertData, submitData, modalIsOpen,
                 {isInfo && <InfoChange user={user} submitData={submitData} insertData={insertData} />}
 
                 {isProfileImage && <ProfileImageChange user={user} uploadImage={uploadImage} setImage={setImage} avatar={avatar} imagePreview={imagePreview} />}
-            </>
+            </Container>
         </Modal>
     )
 }

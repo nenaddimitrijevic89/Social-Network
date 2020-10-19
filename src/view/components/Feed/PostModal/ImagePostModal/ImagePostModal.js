@@ -17,7 +17,7 @@ const ImagePostModal =({ writePost, imagePreview, postImage })=>{
             <hr></hr>
             <img src={postImage} className={style.image}/>                
             <div className="file-field input-field col s12" style={{ marginBottom: '23px'}}>
-                <div className="btn">
+                <div className="btn red">
                     <i className='fa fa-upload'></i>
                     <input type="file" name='file' onChange={posting} accept="image/png, image/jpeg"/>
                 </div>

@@ -48,7 +48,7 @@ class SingleUser extends React.Component {
 
                 ? <Loader />
                 
-                :<>{this.state.loggedUser.id===this.state.user.id
+                :<>{this.state.loggedUser?.id===this.state.user?.id
                     ?
                     this.props.history.push('/profile')
                     :<ProfileCard
