@@ -10,7 +10,7 @@ const TextPost = ({ post, user, deletePost, isShown, comments, users, writeComme
     <Row className={style.center}>
       <Col m={12} s={12} l={9} className={style.margin}>
         <div className={style.card}>
-          <PostUser user={user} post={post} deletePost={deletePost} isShown={isShown} numbOfComments={numbOfComments}/>
+          <PostUser user={user} post={post} deletePost={deletePost} numbOfComments={numbOfComments}/>
           <CardPanel className="grey" style={{ marginTop: '0px', marginBottom: '9px' }}>
             <span className="white-text">{post.src}</span>
           </CardPanel>
