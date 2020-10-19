@@ -53,6 +53,9 @@
 .account{
     font-weight: bold;
 }
+.red{
+    color:#f44336;
+}
 
 @media only screen and (max-width: 992px) {
     .info {
@@ -65,5 +68,16 @@
     .padding {
         padding-top: 20px;
         margin-top: 23px;
+    }
+}
+
+@media only screen and (max-width: 640px) {
+    .padding{
+        font-size: 40px;
+    }
+}
+@media only screen and (max-width: 420px) {
+    .padding{
+        font-size: 36px;
     }
 }
