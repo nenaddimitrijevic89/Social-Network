@@ -11,10 +11,10 @@ class Authentication {
                 console.log(response);
                 if(response.status === 200){
                     storageService.set('token', response.data.token)
-                    console.log(response)
+                    return response
                 }
             })
-            .catch(error => console.log(error))
+            // .catch(error => console.log(error))
     }
 
     logIn({ email, password }) {
@@ -26,7 +26,7 @@ class Authentication {
                     return response
                 }
             })
-            .catch(error => console.log(error))
+            // .catch(error => console.log(error))
     }
 
     changePassword({ email, password, newPassword}){
