@@ -60,26 +60,32 @@ class Feed extends React.Component {
     }
 
     uploadImage = () => {
+        this.setState({ isLoading: true })
         postService.createImagePost(this.state)
         .then(() => {
             postService.getAllPosts()
-            .then(response=>this.setState({ posts: response, modalIsOpen: false }))
+            .then(response => this.setState({ posts: response, modalIsOpen: false }))
+            .finally(() => this.setState({ isLoading: false }))
         })
     }
 
     savePost = () => {
+        this.setState({ isLoading: true })
         postService.createPost(this.state)
         .then(() => {
             postService.getAllPosts()
             .then(response=>this.setState({ posts: response, modalIsOpen: false }))
+            .finally(() => this.setState({ isLoading: false }))
         })
     }
 
     deletePost = (id) => {
+        this.setState({ isLoading: true })
         postService.deletePost(id)
         .then(() => {
             postService.getAllPosts()
-            .then(response=>this.setState({ posts: response }))
+            .then(response => this.setState({ posts: response }))
+            .finally(()=> this.setState({ isLoading: false }))
         })
     }
 
