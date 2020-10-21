@@ -93,10 +93,12 @@ class Profile extends React.Component {
     }
 
     uploadImage =()=>{
+        this.setState({ isLoading: true })
         userService.uploadProfileImage(this.state.user.id, this.state.image)
         .then(()=>{
             userService.getLoggedUser()
             .then(response => this.setState({ user: response, modalIsOpen: false }))
+            .finally(() => this.setState({ isLoading: false }))
         })
     }
 
