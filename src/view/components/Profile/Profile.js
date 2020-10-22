@@ -34,8 +34,8 @@ class Profile extends React.Component {
 
                 userService.getSingleUserComments(this.state.user.id)
                 .then(response => this.setState({ numbOfComments: response }))
+                .finally(() => this.setState({ isLoading: false }))
             })
-            .finally(() => this.setState({ isLoading: false }))
     }
 
     openModal = () => {
