@@ -58,15 +58,15 @@ class PostService {
                 Authorization: token,
             }
         })
-            .then(response => console.log(response))
-            .catch(error => console.log(error))
+        .then(response => console.log(response))
+        .catch(error => console.log(error))
     }
 
     deletePost(id) {
         return baseURL.delete(`posts/${id}`, {
             headers: HEADERS()
         })
-            .catch(() => alert('This is not your post. You can not delete it!'))
+        .catch(() => alert('This is not your post. You can not delete it!'))
     }
 }
 
