@@ -37,7 +37,7 @@ const customStyles = (width) => {
                     left: 0,
                     right: 0,
                     bottom: 0,
-                    backgroundColor: 'rgba(218, 218, 218, 0.5)'
+                    backgroundColor: 'rgba(218, 218, 218, 0.9)'
                 },
                 content: {
                     width: width,
