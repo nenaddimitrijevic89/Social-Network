@@ -33,7 +33,7 @@ class UserForm extends React.Component {
                 this.props.history.push('/feed')
                 }
             })
-            .catch((error)=> this.setState({ errorMsg: error.response.data, isLoading: false }))
+            .catch((error) => this.setState({ errorMsg: error.response.data, isLoading: false }))
         } else{
             authentication.register(this.state)
             .then((response) => {
@@ -41,7 +41,7 @@ class UserForm extends React.Component {
                 this.props.history.push('/feed')
                 }
             })
-            .catch((error)=> this.setState({ errorMsg: error.response.data, isLoading: false }))
+            .catch((error) => this.setState({ errorMsg: error.response.data, isLoading: false }))
         }
     }
 
