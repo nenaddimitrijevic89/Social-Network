@@ -31,7 +31,11 @@ class Authentication {
         return baseURL.patch('auth/password/change', { email, password, newPassword }, {
             headers: HEADERS()
         })
-        .then(response => console.log(response))
+        .then(response => {
+            if(response.status === 200){
+                alert(response.data.data)
+            }
+        })
     }
 }
 
