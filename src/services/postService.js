@@ -6,8 +6,8 @@ const { HEADERS, handlePostTypeDisplay } = require("../shared/constants");
 
 class PostService {
 
-    getAllPosts() {
-        return baseURL.get('posts', {
+    async getAllPosts() {
+        return await baseURL.get('posts', {
             headers: HEADERS()
         })
             .then(response => {
