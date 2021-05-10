@@ -11,7 +11,6 @@ class UserService {
             })
             .then(response => {
                 const usersList = response.data.data;
-                console.log(usersList)
                 const newUsersList = usersList.map(user =>{
                     handleImageDisplay(user)
                     return new User(user)
@@ -85,7 +84,6 @@ class UserService {
             }, data)
             .then(response => {
                 storageService.remove('token')
-                console.log(response)
             })
             .catch(error => console.log(error))
     }
