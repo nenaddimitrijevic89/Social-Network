@@ -20,8 +20,8 @@ class UserService {
             .catch(error => console.log(error))
     }
 
-    getLoggedUser() {
-        return baseURL.get('users/me', {
+    async getLoggedUser() {
+        return await baseURL.get('users/me', {
                 headers: HEADERS()
             })
             .then(response => {
@@ -32,8 +32,8 @@ class UserService {
             })
     }
 
-    getSingleUser(id) {
-        return baseURL.get(`users/${id}`, {
+    async getSingleUser(id) {
+        return await baseURL.get(`users/${id}`, {
                 headers: HEADERS()
             })
             .then(response => {
@@ -45,16 +45,16 @@ class UserService {
             .catch(error => console.log(error))
     }
 
-    updateUser(id, data) {
-        return baseURL.patch(`users/${id}`, data, {
+    async updateUser(id, data) {
+        return await baseURL.patch(`users/${id}`, data, {
                 headers: HEADERS()
             })
             .catch(error=>console.log(error))
     }
 
-    uploadProfileImage(id, data) {
+    async uploadProfileImage(id, data) {
         const token = storageService.get('token');
-        return baseURL.post(`users/${id}/image`, data, {
+        return await baseURL.post(`users/${id}/image`, data, {
             headers: {
                 "x-api-key": "1vaHd3v",
                 Authorization: token,
@@ -62,24 +62,24 @@ class UserService {
         })
     }
 
-    getSingleUserPosts(id) {
-        return baseURL.get(`users/${id}/posts`, {
+    async getSingleUserPosts(id) {
+        return await baseURL.get(`users/${id}/posts`, {
                 headers: HEADERS()
             })
             .then(response => response.data.total)
             .catch(error => console.log(error))
     }
 
-    getSingleUserComments(id) {
-        return baseURL.get(`users/${id}/comments`, {
+    async getSingleUserComments(id) {
+        return await baseURL.get(`users/${id}/comments`, {
             headers: HEADERS()
         })
         .then(response => response.data.total)
         .catch(error => console.log(error))
     }
 
-    deleteSingleUser(id, data) {
-        return baseURL.delete(`users/${id}`, {
+    async deleteSingleUser(id, data) {
+        return await baseURL.delete(`users/${id}`, {
                 headers: HEADERS()
             }, data)
             .then(response => {
