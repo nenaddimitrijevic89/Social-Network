@@ -4,8 +4,8 @@ const { baseURL } = require("../shared/baseURL");
 
 class CommmentService {
 
-    async getAllComments() {
-        return await baseURL.get('comments', {
+    getAllComments() {
+        return baseURL.get('comments', {
             headers: HEADERS()
         })
         .then(response => {
@@ -14,15 +14,15 @@ class CommmentService {
         })
     }
     
-    async createComment({ postId, body }) {
-        return await baseURL.post('comments', { postId, body }, {
+    createComment({ postId, body }) {
+        return baseURL.post('comments', { postId, body }, {
             headers: HEADERS()
         })
         .catch(error => console.log(error))
     }
 
-    async deleteComment(id){
-        return await baseURL.delete(`comments/${id}`, {
+    deleteComment(id){
+        return baseURL.delete(`comments/${id}`, {
             headers: HEADERS()
         })
         .catch(()=> alert('This is not your comment. You can not delete it!'))
