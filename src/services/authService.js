@@ -5,8 +5,8 @@ import { storageService } from './storageService';
 
 class Authentication {
 
-    register({ email, password, firstName, lastName }) {
-        return baseURL.post('auth/register', { email, password, firstName, lastName }, HEADERS())
+    async register({ email, password, firstName, lastName }) {
+        return await baseURL.post('auth/register', { email, password, firstName, lastName }, HEADERS())
             .then((response)=>{
                 console.log(response);
                 if(response.status === 200){
@@ -16,8 +16,8 @@ class Authentication {
             })
     }
 
-    logIn({ email, password }) {
-        return baseURL.post('auth/login', { email, password }, HEADERS())
+    async logIn({ email, password }) {
+        return await baseURL.post('auth/login', { email, password }, HEADERS())
             .then((response) => {
                 console.log(response);
                 if (response.status === 200) {
@@ -27,8 +27,8 @@ class Authentication {
             })
     }
 
-    changePassword({ email, password, newPassword}){
-        return baseURL.patch('auth/password/change', { email, password, newPassword }, {
+    async changePassword({ email, password, newPassword}){
+        return await baseURL.patch('auth/password/change', { email, password, newPassword }, {
             headers: HEADERS()
         })
         .then(response => {
