@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Container, Row } from 'react-materialize';
 import { userService } from '../../../services/userService';
 import { isLoggedIn } from '../../../shared/utilities';
@@ -7,23 +7,19 @@ import { authentication } from '../../../services/authService';
 import { Loader } from '../Loader/Loader';
 import { ProfileCard } from './ProfileCard/ProfileCard';
 
-class Profile extends React.Component {
-    constructor() {
-        super()
-        this.state = {
-            user: {},
-            numbOfPosts: null,
-            numbOfComments: null,
-            image: null,
-            modalIsOpen: false,
-            isInfo: true,
-            isPassword: false,
-            isProfileImage: false,
-            email: null,
-            isLoading: true,
-            avatar: null
-        }
-    }
+const Profile = () => {
+    
+            const [user, setUser] = useState({})
+            const [numbOfPosts, setNumbOfPosts] = useState(null)
+            const [numbOfComments, setNumbOfComments] = useState(null)
+            const [image, setImage] = useState(null)
+            const [modalIsOpen, setModalIsOpen] = useState(false)
+            const [isInfo, setIsInfo] = useState(true)
+            const [isPassword, setIsPassword] = useState(false)
+            const [isProfileImage, setIsProfileImage] = useState(false)
+            const [email, setEmail] = useState(null)
+            const [isLoading, setIsLoading] = useState(true)
+            const [avatar, setAvatar] = useState(null)
 
     componentDidMount() {
         userService.getLoggedUser()
