@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Container, Row } from 'react-materialize';
 import { userService } from '../../../services/userService';
 import { isLoggedIn } from '../../../shared/utilities';
@@ -21,9 +21,12 @@ const Profile = () => {
             const [isLoading, setIsLoading] = useState(true)
             const [avatar, setAvatar] = useState(null)
 
-    componentDidMount() {
+    useEffect(() => {
         userService.getLoggedUser()
-            .then(response => this.setState({ user: response, email: response.email }))
+            .then(response => {
+                setUser(response)
+                setEmail(response.email)
+        })
             .then(() => {
                 userService.getSingleUserPosts(this.state.user.id)
                 .then(response => this.setState({ numbOfPosts: response }))
@@ -32,7 +35,7 @@ const Profile = () => {
                 .then(response => this.setState({ numbOfComments: response }))
                 .finally(() => this.setState({ isLoading: false }))
             })
-    }
+    })
 
     openModal = () => {
         this.setState(prevState => ({ modalIsOpen: !prevState.modalIsOpen, avatar: null }))
