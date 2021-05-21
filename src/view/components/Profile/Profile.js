@@ -28,17 +28,18 @@ const Profile = () => {
                 setEmail(response.email)
         })
             .then(() => {
-                userService.getSingleUserPosts(this.state.user.id)
-                .then(response => this.setState({ numbOfPosts: response }))
+                userService.getSingleUserPosts(user.id)
+                .then(response => setNumbOfPosts(response))
 
-                userService.getSingleUserComments(this.state.user.id)
-                .then(response => this.setState({ numbOfComments: response }))
-                .finally(() => this.setState({ isLoading: false }))
+                userService.getSingleUserComments(user.id)
+                .then(response => setNumbOfComments(response))
+                .finally(() => setIsLoading(false))
             })
     })
 
     openModal = () => {
-        this.setState(prevState => ({ modalIsOpen: !prevState.modalIsOpen, avatar: null }))
+        setModalIsOpen(!modalIsOpen)
+        setAvatar(null)
     }
 
     insertData = (data, name) => {
