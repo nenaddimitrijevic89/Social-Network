@@ -28,17 +28,18 @@ const Profile = () => {
                 setEmail(response.email)
         })
             .then(() => {
-                userService.getSingleUserPosts(this.state.user.id)
-                .then(response => this.setState({ numbOfPosts: response }))
+                userService.getSingleUserPosts(user.id)
+                .then(response => setNumbOfPosts(response))
 
-                userService.getSingleUserComments(this.state.user.id)
-                .then(response => this.setState({ numbOfComments: response }))
-                .finally(() => this.setState({ isLoading: false }))
+                userService.getSingleUserComments(user.id)
+                .then(response => setNumbOfComments(response))
+                .finally(() => setIsLoading(false))
             })
     })
 
-    openModal = () => {
-        this.setState(prevState => ({ modalIsOpen: !prevState.modalIsOpen, avatar: null }))
+    const openModal = () => {
+        setModalIsOpen(!modalIsOpen)
+        setAvatar(null)
     }
 
     insertData = (data, name) => {
@@ -135,28 +136,28 @@ const Profile = () => {
 
                     : <Row>
                         <ProfileModal
-                            user={this.state.user}
-                            modalIsOpen={this.state.modalIsOpen}
-                            openModal={this.openModal}
-                            insertData={this.insertData}
-                            submitData={this.submitData}
-                            isPassword={this.state.isPassword}
-                            isProfileImage={this.state.isProfileImage}
-                            isInfo={this.state.isInfo}
-                            changeInfo={this.changeInfo}
-                            changePassword={this.changePassword}
-                            changeProfileImage={this.changeProfileImage}
-                            saveNewPassword={this.saveNewPassword}
-                            uploadImage={this.uploadImage}
-                            setImage={this.setImage}
-                            avatar={this.state.avatar}
-                            imagePreview={this.imagePreview}
+                            user={user}
+                            modalIsOpen={modalIsOpen}
+                            openModal={openModal}
+                            insertData={insertData}
+                            submitData={submitData}
+                            isPassword={isPassword}
+                            isProfileImage={isProfileImage}
+                            isInfo={isInfo}
+                            changeInfo={changeInfo}
+                            changePassword={changePassword}
+                            changeProfileImage={changeProfileImage}
+                            saveNewPassword={saveNewPassword}
+                            uploadImage={uploadImage}
+                            setImage={setImage}
+                            avatar={avatar}
+                            imagePreview={imagePreview}
                         />
                         <ProfileCard
-                            user={this.state.user}
-                            openModal={this.openModal}
-                            numbOfPosts={this.state.numbOfPosts}
-                            numbOfComments={this.state.numbOfComments}    
+                            user={user}
+                            openModal={openModal}
+                            numbOfPosts={numbOfPosts}
+                            numbOfComments={numbOfComments}    
                         />
                     </Row>
                 }
