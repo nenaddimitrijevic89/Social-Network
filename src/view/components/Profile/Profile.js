@@ -47,25 +47,25 @@ const Profile = () => {
   const insertData = (data, name) => {
     switch (name) {
       case "firstName":
-        setUser({...user, firstName: data });
+        setUser({ ...user, firstName: data });
         break;
       case "lastName":
-        setUser({...user, lastName: data });
+        setUser({ ...user, lastName: data });
         break;
       case "about":
-        setUser({...user, about: data });
+        setUser({ ...user, about: data });
         break;
       case "prefix":
-        setUser({...user, prefix: data });
+        setUser({ ...user, prefix: data });
         break;
       case "email":
-        setUser({...user, email: data });
+        setUser({ ...user, email: data });
         break;
       case "password":
-        setUser({...user, password: data });
+        setUser({ ...user, password: data });
         break;
       case "newPassword":
-        setUser({...user, newPassword: data });
+        setUser({ ...user, newPassword: data });
         break;
       default:
         return null;
@@ -78,33 +78,38 @@ const Profile = () => {
   };
 
   const changeInfo = () => {
-    setState({ isInfo: true, isProfileImage: false, isPassword: false });
+    setIsInfo(true);
+    setIsProfileImage(false);
+    setIsPassword(false);
   };
 
   const changePassword = () => {
-    setState({ isInfo: false, isProfileImage: false, isPassword: true });
+    setIsInfo(false);
+    setIsProfileImage(false);
+    setIsPassword(true);
   };
 
   const changeProfileImage = () => {
-    setState({ isInfo: false, isProfileImage: true, isPassword: false });
+    setIsInfo(false);
+    setIsProfileImage(true);
+    setIsPassword(false);
   };
 
   const setImageFn = (img) => {
-    setState({ image: img });
+    setImage(img);
   };
 
   const uploadImage = () => {
-    setState({ isLoading: true });
-    userService
-      .uploadProfileImage(this.state.user.id, this.state.image)
-      .then(() => {
-        userService
-          .getLoggedUser()
-          .then((response) =>
-            this.setState({ user: response, modalIsOpen: false })
-          )
-          .finally(() => this.setState({ isLoading: false }));
-      });
+    setIsLoading(true);
+    userService.uploadProfileImage(user.id, image).then(() => {
+      userService
+        .getLoggedUser()
+        .then((response) => {
+          setUser(response);
+          setModalIsOpen(false);
+        })
+        .finally(() => setIsLoading(false));
+    });
   };
 
   const submitData = () => {
@@ -115,7 +120,7 @@ const Profile = () => {
     data.about = about;
     data.prefix = prefix;
 
-    userService.updateUser(this.state.user.id, data).then((response) => {
+    userService.updateUser(user.id, data).then((response) => {
       console.log(response);
       window.location.reload();
     });
