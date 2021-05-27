@@ -16,7 +16,7 @@ const Profile = () => {
   const [isInfo, setIsInfo] = useState(true);
   const [isPassword, setIsPassword] = useState(false);
   const [isProfileImage, setIsProfileImage] = useState(false);
-  const [email, setEmail] = useState(null);
+  // const [email, setEmail] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [avatar, setAvatar] = useState(null);
 
@@ -25,7 +25,7 @@ const Profile = () => {
       .getLoggedUser()
       .then((response) => {
         setUser(response);
-        setEmail(response.email);
+        // setEmail(response.email);
       })
       .then(() => {
         userService
@@ -37,7 +37,7 @@ const Profile = () => {
           .then((response) => setNumbOfComments(response))
           .finally(() => setIsLoading(false));
       });
-  });
+  }, [user.id]);
 
   const openModal = () => {
     setModalIsOpen(!modalIsOpen);
@@ -114,7 +114,7 @@ const Profile = () => {
 
   const submitData = () => {
     const data = {};
-    const { firstName, lastName, about, prefix } = this.state;
+    const { firstName, lastName, about, prefix } = user;
     data.firstName = firstName;
     data.lastName = lastName;
     data.about = about;
