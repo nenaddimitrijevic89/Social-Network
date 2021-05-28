@@ -4,7 +4,7 @@ import { Col } from 'react-materialize';
 const InputProfileImage = ({ setImage, imagePreview }) => {
 
     const posting = (event) => {
-        console.log('aaaaa')
+        console.log('posting')
         const post = event.target.files;
         const preview = URL.createObjectURL(event.target.files[0])
         const formData = new FormData();
