@@ -127,7 +127,7 @@ const Profile = () => {
   };
 
   const imagePreview = (image) => {
-    this.setState({ avatar: image });
+    setAvatar(image);
   };
 
   const isAuthorized = isLoggedIn();

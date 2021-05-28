@@ -9,7 +9,7 @@ const ProfileImageChange = ({ uploadImage, setImage, avatar, imagePreview }) => 
             <p style={{ marginBottom: '5px', color: 'gray' }}>UPDATE PROFILE IMAGE</p>
             <hr></hr>
             <Row>
-                <img src={avatar} className={style.image}/>
+                <img src={avatar} className={style.image} alt="avatar"/>
                 <InputProfileImage setImage={setImage} imagePreview={imagePreview} />
             </Row>
             <Row>
