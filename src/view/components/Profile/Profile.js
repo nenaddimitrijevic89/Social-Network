@@ -41,7 +41,7 @@ const Profile = () => {
 
   const openModal = () => {
     setModalIsOpen(!modalIsOpen);
-    setAvatar(null);
+    setAvatar(user.avatarUrl);
   };
 
   const insertData = (data, name) => {
