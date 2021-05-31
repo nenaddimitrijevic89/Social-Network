@@ -120,8 +120,7 @@ const Profile = () => {
     data.about = about;
     data.prefix = prefix;
 
-    userService.updateUser(user.id, data).then((response) => {
-      console.log(response);
+    userService.updateUser(user.id, data).then(() => {
       window.location.reload();
     });
   };
