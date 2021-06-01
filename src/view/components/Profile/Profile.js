@@ -6,8 +6,10 @@ import { ProfileModal } from "./ProfileModal/ProfileModal";
 import { authentication } from "../../../services/authService";
 import { Loader } from "../Loader/Loader";
 import { ProfileCard } from "./ProfileCard/ProfileCard";
+import { useHistory } from "react-router";
 
 const Profile = () => {
+  let history = useHistory();
   const [user, setUser] = useState({});
   const [numbOfPosts, setNumbOfPosts] = useState(null);
   const [numbOfComments, setNumbOfComments] = useState(null);
@@ -21,6 +23,7 @@ const Profile = () => {
   const [avatar, setAvatar] = useState(null);
 
   useEffect(() => {
+    isAuthorized()
     userService
       .getLoggedUser()
       .then((response) => {
@@ -74,7 +77,7 @@ const Profile = () => {
 
   const saveNewPassword = () => {
     setModalIsOpen(false);
-    authentication.changePassword(this.state);
+    authentication.changePassword(user);
   };
 
   const changeInfo = () => {
@@ -129,10 +132,11 @@ const Profile = () => {
     setAvatar(image);
   };
 
-  const isAuthorized = isLoggedIn();
-  if (!isAuthorized) {
-    this.props.history.push("/");
-  }
+  const isAuthorized = () => {
+    if (!isLoggedIn()) {
+      history.push("/");
+    }
+  };
 
   return (
     <Container>
