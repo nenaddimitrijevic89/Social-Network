@@ -23,6 +23,11 @@ const Profile = () => {
   const [avatar, setAvatar] = useState(null);
 
   useEffect(() => {
+    const isAuthorized = () => {
+      if (!isLoggedIn()) {
+        history.push("/");
+      }
+    };
     isAuthorized()
     userService
       .getLoggedUser()
@@ -40,7 +45,7 @@ const Profile = () => {
           .then((response) => setNumbOfComments(response))
           .finally(() => setIsLoading(false));
       });
-  }, [user.id]);
+  }, [user.id, history]);
 
   const openModal = () => {
     setModalIsOpen(!modalIsOpen);
@@ -132,11 +137,7 @@ const Profile = () => {
     setAvatar(image);
   };
 
-  const isAuthorized = () => {
-    if (!isLoggedIn()) {
-      history.push("/");
-    }
-  };
+  
 
   return (
     <Container>
