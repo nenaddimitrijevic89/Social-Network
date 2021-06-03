@@ -18,7 +18,6 @@ const Profile = () => {
   const [isInfo, setIsInfo] = useState(true);
   const [isPassword, setIsPassword] = useState(false);
   const [isProfileImage, setIsProfileImage] = useState(false);
-  // const [email, setEmail] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [avatar, setAvatar] = useState(null);
 
