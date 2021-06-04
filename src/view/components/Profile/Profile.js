@@ -32,7 +32,6 @@ const Profile = () => {
       .getLoggedUser()
       .then((response) => {
         setUser(response);
-        // setEmail(response.email);
       })
       .then(() => {
         userService
