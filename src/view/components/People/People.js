@@ -29,7 +29,7 @@ const People = () => {
       .getAllComments()
       .then((response) => setComments(response))
       .finally(() => setIsLoading(false));
-  }, []);
+  }, [history]);
 
   const filterPostOwner = (id) => {
     const postOwner = posts.filter((post) => post.owner === id);

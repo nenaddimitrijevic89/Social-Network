@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Container, Row } from 'react-materialize';
+import { Button, Row } from 'react-materialize';
 import { InputPassword } from '../Input/InputPassword';
 
 const PasswordChange = ({ user, saveNewPassword, insertData }) => {

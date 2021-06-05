@@ -1,67 +1,63 @@
-import React from 'react';
-import { Container } from 'react-materialize';
-import { userService } from '../../../../services/userService';
-import { ProfileCard } from '../../Profile/ProfileCard/ProfileCard';
-import { Loader } from '../../Loader/Loader';
+import React, { useEffect, useState } from "react";
+import { Container } from "react-materialize";
+import { userService } from "../../../../services/userService";
+import { ProfileCard } from "../../Profile/ProfileCard/ProfileCard";
+import { Loader } from "../../Loader/Loader";
+import { useHistory, useParams } from "react-router";
 
-class SingleUser extends React.Component {
-    constructor() {
-        super()
-        this.state = {
-            user: null,
-            loggedUser: null,
-            numbOfPosts: null,
-            numbOfComments: null,
-            isLoading: true
-        }
-    }
+const SingleUser = () => {
+  let history = useHistory();
+  let { id } = useParams();
 
-    componentDidMount() {
-        userService.getLoggedUser()
-        .then(response => this.setState({ loggedUser: response }))
+  const [user, setUser] = useState(null);
+  const [loggedUser, setLoggedUser] = useState(null);
+  const [numbOfPosts, setNumbOfPosts] = useState(null);
+  const [numbOfComments, setNumbOfComments] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
-        userService.getSingleUser(this.props.match.params.id)
-        .then(response => this.setState({ user: response }))
-        .then(() => {
-            userService.getSingleUserPosts(this.props.match.params.id)
-            .then(response => this.setState({ numbOfPosts: response }))
-    
-            userService.getSingleUserComments(this.props.match.params.id)
-            .then(response => this.setState({ numbOfComments: response }))
-        })
-        .finally(() => this.setState({ isLoading: false }))
-        
+  useEffect(() => {
+    userService.getLoggedUser().then((response) => setLoggedUser(response));
 
-    }
+    userService
+      .getSingleUser(id)
+      .then((response) => setUser(response))
+      .then(() => {
+        userService
+          .getSingleUserPosts(id)
+          .then((response) => setNumbOfPosts(response));
 
-    removeUser = () => {
-        userService.deleteSingleUser(this.props.match.params.id, this.state.user)
-            .then(() => {
-                this.props.history.push('/')
-            })
-    }
+        userService
+          .getSingleUserComments(id)
+          .then((response) => setNumbOfComments(response));
+      })
+      .finally(() => setIsLoading(false));
+  }, [id]);
 
-    render() {
-        return (
-            <Container>
-                {this.state.isLoading
+  const removeUser = () => {
+    userService.deleteSingleUser(id, user).then(() => {
+      this.props.history.push("/");
+    });
+  };
 
-                ? <Loader />
-                
-                :<>{this.state.loggedUser?.id===this.state.user?.id
-                    ?
-                    this.props.history.push('/profile')
-                    :<ProfileCard
-                    user={this.state.user}
-                    numbOfComments={this.state.numbOfComments}
-                    numbOfPosts={this.state.numbOfPosts}
-                    />
-                    }</>
+  return (
+    <Container>
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <>
+          {loggedUser?.id === user?.id ? (
+            history.push("/profile")
+          ) : (
+            <ProfileCard
+              user={user}
+              numbOfComments={numbOfComments}
+              numbOfPosts={numbOfPosts}
+            />
+          )}
+        </>
+      )}
+    </Container>
+  );
+};
 
-                }
-            </Container>
-        )
-    }
-}
-
-export { SingleUser }
+export { SingleUser };
