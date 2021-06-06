@@ -22,12 +22,11 @@ const Profile = () => {
   const [avatar, setAvatar] = useState(null);
 
   useEffect(() => {
-    const isAuthorized = () => {
-      if (!isLoggedIn()) {
-        history.push("/");
-      }
-    };
-    isAuthorized()
+    const isAuthorized = isLoggedIn();
+    if (!isAuthorized) {
+      history.push("/");
+    }
+    
     userService
       .getLoggedUser()
       .then((response) => {
