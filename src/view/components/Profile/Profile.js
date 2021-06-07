@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router";
 import { Container, Row } from "react-materialize";
 import { userService } from "../../../services/userService";
-import { isLoggedIn } from "../../../shared/utilities";
-import { ProfileModal } from "./ProfileModal/ProfileModal";
 import { authentication } from "../../../services/authService";
+
+import { ProfileModal } from "./ProfileModal/ProfileModal";
 import { Loader } from "../Loader/Loader";
 import { ProfileCard } from "./ProfileCard/ProfileCard";
-import { useHistory } from "react-router";
+import withAuth from "../../../hoc/withAuth";
 
 const Profile = () => {
   let history = useHistory();
@@ -22,11 +23,7 @@ const Profile = () => {
   const [avatar, setAvatar] = useState(null);
 
   useEffect(() => {
-    const isAuthorized = isLoggedIn();
-    if (!isAuthorized) {
-      history.push("/");
-    }
-    
+
     userService
       .getLoggedUser()
       .then((response) => {
@@ -172,4 +169,4 @@ const Profile = () => {
   );
 };
 
-export { Profile };
+export default withAuth(Profile);
