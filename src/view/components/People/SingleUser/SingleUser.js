@@ -4,6 +4,7 @@ import { userService } from "../../../../services/userService";
 import { ProfileCard } from "../../Profile/ProfileCard/ProfileCard";
 import { Loader } from "../../Loader/Loader";
 import { useHistory, useParams } from "react-router";
+import withAuth from "../../../../hoc/withAuth";
 
 const SingleUser = () => {
   let history = useHistory();
@@ -33,11 +34,11 @@ const SingleUser = () => {
       .finally(() => setIsLoading(false));
   }, [id]);
 
-  const removeUser = () => {
-    userService.deleteSingleUser(id, user).then(() => {
-      this.props.history.push("/");
-    });
-  };
+  // const removeUser = () => {
+  //   userService.deleteSingleUser(id, user).then(() => {
+  //     this.props.history.push("/");
+  //   });
+  // };
 
   return (
     <Container>
@@ -60,4 +61,4 @@ const SingleUser = () => {
   );
 };
 
-export { SingleUser };
+export default withAuth(SingleUser);
