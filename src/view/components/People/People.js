@@ -7,6 +7,7 @@ import { Loader } from "../Loader/Loader";
 import { postService } from "../../../services/postService";
 import { commentService } from "../../../services/commentService";
 import { useHistory } from "react-router";
+import withAuth from "../../../hoc/withAuth";
 
 const People = () => {
   const [users, setUsers] = useState([]);
@@ -61,4 +62,4 @@ const People = () => {
   );
 };
 
-export { People };
+export default withAuth(People);
