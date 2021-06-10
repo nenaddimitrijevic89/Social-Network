@@ -5,7 +5,7 @@ import 'materialize-css/dist/js/materialize';
 import Header from '../view/components/Header/Header';
 import { Footer } from '../view/components/Footer/Footer';
 import { Switch, Route } from 'react-router-dom';
-import { Feed } from '../view/components/Feed/Feed';
+import Feed from '../view/components/Feed/Feed';
 import Profile from '../view/components/Profile/Profile';
 import { UserForm } from '../view/components/UserForm/UserForm';
 import People from '../view/components/People/People';
