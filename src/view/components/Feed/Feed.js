@@ -9,6 +9,7 @@ import { userService } from '../../../services/userService';
 import { Loader } from '../Loader/Loader';
 import { PostModal } from './PostModal/PostModal';
 import { commentService } from '../../../services/commentService';
+import withAuth from '../../../hoc/withAuth';
 
 class Feed extends React.Component {
     constructor() {
@@ -159,4 +160,4 @@ class Feed extends React.Component {
         )
     }
 }
-export { Feed };
+export default withAuth(Feed);
