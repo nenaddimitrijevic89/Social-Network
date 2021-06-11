@@ -1,5 +1,6 @@
 import React from 'react';
 import { Container } from 'react-materialize';
+import withAuth from '../../../../hoc/withAuth';
 import { commentService } from '../../../../services/commentService';
 import { postService } from '../../../../services/postService';
 import { userService } from '../../../../services/userService';
@@ -84,4 +85,4 @@ class SinglePost extends React.Component {
     }
 }
 
-export { SinglePost };
+export default withAuth(SinglePost);
