@@ -12,200 +12,181 @@ import { commentService } from "../../../services/commentService";
 import withAuth from "../../../hoc/withAuth";
 
 const Feed = () => {
-    const [posts, setPosts] = useState([])
-    const [users,setUsers] = useState([])
-    const [comments,setComments] = useState([])
-    const [isLoading,setIsLoading] = useState(true)
-    const [modalIsOpen,setModalIsOpen] = useState(false)
-    const [type,setType] = useState(null)
-    const [src,setSrc] = useState(null)
-    const [isText,setIsText] = useState(true)
-    const [isImage,setIsImage] = useState(false)
-    const [isVideo,setIsVideo] = useState(false)
-    const [postImage,setPostImage] = useState(null)
+  const [posts, setPosts] = useState([]);
+  const [users, setUsers] = useState([]);
+  const [comments, setComments] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [type, setType] = useState(null);
+  const [src, setSrc] = useState(null);
+  const [isText, setIsText] = useState(true);
+  const [isImage, setIsImage] = useState(false);
+  const [isVideo, setIsVideo] = useState(false);
+  const [postImage, setPostImage] = useState(null);
 
-  useEffect(()=> {
-    userService
-      .getAllUsers()
-      .then((response) => this.setState({ users: response }));
+  useEffect(() => {
+    userService.getAllUsers().then((response) => setUsers(response));
 
     postService
       .getAllPosts()
-      .then((response) => this.setState({ posts: response }))
-      .finally(() => this.setState({ isLoading: false }));
+      .then((response) => setPosts(response))
+      .finally(() => setIsLoading(false));
 
-    commentService
-      .getAllComments()
-      .then((response) => this.setState({ comments: response }));
-  }, [])
+    commentService.getAllComments().then((response) => setComments(response));
+  }, []);
 
-  filterPostComments = (id) => {
-    const postComments = this.state.comments.filter(
-      (comment) => comment.postId === id
-    );
+  const filterPostComments = (id) => {
+    const postComments = comments.filter((comment) => comment.postId === id);
     return postComments.length;
   };
 
-  filterPostUser = (id) => {
-    const postUser = this.state.users.filter((user) => user.id === id);
-    console.log(postUser);
+  const filterPostUser = (id) => {
+    const postUser = users.filter((user) => user.id === id);
     return postUser[0];
   };
 
-  openModal = () => {
-    this.setState((prevState) => ({
+  const openModal = () => {
+    setModalIsOpen((prevState) => ({
       modalIsOpen: !prevState.modalIsOpen,
       type: "text",
     }));
   };
 
-  writePost = (post) => {
-    this.setState({ src: post });
+  const writePost = (post) => {
+    setSrc(post);
   };
 
-  uploadImage = () => {
-    this.setState({ isLoading: true });
-    postService.createImagePost(this.state).then(() => {
+  const uploadImage = () => {
+    setIsLoading(true);
+    postService.createImagePost(src).then(() => {
       postService
         .getAllPosts()
-        .then((response) =>
-          this.setState({ posts: response, modalIsOpen: false })
-        )
-        .finally(() => this.setState({ isLoading: false }));
+        .then((response) => {
+          setPosts(response);
+          setModalIsOpen(false);
+        })
+        .finally(() => setIsLoading(false));
     });
   };
 
-  savePost = () => {
-    this.setState({ isLoading: true });
-    postService.createPost(this.state).then(() => {
+  const savePost = () => {
+    setIsLoading(true);
+    postService.createPost(type, src).then(() => {
       postService
-        .getAllPosts()
-        .then((response) =>
-          this.setState({ posts: response, modalIsOpen: false })
-        )
-        .finally(() => this.setState({ isLoading: false }));
+        .then((response) => {
+          setPosts(response);
+          setModalIsOpen(false);
+        })
+        .finally(() => setIsLoading(false));
     });
   };
 
-  deletePost = (id) => {
-    this.setState({ isLoading: true });
+  const deletePost = (id) => {
+    setIsLoading(true);
     postService.deletePost(id).then(() => {
       postService
         .getAllPosts()
-        .then((response) => this.setState({ posts: response }))
-        .finally(() => this.setState({ isLoading: false }));
+        .then((response) => setPosts(response))
+        .finally(() => setIsLoading(false));
     });
   };
 
-  changeText = () => {
-    this.setState({
-      isText: true,
-      isImage: false,
-      isVideo: false,
-      type: "text",
-    });
+  const changeText = () => {
+    setIsText(true);
+    setIsImage(false);
+    setIsVideo(false);
+    setType("text");
   };
 
-  changeImage = () => {
-    this.setState({
-      isImage: true,
-      isText: false,
-      isVideo: false,
-      type: "image",
-    });
+  const changeImage = () => {
+    setIsImage(true);
+    setIsText(false);
+    setIsVideo(false);
+    setType("image");
   };
 
-  changeVideo = () => {
-    this.setState({
-      isVideo: true,
-      isText: false,
-      isImage: false,
-      type: "video",
-    });
+  const changeVideo = () => {
+    setIsVideo(true);
+    setIsText(false);
+    setIsImage(false);
+    setType("video");
   };
 
-  imagePreview = (img) => {
-    this.setState({ postImage: img });
+  const imagePreview = (img) => {
+    setPostImage(img);
   };
 
-  render() {
-    const isAuthorized = isLoggedIn();
-    if (!isAuthorized) {
-      this.props.history.push("/");
-    }
-
-    return (
-      <Container>
-        {this.state.isLoading ? (
-          <Loader />
-        ) : (
-          <>
-            <PostModal
-              openModal={this.openModal}
-              modalIsOpen={this.state.modalIsOpen}
-              writePost={this.writePost}
-              savePost={this.savePost}
-              changeText={this.changeText}
-              changeImage={this.changeImage}
-              changeVideo={this.changeVideo}
-              isText={this.state.isText}
-              isImage={this.state.isImage}
-              isVideo={this.state.isVideo}
-              uploadImage={this.uploadImage}
-              src={this.state.src}
-              imagePreview={this.imagePreview}
-              postImage={this.state.postImage}
-            />
-            {this.state.posts.map((post) => {
-              if (post.type === "text") {
-                return (
-                  <TextPost
-                    key={post.id}
-                    post={post}
-                    user={this.filterPostUser(post.owner)}
-                    numbOfComments={this.filterPostComments(post.id)}
-                    deletePost={this.deletePost}
-                    isShown={false}
-                  />
-                );
-              }
-              if (post.type === "video") {
-                return (
-                  <VideoPost
-                    key={post.id}
-                    post={post}
-                    user={this.filterPostUser(post.owner)}
-                    numbOfComments={this.filterPostComments(post.id)}
-                    deletePost={this.deletePost}
-                    isShown={false}
-                  />
-                );
-              } else {
-                return (
-                  <ImagePost
-                    key={post.id}
-                    post={post}
-                    user={this.filterPostUser(post.owner)}
-                    numbOfComments={this.filterPostComments(post.id)}
-                    deletePost={this.deletePost}
-                    isShown={false}
-                  />
-                );
-              }
-            })}
-          </>
-        )}
-        <Button
-          onClick={this.openModal}
-          className="red"
-          fab
-          icon={<i className="fa fa-plus"></i>}
-          floating
-          large
-          node="button"
-        ></Button>
-      </Container>
-    );
-  }
-}
+  return (
+    <Container>
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <>
+          <PostModal
+            openModal={openModal}
+            modalIsOpen={modalIsOpen}
+            writePost={writePost}
+            savePost={savePost}
+            changeText={changeText}
+            changeImage={changeImage}
+            changeVideo={changeVideo}
+            isText={isText}
+            isImage={isImage}
+            isVideo={isVideo}
+            uploadImage={uploadImage}
+            src={src}
+            imagePreview={imagePreview}
+            postImage={postImage}
+          />
+          {posts.map((post) => {
+            if (post.type === "text") {
+              return (
+                <TextPost
+                  key={post.id}
+                  post={post}
+                  user={filterPostUser(post.owner)}
+                  numbOfComments={filterPostComments(post.id)}
+                  deletePost={deletePost}
+                  isShown={false}
+                />
+              );
+            }
+            if (post.type === "video") {
+              return (
+                <VideoPost
+                  key={post.id}
+                  post={post}
+                  user={filterPostUser(post.owner)}
+                  numbOfComments={filterPostComments(post.id)}
+                  deletePost={deletePost}
+                  isShown={false}
+                />
+              );
+            } else {
+              return (
+                <ImagePost
+                  key={post.id}
+                  post={post}
+                  user={filterPostUser(post.owner)}
+                  numbOfComments={filterPostComments(post.id)}
+                  deletePost={deletePost}
+                  isShown={false}
+                />
+              );
+            }
+          })}
+        </>
+      )}
+      <Button
+        onClick={openModal}
+        className="red"
+        fab
+        icon={<i className="fa fa-plus"></i>}
+        floating
+        large
+        node="button"
+      ></Button>
+    </Container>
+  );
+};
 export default withAuth(Feed);
