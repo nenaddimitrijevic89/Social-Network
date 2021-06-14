@@ -17,10 +17,6 @@ const People = () => {
   let history = useHistory();
 
   useEffect(() => {
-    const isAuthorized = isLoggedIn();
-    if (!isAuthorized) {
-      history.push("/");
-    }
 
     userService.getAllUsers().then((response) => setUsers(response));
 

@@ -4,7 +4,6 @@ import { Button, Container } from "react-materialize";
 import { ImagePost } from "./ImagePost/ImagePost";
 import { VideoPost } from "./VideoPost/VideoPost";
 import { postService } from "../../../services/postService";
-import { isLoggedIn } from "../../../shared/utilities";
 import { userService } from "../../../services/userService";
 import { Loader } from "../Loader/Loader";
 import { PostModal } from "./PostModal/PostModal";
