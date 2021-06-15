@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Container } from "react-materialize";
 import { userService } from "../../../services/userService";
 import { User } from "./User/User";
-import { isLoggedIn } from "../../../shared/utilities";
 import { Loader } from "../Loader/Loader";
 import { postService } from "../../../services/postService";
 import { commentService } from "../../../services/commentService";
