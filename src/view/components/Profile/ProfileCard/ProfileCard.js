@@ -9,7 +9,7 @@ const ProfileCard =({ user, openModal, numbOfPosts, numbOfComments })=>{
             <Col m={12} s={12} l={9} className={style.margin}>
                 <div className={style.card}>
                 <div className={style.cardHeader}>
-                    <img src={user.avatarUrl ?? avatar} alt="Profile Image" className={style.profileImg} />
+                    <img src={user.avatarUrl ?? avatar} alt="avatar" className={style.profileImg} />
                 </div>
                 <div className={style.cardBody}>
                     <p className={style.fullName}>{user.fullName}</p>
