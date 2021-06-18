@@ -16,7 +16,6 @@ const People = () => {
   let history = useHistory();
 
   useEffect(() => {
-
     userService.getAllUsers().then((response) => setUsers(response));
 
     postService.getAllPosts().then((response) => setPosts(response));

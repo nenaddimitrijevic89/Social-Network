@@ -23,7 +23,6 @@ const Profile = () => {
   const [avatar, setAvatar] = useState(null);
 
   useEffect(() => {
-
     userService
       .getLoggedUser()
       .then((response) => {
@@ -130,8 +129,6 @@ const Profile = () => {
   const imagePreview = (image) => {
     setAvatar(image);
   };
-
-  
 
   return (
     <Container>
