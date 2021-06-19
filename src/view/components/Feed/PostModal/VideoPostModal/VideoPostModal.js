@@ -12,7 +12,7 @@ const VideoPostModal =({ writePost, src })=>{
         <Row>
             <h4>Video Post</h4>
             <hr></hr>
-            <iframe src={embed(src)} className={style.iframe}/>                
+            <iframe src={embed(src)} className={style.iframe} title="yt-video"/>                
             <div className="input-field col s12">    
                 <textarea id="textarea2" className="materialize-textarea" data-length="120" onChange={posting}></textarea>
                 <label htmlFor="textarea2">YouTube video URL</label>
