@@ -15,7 +15,7 @@ const ImagePostModal =({ writePost, imagePreview, postImage })=>{
         <Row style={{ marginBottom: '26px' }}>
             <h4>Image Post</h4>
             <hr></hr>
-            <img src={postImage} className={style.image}/>                
+            <img src={postImage} className={style.image} alt="avatar"/>                
             <div className="file-field input-field col s12" style={{ marginBottom: '23px'}}>
                 <div className="btn red">
                     <i className='fa fa-upload'></i>
