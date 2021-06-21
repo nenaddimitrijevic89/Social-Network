@@ -8,14 +8,6 @@ const getAuthHeader = () => {
     return 'Bearer sn-token'
 }
 
-const isLoggedIn = () => {
-    const token = storageService.get('token');
-    if (token) {
-        return true;
-    }
-    return false;
-}
-
 const embed =(post)=>{
     if(!post) return
     const base = 'https://www.youtube.com/embed/';
@@ -34,4 +26,4 @@ const convertDate = (date) => {
     )
 }
 
-export { getAuthHeader, isLoggedIn, embed, convertDate }
+export { getAuthHeader, embed, convertDate }
