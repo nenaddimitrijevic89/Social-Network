@@ -21,8 +21,8 @@ class PostService {
 
     }
 
-    getSinglePost(id) {
-        return baseURL.get(`posts/${id}`, {
+    async getSinglePost(id) {
+        return await baseURL.get(`posts/${id}`, {
             headers: HEADERS()
         })
             .then(response => {
@@ -32,8 +32,8 @@ class PostService {
             })
     }
 
-    getSinglePostComments(id) {
-        return baseURL.get(`posts/${id}/comments`, {
+    async getSinglePostComments(id) {
+        return await baseURL.get(`posts/${id}/comments`, {
             headers: HEADERS()
         })
             .then(response => {
@@ -42,17 +42,17 @@ class PostService {
             })
     }
 
-    createPost({ type, src }) {
-        return baseURL.post('posts', { type, src }, {
+    async createPost({ type, src }) {
+        return await baseURL.post('posts', { type, src }, {
             headers: HEADERS()
         })
             .then(response => console.log(response))
             .catch(error => console.log(error))
     }
 
-    createImagePost({ src }) {
+    async createImagePost({ src }) {
         const token = storageService.get('token');
-        return baseURL.post('posts?type=image', src, {
+        return await baseURL.post('posts?type=image', src, {
             headers: {
                 "x-api-key": "1vaHd3v",
                 Authorization: token,
@@ -62,8 +62,8 @@ class PostService {
         .catch(error => console.log(error))
     }
 
-    deletePost(id) {
-        return baseURL.delete(`posts/${id}`, {
+    async deletePost(id) {
+        return await baseURL.delete(`posts/${id}`, {
             headers: HEADERS()
         })
         .catch(() => alert('This is not your post. You can not delete it!'))
