@@ -66,7 +66,7 @@ class PostService {
         return await baseURL.delete(`posts/${id}`, {
             headers: HEADERS()
         })
-        .catch(() => alert('This is not your post. You can not delete it!'))
+        .then(() => 'This is not your post. You can not delete it!')
     }
 }
 
