@@ -67,7 +67,7 @@ class PostService {
             headers: HEADERS()
         })
         .then(response => console.log(response))
-        .then(() => 'This is not your post. You can not delete it!')
+        .catch(() => alert('This is not your post. You can not delete it!'))
     }
 }
 
