@@ -42,12 +42,12 @@ class PostService {
             })
     }
 
-    async createPost({ type, src }) {
+    async createPost(type, src) {
         return await baseURL.post('posts', { type, src }, {
             headers: HEADERS()
         })
-            .then(response => console.log(response))
-            .catch(error => console.log(error))
+        .then(response => console.log(response))
+        .catch(error => console.log(error))
     }
 
     async createImagePost({ src }) {

@@ -47,8 +47,8 @@ const Feed = () => {
   const openModal = () => {
     setModalIsOpen((prevState) => ({
       modalIsOpen: !prevState.modalIsOpen,
-      type: "text",
     }));
+    setType("text")
   };
 
   const writePost = (post) => {
@@ -69,9 +69,11 @@ const Feed = () => {
   };
 
   const savePost = () => {
+    console.log(type)
     setIsLoading(true);
     postService.createPost(type, src).then(() => {
       postService
+      .getAllPosts()
         .then((response) => {
           setPosts(response);
           setModalIsOpen(false);
