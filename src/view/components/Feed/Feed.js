@@ -56,6 +56,7 @@ const Feed = () => {
   };
 
   const uploadImage = () => {
+    console.log(src)
     setIsLoading(true);
     postService.createImagePost(src).then(() => {
       postService
@@ -69,7 +70,6 @@ const Feed = () => {
   };
 
   const savePost = () => {
-    console.log(type)
     setIsLoading(true);
     postService.createPost(type, src).then(() => {
       postService
