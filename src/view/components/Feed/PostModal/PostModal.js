@@ -11,7 +11,7 @@ const PostModal =({ modalIsOpen, openModal, writePost,
                     changeVideo, isText, isImage, isVideo,
                     uploadImage, src, imagePreview, postImage })=>{
     
-    const post = () =>{
+    const post = () => {
         if(isImage){
             uploadImage()
         }else{
