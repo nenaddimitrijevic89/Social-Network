@@ -3,7 +3,7 @@ import { Row } from 'react-materialize';
 import style from './ImagePostModal.module.css';
 
 const ImagePostModal =({ writePost, imagePreview, postImage })=>{
-console.log(postImage)
+
     const posting=(event)=>{
         const post=event.target.files;
         const preview=URL.createObjectURL(post[0])
@@ -16,7 +16,7 @@ console.log(postImage)
         <Row style={{ marginBottom: '26px' }}>
             <h4>Image Post</h4>
             <hr></hr>
-            <img src={postImage !== null ? postImage : './logo192.png'} className={style.image} alt="avatar"/>                
+            <img src={postImage && postImage} className={style.image} alt="avatar"/>                
             <div className="file-field input-field col s12" style={{ marginBottom: '23px'}}>
                 <div className="btn red">
                     <i className='fa fa-upload'></i>
